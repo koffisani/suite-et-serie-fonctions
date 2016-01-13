@@ -1,0 +1,1790 @@
+\documentclass[11pt, a4paper]{book}
+%\usepackage[applemac]{inputenc} %permet d'utiliser les  
+\usepackage[utf8]{inputenc}                               %caractères accentués, etc.
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+%\usepackage{kpfonts}
+%\usepackage{fourier}
+%\usepackage[charter]{mathdesign}
+%\usepackage{times}
+%\usepackage{charter}
+\usepackage{mathpazo}
+%\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+%\usepackage{fancyhdr}
+%\fancyhf{}
+%\fancyhead[C]{\thepage}
+%\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage[T1]{fontenc}%afficher les accents
+\usepackage{amsmath, amssymb}
+\usepackage{theorem,amsfonts}
+%\theoremstyle{break}
+\usepackage{graphicx }
+\usepackage{fancyhdr}
+\usepackage[a4paper,tmargin=2cm,bmargin=3.5cm,rmargin=2cm,lmargin=2cm]{geometry}
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+     backref=true,    %permet d'ajouter des liens dans...
+     pagebackref=true,%...les bibliographies
+     hyperindex=true, %ajoute des liens dans les index.
+     colorlinks=true, %colorise les liens
+     breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+     urlcolor= blue,  %couleur des hyperliens
+     linkcolor= blue, %couleur des liens internes
+     bookmarks=true,  %créé des signets pour Acrobat
+     bookmarksopen=true,            %si les signets Acrobat sont créés,
+                                    %les afficher complètement.
+     pdftitle={Suites et S\'eries de fonctions et int\'egrales d\'ependant d'un param\`etre}, %informations apparaissant dans
+     pdfauthor={Koffi Sani},     %dans les informations du document
+     pdfsubject={Cours de Maths}          %sous Acrobat.
+}
+\newtheorem{teo}{Th\'eor\`eme}[section]
+\newtheorem{defi}{D\'efinition}[section]
+\newtheorem{pro}{Proposition}[section]
+\newtheorem{rem}{Remarque}[section]
+\newtheorem{cor}{Corollaire}[section]
+\newtheorem{lem}{Lemme}[section]
+\author{\textbf{Kenny SIGGINI} \\ Ma\^itre de Conf\'erences \\ D\'epartement de Math\'ematiques \\Universit\'e de Lom\'e\\ TOGO}
+\newenvironment{pr}{\noindent {\bf Preuve} \noindent} {\hfill $\Box$\vskip 5mm}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancyhead[C]{\it <<Suites et séries de fonctions et intégrales\\ dépendant d'un paramètre >>\\ }
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\addtolength{\headheight}{0.5pt}
+\fancypagestyle{plain}{
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{0pt}	
+	}
+\fancyfoot[L]{\begin{footnotesize}
+ Kenny SIGGINI\\ Maître de Conférences\end{footnotesize}}
+\fancyfoot[R]{\begin{footnotesize} \textit{
+Département de Mathématiques\\Université de Lomé}
+\end{footnotesize}}
+
+\begin{document}
+
+\title{ \begin{figure} \begin{center}
+ \includegraphics[height=6cm,width=6cm]{logoul.png} \end{center} \end{figure}\rule{13cm}{0.15cm}\\ \textbf{\textbf{ Suites et S\'eries de fonctions et int\'egrales\\ d\'ependant d'un param\`etre}}\\ \rule{13cm
+}{0.15cm}
+}
+ 
+\date{}
+
+\maketitle
+%\newpage
+\chapter*{Epigraphe}
+\begin{flushright}
+\emph{ Deux dangers menacent le monde :\\ l'ordre et le d\'esordre.}\\ Paul Valery
+\end{flushright}
+\vspace{2cm}
+\begin{flushright}
+\emph{Seul le dernier des imb\'eciles traite son\\ contradicteur d'ennemi.}\\ K.S.
+\end{flushright}
+%\newpage
+\chapter*{Préface}
+Ce cours de Math\'ematiques, dispens\'e par M. SIGGINI --paix à son âme -- \`a l'Universit\'e de Lom\'e, a toujours \'et\'e sous forme d'un document manuscrit, beau \`a lire et bien r\'edig\'e pour faciliter la compr\'ehension aux lecteurs. Mais dans notre monde actuel o\`u la technologie d\'efie toute l'existence, il y a lieu de chercher \`a am\'eliorer ce qui existait d\'ej\`a, \`a d\'efaut de cr\'eer du nouveau. Par ailleurs ce cours est tr\`es important dans le Parcours de Licence de Math\'ematiques, tant pour la pr\'eparation des concours d'entr\'ee dans les \'ecoles d'ing\'enieur que pour la poursuite des \'etudes en Math\'ematiques et ses applications. C'est de l\`a que m'est venue l'id\'ee de le num\'eriser, de le transformer en format PDF (Portable Document Format), lors de mon exercice dans l'apprentissage de \LaTeX.\\
+
+ Ce travail dont voici le r\'esultat est le fruit de mes premiers pas avec \LaTeX\ . Une manière de péréniser et diffuser l'\oe uvre d'un enseignant que j'ai beaucoup adoré.\\
+ 
+ Comme tout d\'ebutant, des erreurs typographiques et de mauvaise ma\^itrise des syntaxes pourront figurer dans ce document. Je serai heureux de recevoir vos suggestions de tout genre, vos commentaires pouvant aider \`a am\'eliorer ce manuel. N\'eanmoins j'esp\`ere que ceci pourra non seulement aider les camarades qui s'en serviront, mais aussi inspirer d'autres \`a m'emboiter le pas en essayant de faire de m\^eme pour les cours manuscrits qui restent encore. \\
+\begin{flushright}
+Votre camarade,\\
+\vspace{1cm}
+\emph{Koffi SANI } \\ \includegraphics[width=0.4cm]{mail}\ koffisani@gmail.com |  \includegraphics[width=0.3cm]{twitter}\ koffisani | \includegraphics[width=0.3cm]{in}\ koffisani
+\end{flushright}
+\tableofcontents
+\setcounter{tocdepth}{3}
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\lo}{\mathrm{Log}}
+\newcommand{\arct}{\mathrm{Arctan}}
+\chapter{S\'eries num\'eriques}
+
+\section{ %\textcolor{Orange}{
+Rappels}%}
+Dans tout ce qui suit, $\mathbb{K}= \mathbb{R}$ ou $\mathbb{C}$\\ 
+Se donner une suite d'\'el\'ements de $\mathbb{K}$ \'equivaut \`a se donner une application $ u $ de $\mathbb{N}$ dans $\mathbb{K}$. $\forall n \in \mathbb{N} $ on pose $ u(\mathbb{N})=(u_{n}). $ Les $ u_{n} $ sont appel\'es \textbf{termes} de la suite $ (u_{n})_{n \in \mathbb{N} } $. \\
+Soit $ u(\mathbb{N}) \subset \mathbb{K} $. On dit que $ u_{n} $ est une suite r\'eelle (respectivement complexe) si $\forall n \in \mathbb{N},\quad u_{n} \in \mathbb{R} $ (respectivement $ u_{n} \in \mathbb{C} $).\\
+Soit $ (u_{n}) $ une suite r\'eelle. On dit que $ (u_{n}) $ est croissante (respectivement d\'ecroissante) si $ \forall n \in \mathbb{N} \quad u_{n}\leq u_{n+1} $ (respectivement $ u_{n+1} \leq u_{n} $).\\
+On dit que $ (u_{n}) $ est born\'ee s'il existe un r\'eel $A>0$ tel que $ \forall n \in \mathbb{N} ,\quad| u_{n} | \leq A$.\\
+Si $(u_{n})$ est r\'eelle, la condition $ | u_{n} | \leq A $ \'equivaut \`a $ -A \leq u_{n} \leq A,\quad \forall n \in \mathbb{N} $.\\
+Si elle est complexe, $ | u_{n} | $ d\'esigne le module du complexe $ u_{n} $.\\
+Soit $ (u_{n}) $ une suite r\'eelle ou complexe. On dit que $ (u_{n}) $ est une suite de Cauchy si 
+$$  \forall \varepsilon \geq 0,~ \exists n_{0} \in \mathbb{N}, \forall p \geq n_{0},~ \forall q \geq n_{0},~ | u_{p}-u_{q} | \leq \varepsilon .$$
+Soit $u( \mathbb{N}) \subset \mathbb{K} $,
+ on dit que $ (u_{n}) $ est convergente s'il existe $ \ell \in \mathbb{K} $ tel que $$ \lim_{n \rightarrow + \infty } u_{n}= \ell $$ c'est-\`a-dire $$ \lim_{n \rightarrow +\infty } | u_{n}-\ell | = 0.$$ 
+ En d'autres termes: $$ \forall \varepsilon \geq 0, ~ \exists n_{0} \in \mathbb{N}, ~ \forall n \geq n_{0},~ | u_{n}-\ell | \leq \varepsilon.$$ 
+Le nombre $\ell$ est alors appel\'e \textbf{limite} de la suite $(u_{n})$\\
+
+\subsection{Crit\`ere de convergence d'une suite }
+\begin{teo}
+Soit $(u_{n}) \subset \mathbb{K}.$ Alors $(u_{n})$ est convergente si et seulement si $(u_{n})$ est une suite de Cauchy.
+\end{teo}
+\begin{teo} Soit $(u_{n}) \subset \mathbb{R}$, une suite croissante (respectivement d\'ecroissante). Alors $(u_{n})$ est convergente si et seulement si elle est major\'ee  (respectivement minor\'ee) \end{teo}
+La limite est alors \'egale \`a ${\displaystyle \sup_{n \in \mathbb{N} } u_{n}}$ si $(u_{n})$ est croissante, et \`a ${\displaystyle \inf_{n \in \mathbb{N} } u_{n}}$ si $(u_{n})$ est d\'ecroissante
+\begin{rem} Une suite croissante est convergente ou tend vers $+ \infty$ \\
+Une suite d\'ecroissante est convergente ou tend vers $-\infty$ \end{rem}
+
+\subsection{Condition n\'ecessaire et suffisante de convergence}
+\begin{pro} Soit $(u_{n}) \subset \mathbb{K}.$ Si $(u_{n})$ est convergente alors $(u_{n})$ est born\'ee. La r\'eciproque est en g\'en\'eral fausse. \end{pro}
+\textbf{Contre-exemple}\\
+$(u_{n}) \subset \mathbb{R} $ d\'efinie par $ u_{n}=(-1)^{n} \quad \forall n \in \mathbb{N}. $
+
+\subsection*{Limite sup\'erieure et limite inf\'erieure d'une suite r\'eelle}
+Soit $(u_{n}) \subset \mathbb{R}$. Posons $\forall	n \in \mathbb{N},~{\displaystyle v_{n}=\sup_{k \geq n} u_{k}}$. On obtient une suite $(v_{n})$. Comme $(v_{n})$ est d\'ecroissante, elle est donc convergente ou tend vers $- \infty.$ Cette limite est not\'ee ${\displaystyle  \overline{\lim } u_{n}}$ et est appel\'ee \textbf{limite sup\'erieure} de $(u_{n})$\\
+$$ \overline{\lim} u_{n} =\inf_{n \in \mathbb{N} }(\sup_{k \geq n}u_{k})$$ car la limite d'une suite d\'ecroissante est la borne inf\'erieure de ses termes.\\
+     Posons $\forall n \in \mathbb{N},~{\displaystyle  w_{n}=\inf_{k \geq n}u_{k}}.$ On d\'efinit une suite croissante $(w_{n}).$ Elle est convergente ou tend vers $+\infty.$ Cette limite est not\'ee ${\displaystyle  \underline{\lim}u_{n}}$ et est appel\'ee \textbf{limite inf\'erieure} de $(u_{n}).$
+     $$ \underline{\lim}u_{n}=\sup_{n \in \mathbb{N} }(\inf_{k \geq n} u_{k})$$
+car la limite d'une suite croissante est \'egale \`a la borne sup\'erieure de ses termes.\\
+
+\subsubsection*{Relation entre les  limites  inf\'erieure et sup\'erieure }
+\begin{itemize}
+\item $ \underline{\lim}u_{n} \leq \overline{\lim}u_{n}$
+\item $ \overline{\lim}(-u_{n})=-\underline{\lim}u_{n}$ (Utiliser la relation $ \sup(-a_{i})=-\inf (a_{i})$ )
+\end{itemize}
+     Soient $(a_{n)}$ et $(b_{n})$ des suites r\'eelles: si  $\forall	n ~a_{n} \leq b_{n}$ alors $ \overline{\lim}a_{n} \leq \overline{\lim}b_{n}$ et $ \underline{\lim}a_{n} \leq \underline{\lim}b_{n}$
+\begin{teo} Soit $u(\mathbb{N}) \subset \mathbb{R}.$ Alors $(u_{n})$ est convergente si et seulement $ \underline{\lim}u_{n}=\overline{\lim}u_{n}.$ \end{teo}
+\textbf{Exemples} Calculer $ \overline{\lim}$ et $\underline{\lim}$ pour $ u_{n}=(-1)^{n}$ et $v_{n}=\cos\left(\dfrac{n\pi}{3}\right).$\\ 
+$\overline{\lim}u_{n}=+1$ car  ${\displaystyle\forall n,~ \sup_{k \geq n}u_{k}=+1}$\\
+$\underline{\lim}u_{n}=-1$ car  ${\displaystyle\forall n,~ \inf_{k \geq n}u_{k}=-1}$\\
+$\overline{\lim}v_{n}=+1$ et $ \underline{\lim}v_{n}=-1$\\
+\begin{defi} Soit $(u_{n}) \subset \mathbb{K}.$ On appelle \textbf{ suite partielle} ou \textbf{ suite extraite} ou encore \textbf{  sous-suite} de la suite $(u_{n}),$ une suite $(u_{n_{i}})_{i \in \mathbb{N}}$ o\`u $n_{0}\leq n_{1}\leq n_{2}\leq \cdots \leq n_{p}\leq \cdots$ et $u_{n_{i}}\in \{u_{0};u_{1};\cdots ;u_{n};\cdots\}$ pour tout $i\in \mathbb{N}.$ \end{defi}
+
+\section{S\'eries}
+
+\subsection{ Le corps $\mathbb{K}$ (=$\mathbb{R}$ ou $ \mathbb{C}$) }
+Soit $(u_{n})$ une suite d'\'el\'ements de $ \mathbb{K}.$ Posons $s_{0}=u_{0},~s_{1}=u_{0}+u_{1},~s_{2}=u_{0}+u_{1}+u_{2},~ \cdots, s_{n}=u_{0}+u_{1}+ \cdots +u_{n}.$ On obtient une nouvelle suite $(s_{n})_{n \in \mathbb{N}}.$
+\begin{defi} Soit $(u_{n})$ une suite d'\'el\'ements de $ \mathbb{K}.$\\
+On appelle \textbf{s\'erie} d\'efinie par $(u_{n})$ ou \textbf{s\'erie} de terme g\'en\'eral $u_{n},$ le couple $\left((u_{n}),(s_{n})\right).$ Elle est not\'ee $ \sum u_{n}.$\\
+Si $\forall n \in \mathbb{N},~ u_{n} \in \mathbb{R},$ alors $\sum u_{n}$ est appel\'ee \textbf{ s\'erie r\'eelle}.\\
+Si $\forall n \in \mathbb{N},~ u_{n} \in \mathbb{C},$ alors $ \sum u_{n}$ est appel\'ee \textbf{s\'erie complexe}. \end{defi}
+\begin{defi} La s\'erie $\sum u_{n}$ est dite convergente si la suite $(s_{n})$ est convergente. Si $(s_{n})$ n'est pas convergente, on dit que $\sum u_{n}$ est divergente. Si $\sum u_{n}$ est convergente alors la limite de la suite $(s_{n})$ est appel\'ee \textbf{somme} de la s\'erie.\end{defi}
+Soit ${\displaystyle \ell= \lim_{k \rightarrow +\infty}\left( \sum_{n=0}^{k}u_{n}\right), ~~ \ell}$ est not\'ee ${\displaystyle \sum_{n=0}^{+\infty}u_{n}}$
+\begin{defi} La suite $(s_{n})$ est appel\'ee \textbf{suite des sommes partielles} de la s\'erie $\sum u_{n}.$ \end{defi}
+\begin{rem} \label{rem2b} \begin{enumerate}
+\item[a)]\label{rem2a} Si $(u_{n})$ n'est d\'efinie qu'\`a partir d'un certain rang $n_{0},$ alors $\forall n \geq n_{0},~s_{n}=u_{n_{0}}+u_{n_{0}+1}+\cdots +u_{n}.$\\
+Si $(s_{n})$ est convergente, alors la somme de la s\'erie de terme g\'en\'eral $u_{n}$ est ${\displaystyle s=\sum_{k=n_{0}}^{+\infty}u_{k}}.$\\
+\item[b)]\label{rem2b}  Soit $\sum u_{n}$ une s\'erie convergente (respectivement divergente). Alors la s\'erie $\sum v_{n}$ obtenue \`a partir de $\sum u_{n}$ en modifiant ou en supprimant les $p$ premiers termes de $(u_{n})$ est aussi convergente (respectivement divergente).\\
+Dans le cas o\`u $\sum u_{n}$ est convergente, on a ${\displaystyle\sum_{n}^{+ \infty} u_{n} \neq \sum_{k}^{+\infty} v_{k}}.$
+\item[c)]\label{rem2c} Supposons $\sum u_{n}$ convergente; on d\'efinit une suite $(r_{n})$ o\`u $\forall n\in \mathbb{N},~{\displaystyle r_{n}=\sum_{k=n}^{+\infty} u_{k}}.$ On a ${\displaystyle\lim_{n \rightarrow +\infty} r_{n}=0}.$ 
+\end{enumerate} \end{rem}
+\begin{pr}\quad
+\textbf{Justifions b) et c)} \\ 
+\begin{enumerate}
+\item[b)] Soit $$s_{n}=u_{0}+u_{1}+ \cdots +u_{p}+ \cdots +u_{n}$$
+$$t_{n}=u'_{0}+u'_{1}+ \cdots +u'_{p}+u_{p+1}+u_{p+2}+ \cdots +u_{n}=v_{0}+v_{1}+ \cdots +v_{n}.$$
+$\sum u_{n}$ est suppos\'ee convergente.\\
+On a $v_{n}=s_{n}-(u_{0}+ \cdots +u_{p})+(u'_{0}+u'_{1}+ \cdots +u'_{p}).$\\
+Il est clair que ${\displaystyle \lim_{n} s_{n}}$ existe si et seulement si ${\displaystyle \lim_{n}v_{n}}$ existe.\\ \\
+\item[c)] On a $$r_{n} = \sum_{k=0}^{+\infty}u_{k}-\sum_{k=0}^{n-1} = s-s_{n-1}$$
+$$\lim_{n \rightarrow +\infty }r_{n}=\lim_{n \rightarrow +\infty }(s-s_{n-1})=s-s=0$$ \end{enumerate}
+\end{pr}
+\begin{pro} Soit $\sum u_{n}$ o\`u $u_{n} \in \mathbb{K},~ \forall n \in \mathbb{N}.$ Si $\sum u_{n}$ est convergente alors ${\displaystyle\lim_{n\rightarrow +\infty}u_{n}=0}.$ \end{pro}
+\begin{pr}\quad
+$\sum u_{n}$ convergente $\Leftrightarrow ~(s_{n})$ convergente. Donc ($\sum u_{n}$ convergente) $ \Rightarrow ~((s_{n})$ est de Cauchy), i.e. $$ \forall \varepsilon > 0, ~ \exists n_{0},~ \forall p, q, |s_{p}-s_{q} | \leq \varepsilon .$$
+Posons $q=p-1$\\
+On a alors $ \forall \varepsilon >0, ~\exists n_{0},~\forall p>n_{0},~ |u_{p}| \leq \varepsilon.$
+Ceci signifie que $$\lim_{n \rightarrow +\infty }u_{n}=0.$$
+\end{pr}
+\begin{defi} Si $(u_{n})\nrightarrow 0,$ on dira que la s\'erie est grossi\`erement divergente.\end{defi}
+
+\subsection{Exemples de s\'eries}
+\subsubsection{S\'eries g\'eom\'etriques}
+On appelle ainsi les s\'eries de la forme $\sum x^{n},$ o\`u $x \in \mathbb{K}$ et est fix\'e.\\
+\textit{\'Etude de $\sum x^{n}~(x\in \mathbb{K},~n\in \mathbb{N} )$}\\
+Pour tout $n,~s_{n}=u_{0}+u_{1}+\cdots +u_{n}$ o\`u $u_{n}=x^{n},~\forall n\in \mathbb{N}$\\
+\begin{align*} s_{n} & =1+x+x^{2}+\cdots +x^{n}\\
+& =\frac{1-x^{n+1}}{1-x} \end{align*}
+\begin{itemize}
+\item Si $x=1,~s_{n}=n+1,~ {\displaystyle \lim_{n \rightarrow +\infty} s_{n}=+\infty.~\sum x^{n} }$ est alors divergente.
+\item Si $|x|>1,$ alors ${\displaystyle\lim_{n \rightarrow +\infty}s_{n}=+\infty}.$ Donc ${\displaystyle \lim_{n \rightarrow +\infty}u_{n}\nrightarrow 0},$ d'o\`u $\sum u_{n}$ est grossi\`erement divergente.
+\item Si $x=-1,~u_{n}=(-1)^{n}$ donc $u_{n} \nrightarrow 0, \sum x^{n}$ est grossi\`erement divergente.
+\item Si $|x|<1,$ alors ${\displaystyle \lim_{n\rightarrow +\infty}x^{n}=0;~ \lim_{n\rightarrow +\infty}s_{n}=\dfrac{1}{1-x}}.$ Alors $\sum x^{n}$ est convergente et $$\sum_{n=0}^{+\infty}u_{n}=\dfrac{1}{1-x}$$
+\end{itemize}
+
+\subsubsection{S\'eries exponentielles}
+Ce sont des s\'eries de la forme $\sum \dfrac{x^{n}}{n!},~ (x\in \mathbb{K}).$\\
+\'Etant donn\'e $x,$ on sait que $\sum \dfrac{x^{n}}{n!}$ est convergente et sa somme est $ e^ x$.
+
+\subsubsection{S\'erie de la forme $\sum \dfrac{x^{n}}{n}$}
+\begin{itemize}
+\item[*] Si $| x|>1,$ on a $\Big| \dfrac{x^{n}}{n} \Big| \rightarrow +\infty$ (d'apr\`es les croissances compar\'ees $| x^{n}|=| x|^{n}=\exp (n \lo | x|)$) donc $\sum \dfrac{x^{n}}{n}$ est grossi\`erement divergente.
+\item[*]m Si $x=1$ alors $\sum \dfrac{x^{n}}{n}=\sum \dfrac{1}{n}.$ C'est une s\'erie divergente car la suite des sommes partielles n'est pas de Cauchy, i.e. $$\exists \varepsilon>0,~\forall n, \exists p,q >n, | s_{p}-s_{q}| >\varepsilon.$$
+En effet, en prenant pour $\varepsilon=\dfrac{1}{4}, p=2n,$ et $q=n,$ on a $$|s_{p}-s_{q}|=\Big|\frac{1}{n+1}+\frac{1}{n+2}+\cdots+\frac{1}{2n}\Big| \geq \frac{1}{2n}+\frac{1}{2n}+\cdots + \frac{1}{2n}=\frac{n}{2n}=\frac{1}{2}>\frac{1}{4}.$$
+\item[*] Soit $-1<x<1.$ On sait que ${\displaystyle \sum_{n=1}^{+\infty}\dfrac{x^{n}}{n}=-\lo(1-x)}$ donc $\sum \dfrac{x^{n}}{n}$ est convergente si $-1<x<1.$
+\item[*] Pour $x=-1,$ on a ${\displaystyle \sum_{n=1}^{+\infty}\frac{(-1)^{n}}{n}=-\lo2}.$ On le prouvera ult\'erieurement.
+\end{itemize}
+
+\subsubsection{S\'erie dont le terme g\'en\'eral est de la forme $u_{n}=a_{n}-a_{n+1}$}
+Une telle suite est convergente si et seulement si la suite $(a_{n})$ est convergente. En effet, $$s_{n}=u_{0}+u_{1}+\cdots+u_{n}=a_{0}-a_{n}.$$
+Il est clair que $\lim s_{n}$ existe si et seulement si $\lim a_{n}$ existe.\\
+\textbf{Exemple}\quad
+\'Etudier $\sum \dfrac{1}{n(n+1)},~~(n\geq1)$\\
+$u_{n}=\dfrac{1}{n(n+1)}=\dfrac{1}{n}-\dfrac{1}{n+1}$ ($=a_{n}-a_{n+1}$ o\`u $\forall n\geq1, a_{n}=\dfrac{1}{n}$)
+On a $$s_{n}=u_{0}+u_{1}+\cdots+u_{n}=1-\frac{1}{n+1}$$
+${\displaystyle \lim_{n\rightarrow +\infty}s_{n}=1}.$ Donc ${\displaystyle \sum_{n=1}^{+\infty}\dfrac{1}{n(n+1)}=1}.$
+
+\section{Op\'erations sur les s\'eries}
+\begin{defi} \begin{enumerate}
+\item Soient les s\'eries $\sum u_{n}$ et $\sum v_{n}$ avec $u_{n},~ v_{n} \in \mathbb{K}.$ On appelle \textbf{somme} des s\'eries $\sum u_{n}$ et $\sum v_{n}$, la s\'erie de terme g\'en\'eral $u_{n}+v_{n}.$
+\item Soit $ \lambda \in \mathbb{K}.$ On appelle \textbf{produit} par $ \lambda$ de la s\'erie $\sum u_{n},$ la s\'erie de terme g\'en\'eral $ \lambda u_{n}.$ \end{enumerate} \end{defi}
+\begin{pro} \label{pro0i} Soient $\sum u_{n}$ et $\sum v_{n}$ o\`u $u_{n}, v_{n} \in \mathbb{K}.$ \begin{enumerate}
+\item[i-]  Si $\sum u_{n}$ et $\sum v_{n}$ sont convergentes, alors la s\'erie de terme g\'en\'eral $u_{n}+v_{n}$ est convergente. De plus, on a $$\sum_{n=0}^{+\infty} (u_{n}+v_{n})= \sum_{n=0}^{+\infty}u_{n}+\sum_{n=0}^{+\infty}v_{n}.$$
+\item[ii-] \begin{enumerate}
+\item[a-]  Si $\sum u_{n}$ est convergente, alors $\forall \lambda \in \mathbb{K}, ~\sum \lambda u_{n}$ est convergente. De plus, ${\displaystyle \sum_{n=0}^{+\infty} \lambda u_{n}=\lambda \sum_{n=0}^{+\infty}u_{n}}.$
+\item[b-]  Si $\lambda\neq 0,$ alors $\sum u_{n}$ est convergente si et seulement si $\sum \lambda u_{n}$ est convergente.
+\end{enumerate}
+\end{enumerate} \end{pro}
+\begin{pr}\quad
+\begin{enumerate}
+\item[i-] $\forall n,$ posons $s_{n}=u_{0}+u_{1}+\cdots+u_{n},~s'_{n}=v_{0}+v_{1}+\cdots+v_{n}$ et $ \sigma_{n}=(u_{0}+v_{0})+(u_{1}+v_{1})+\cdots+(u_{n}+v_{n}).$ On a $ \sigma_{n}=s_{n}+s'_{n}.$ Si $\sum u_{n}$ et $\sum v_{n}$ sont convergentes, alors ${\displaystyle \lim_{n\rightarrow +\infty}s_{n}}$ et ${\displaystyle \lim_{n\rightarrow +\infty} s'_{n}}$ existent. D'apr\`es les propri\'et\'es des limites, on ${\displaystyle\lim_{n\rightarrow+\infty}\sigma_{n}=\lim_{n\rightarrow+\infty}s_{n}+\lim_{n\rightarrow+\infty}s'_{n}};$ ceci signifie que $\sum(u_{n}+v_{n})$ est convergente et que $$\sum_{n=0}^{+\infty} (u_{n}+v_{n})= \sum_{n=0}^{+\infty}u_{n}+\sum_{n=0}^{+\infty}v^{n}.$$
+\item[ii-] \begin{enumerate}
+\item[a-] La d\'emostration est analogue \`a la pr\'ec\'edente.
+\item[b-] Supposons $ \lambda\neq0.$ Supposons que $\sum u_{n}$ est convergente. D'apr\`es ce qui pr\'ec\`ede, $\sum \lambda u_{n}$ est convergente. Supposons $ \lambda\neq0$ et $\sum \lambda u_{n}$ convergente. Alors d'apr\`es la m\^eme proposition, la s\'erie de terme g\'en\'eral $\dfrac{1}{\lambda}(\lambda u_{n})=u_{n}$ est convergente.
+\end{enumerate}
+\end{enumerate}
+\end{pr} 
+\begin{rem} \begin{enumerate}
+\item La somme d'une s\'erie convergente et d'une s\'erie divergente est une s\'erie divergente.
+\item La somme de deux s\'eries divergentes peut \^etre convergente.
+\end{enumerate} \end{rem}
+\textbf{Exemple}\quad
+Soit $\sum u_{n}$ avec $u_{n}=\dfrac{(-1)^{n}+\sqrt{n}}{n},~ n \in \mathbb{N}$\\
+$u_{n}=\dfrac{(-1)^{n}}{n}+\dfrac{\sqrt{n}}{n}=\dfrac{(-1)^{n}}{n}+\dfrac{1}{\sqrt{n}}=v_{n}+t_{n},$ en posant $v_{n}=\dfrac{(-1)^{n}}{n}$ et $t_n=\dfrac{1}{\sqrt{n}}$ \\
+On sait que $\sum v_{n}$ est convergente et $\sum t_{n}$ est divergente. Donc $\sum u_{n}$ est divergente.
+\begin{pro} \label{pro3.2} Soit une s\'erie $\sum u_{n}$ \`a termes complexes. Posons $\forall n,~u_{n}=a_{n}+ib_{n}$ o\`u $a_{n},b_{n}\in \mathbb{R}.$ Alors $\sum u_{n}$ est convergente si et seulement si $\sum a_{n}$ et $\sum b_{n}$ sont convergentes. \end{pro}
+\begin{pr}\quad
+Soit $s_{n}=a_{0}+ib_{0}+a_{1}+ib_{1}+\cdots+a_{n}+ib_{n}=a_{0}+a_{1}+\cdots+a_{n}+i(b_{0}+b_{1}+\cdots+b_{n}).$ En notant $(A_{n})$ (respectivement $(B_{n})$) la suite des sommes partielles de $\sum a_{n}$ (respectivement $\sum b_{n}$), on a $s_{n}=A_{n}+iB_{n}$ 
+Un r\'esultat classique sur la convergence d'une suite \`a termes complexes permet d'affirmer que $(s_{n})$ est convergente si et seulement si $(A_{n})$ et $(B_{n})$ sont convergentes.
+\end{pr}
+
+\section{S\'erie \`a termes positifs}
+On appelle s\'erie \`a termes positifs ou nuls une s\'erie $\sum u_{n},$ avec $u_{n}\geq0,\quad \forall n \in \mathbb{N}.$
+\begin{pro} \label{pro1}
+ Soit $\sum u_{n}$ une s\'erie \`termes positifs ou nuls. Alors $\sum u_{n}$ est convergente si et seulemnt si la suite $(s_{n})$ des sommes partielles de $\sum u_{n}$ est major\'ee. \end{pro}
+\begin{pr}\\ Supposons $\sum u_{n}$ convergente. Alors $(s_{n})$ est convergente; toute suite convergente est born\'ee \`a favori major\'ee. Donc $(s_{n})$ est major\'ee.\\
+Inversement, supposons $(s_{n})$ major\'ee. Comme $\sum u_{n}$ est \`a termes positifs ou nuls, la suite $(s_{n})$ est croissante. Toute suite croissante et major\'ee est est convergente. D'o\`u $(s_{n})$ est convergente i.e. $\sum u_{n}$ est convergente.
+\end{pr}
+\begin{teo}[Th\'eor\`eme de comparaison] \label{teo1}
+ Soient $\sum u_{n}$ et $\sum v_{n},$ des s\'eries \`a termes positifs ou nuls telles que $\forall n,~0\leq u_{n}\leq v_{n}.$ Alors \begin{enumerate}
+\item[i-] Si $\sum v_{n}$ est convergente, alors $\sum u_{n}$ est convergente.
+\item[ii-]   Si $\sum u_{n}$ est divergente, alors $\sum v_{n}$ est divergente.
+\end{enumerate} \end{teo}
+\begin{pr}\quad $ii-$ est la contapos\'ee de $i-$.Il suffit donc de prouver $i-$. \\ Posons $s'_{n}=v_{0}+v_{1}+\cdots+v_{n}.$ Supposons $\sum v_{n}$ convergente, alors $ \exists ~M>0$ tel que $ s'_{n}\leq M, ~\forall n$ (\textbf{Proposition ~\ref{pro1}}).  \\ Soit $s_{n}=u_{0}+u_{1}+\cdots+u_{n}, ~\forall n.$ On a $s_{n}\leq s'_{n}, ~\forall n.$ Donc $(s_{n})$ est major\'ee i.e. $\sum u_{n}$ est convergente (\textbf{Proposition ~\ref{pro1}}).
+\end{pr}
+\textbf{Exemple}\quad Soit $\sum u_{n}$ o\`u $u_{n}=\sin\left(\dfrac{\pi}{3^{n}}\right).$ \\ On a $u_{n}\geq0,~\forall n.$ Comme $|\sin x|\leq |x|$ alors $u_{n}\leq \dfrac{\pi}{3^{n}}.$ $\sum \dfrac{\pi}{3^{n}}$ est une s\'erie g\'eom\'etrique convergente car $0<\dfrac{\pi}{3^{n}}< 1;$ donc $\sum u_{n}$ est convergente.
+
+\begin{cor} \label{cor1.4.1} Soit $\sum u_{n}$ et $\sum v_{n}$ des s\'eries \`a termes positifs. Si $\left(\dfrac{u_{n}}{v_{n}}\right)$ admet une limite finie non nulle, alors $\sum u_{n}$ et $\sum v_{n}$ sont simultan\'ement convergentes ou divergentes. Autrement dit $\sum u_{n}$ est convergente si et seulement si $\sum v_{n}$ est convergente. \end{cor}
+\begin{pr}\quad
+ Supposons que $\lim \dfrac{u_{n}}{v_{n}}=\ell\neq 0 ~(\ell>0).$ 
+\'Etant donn\'e $ \varepsilon_{0}>0,~\varepsilon< \dfrac{\ell}{2},~\exists n_{0}\in \mathbb{N}$ tel que $ \forall n \geq n_{0},~\Big|\dfrac{u_{_{n}}}{v_{n}}-\ell\Big|\leq \varepsilon_{0},$ 
+i.e. $(\ell-\varepsilon_{0})v_{n}\leq u_{n}\leq (\ell+\varepsilon_{0})v_{n},~ \forall n\geq n_{0}.$\\
+ Consid\'erons les s\'eries $\sum u'_{n}$ et $\sum v'_{n}$ o\`u $u'_{n}$ et $v_{n}$ ne sont d\'efinies qu'\`a partir de $n_{0}$ et tels que $u'_{n}=u_{n}$ et $v'_{n}=v_{n}, ~\forall n\geq n_{0}. $ \\ Supposons $\sum u_{n}$ convergente; alors $\sum u'_{n}$ est convergente d'apr\`es \textbf{Remarque ~\ref{rem2b}}. On a $\sum (\ell-\varepsilon_{0})v'_{n}$ convergente car $(\ell-\varepsilon_{0})v'_{n}\leq u'_{n},~ \forall n \geq n_{0}$ (\textbf{Th\'eor\`eme de comparaison})\\
+ On en d\'eduit que $\sum v'_{n}$ est convergente (\textbf{Proposition ~\ref{pro0i}}). Par cons\'equent $\sum v_{n}$ est convergente d'apr\`es \textbf{Remarque ~\ref{rem2b}}.
+On vient de prouver l'implication ($\sum u_{n} $ convergente) $\Rightarrow$ ($\sum v_{n}$ convergente). \\
+L'implication inverse s'obtient d'une mani\`ere analogue.
+\end{pr}
+\textbf{Exemple}\quad  Nature de $\sum\dfrac{1}{n^{2}} ,~ (n \geq1)$\\
+On sait que $\sum \dfrac{1}{n(n+1)},~n\geq 1$ est convergente. Posons $ \forall n \geq 1,~u_{n}=\dfrac{1}{n^{2}};~ v_{n}=\dfrac{1}{n(n+1)}.$\\On a ${\displaystyle\lim_{n \rightarrow +\infty }\dfrac{u_{n}}{v_{n}}=1}.$ Donc $\sum \dfrac{1}{n^{2}}$ est convergente.
+
+\begin{rem} Les hypoth\`eses sur la limite de $\left(\dfrac{u_{n}}{v_{n}}\right)$ sont indispensables.\end{rem}
+\textbf{Exemple}  $u_{n}=\dfrac{1}{n}$ et $v_{n}=\dfrac{1}{n(n+1)}$\\ $\dfrac{v_{n}}{u_{n}}=\dfrac{n}{n(n+1)};~~{\displaystyle \lim_{n\rightarrow+\infty} \dfrac{v_{n}}{u_{n}}=0.}$ $\sum u_{n}$ est divergente et $\sum v_{n}$ est convergente.\\ On n'a pas les conclusions du corollaire. De m\^eme ${\displaystyle\lim_{n\rightarrow+\infty} \dfrac{u_{n}}{v_{n}}=+\infty }.$\\
+\textbf{Exercice:}   Soit le r\'eel $r=1,82727\ldots$ Trouver $p,q \in \mathbb{N}$ tels que $r=\dfrac{p}{q}.$\\ (R\'eponse: $p=201,\quad	q=110$)
+
+\section{Convergence absolue}
+\begin{defi} Soit la s\'erie $\sum u_{n}$ avec $u_{n}\in \mathbb{K},~\forall n \in \mathbb{N}.$ On dit que $\sum u_{n}$ est absolument convergente si la s\'erie de terme g\'en\'eral $|u_{n}|$ est convergente.\end{defi}
+\textbf{Exemple}\\ Soit $u_{n}=\dfrac{\cos(nx)}{n(n+1)};~ |u_{n}|\leq \dfrac{1}{n(n+1)}$\\
+$\sum \dfrac{1}{n(n+1)},~(n\leq 1)$ est convergente. D'apr\`es le Th\'eor\`eme de comparaison, $\sum |u_{n}|$ est convergente. Donc $\sum u_{n}$ est absolument convergente.
+\begin{teo} \label{teo5.1} Une s\'erie absolument convergente est convergente. \end{teo}
+\begin{pr}\quad Soit $\sum u_{n}$, avec $u_{n}\in \mathbb{K},~ \forall n.$ On suppose $\sum u_{n}$ absolument convergente. \begin{enumerate}
+\item[$1^{er}$ cas] $u_{n}\in \mathbb{R},~\forall n.$ Posons $v_{n}=|u_{n}|-u_{n},~\forall n.$ Alors $0\leq v_{n}\leq 2u_{n}.$ $\sum |u_{n}|$ est convergente par hypoth\`ese; alors $\sum 2|u_n|$ converge (\textbf{Proposition~\ref{pro0i} ~ii-a}). Donc $\sum u_n$ est convergente (\textbf{Th\'eor\`eme~\ref{teo1} }). Alors $\sum u_n$ est la diff\'erence de deux s\'eries convergentes, elle est donc convergente (\textbf{Proposition~\ref{pro0i}~i- }).
+\item[$2^{e}$ cas] $u_n \in \mathbb{C}.$ Posons $\forall n, ~u_n=a_n+ib_n $ o\`u $a_n, ~ b_n \in \mathbb{R}. |a_n| \leq |u_n|=\sqrt{a_n ^2 + b_n ^2},~ |b_n| \leq |u_n|.$\\ Comme $\sum |u_n|$ est convergente, alors $\sum |a_n|$ et $\sum |b_n|$ sont convergentes (\textbf{Th\'eor\`eme ~\ref{teo1}}). Ceci signifie que les s\'eries \`a termes r\'eels $\sum a_n$ et $\sum b_n$ sont absolument convergentes. D'apr\`es le $1^{er}$ cas, $\sum a_n$ et $\sum b_n$ sont convergentes. D'apr\`es la \textbf{Proposition \ref{pro3.2}}, $\sum u_n$ est convergente.
+\end{enumerate}
+\end{pr}
+\begin{rem} \begin{enumerate}
+\item $\sum u_n$ convergente $\nRightarrow$ $\sum |u_n|$ convergente.\\
+\textbf{Contre-exemple: }\quad $\sum \dfrac{(-1)^n}{n}$ est convergente ( de somme $- \lo2$) mais n'est pas absolument convergente ($\sum \dfrac{1}{n}$ est divergente).
+\item Le \textbf{Th\'eor\`eme \ref{teo5.1}} permet de ramener l'\'etude d'une s\'erie de termes quelconques \`a celle d'une s\'erie de termes positifs ou nuls. 
+\end{enumerate} \end{rem}
+\begin{pro} Si $\sum u_n$ est absolument convergente, alors $$\Big|\sum_{n=0}^{+\infty} u_n\Big|\leq \sum_{n=0}^{+\infty}|u_n|.$$ \end{pro}
+\begin{pr}\quad Soient $\forall n, ~s_n=u_0+u_1+\cdots+u_n$ et $\sigma_n=|u_0|+|u_1|+\cdots+|u_n|. ~\forall n,~|s_n|\leq \sigma_n$ (\textbf{In\'egalit\'e triangulaire}).\\
+${\displaystyle \lim_{n\rightarrow +\infty}s_n}$ existe (\textbf{Th\'eor\`eme \ref{teo5.1}}). Par suite ${\displaystyle\lim_{n\rightarrow +\infty}|s_n|}$ aussi existe. Par passage \`a la limite sur $n$, on a $$\lim_{n\rightarrow+\infty}|s_n| \leq \lim_{n\rightarrow+\infty}\sigma_n=\sum_{n=0}^{+\infty}|u_n|.$$ Comme l'application $|\cdot|$ (valeur absolue) est continue, ${\displaystyle \lim_{n\rightarrow+\infty}|s_n|=\Big|\lim_{n\rightarrow+\infty}s_n\Big|}$; c'est ce que nous voulions prouver.
+\end{pr}
+\begin{defi} Soient les s\'eries $\sum u_n$ et $\sum v_n$ o\`u $u_n,~v_n \in \mathbb{K}, ~\forall n \in \mathbb{N}.$ On appelle \textbf{s\'erie-produit} de $\sum u_n$ par $\sum v_n$, la s\'erie de terme g\'en\'eral ${\displaystyle w_n=\sum_{p=0}^n u_p v_{n-p}=u_0 v_n +u_1 v_{n-1}+\cdots+u_n v_0}$ \end{defi}
+\begin{teo} \label{teo1.5.2}  Soient les s\'eries $\sum u_n$ et $\sum v_n$ o\`u $u_n,~v_n \in \mathbb{K}.$ Si $\sum u_n$ et $\sum v_n$ sont absolument convergentes, alors la s\'erie-produit $\sum w_n$ est absolument convergente, et on a: 
+\begin{equation}
+\left(\sum_{n=0}^{+\infty}u_n\right)\left(\sum_{n=0}^{+\infty}v_n\right)=\sum_{n=0}^{+\infty}w_n \label{eq1.1} 
+\end{equation} 
+\end{teo} 
+\begin{pr}\\ 
+\begin{enumerate}
+\item \label{part1} Pla\c{c}ons-nous d'abord dans le cas o\`u les suites $(u_n)$ et $(v_n)$ sont \`a termes positifs.\\
+Posons ${\displaystyle U_n=\sum_{k=0}^n u_k,~~~~V_n=\sum_{k=0}^n v_k,~~~~W_n=\sum_{k=0}^n w_k}$.
+ Si l'on \'ecrit l'expression de $w_n$ sous forme de ${\displaystyle w_n=\sum_{p+q}u_p v_q}$,
+  on voit que ${\displaystyle W_n=\sum_{p+q \leq n} u_p v_q.}$ \\
+D'autre part on a:$$U_n V_n=\sum_{p=0}^n \sum_{q=0}^n u_p v_q.$$
+Tous les termes $u_p v_q$ figurant dans la somme $W_n$ se retrouvent donc dans le produit $U_n V_n$ (car l'in\'egalit\'e $p+q\leq n$ entraine $p\leq n$ et $q\leq n$). Inversement, tous les termes $u_p v_q$ figurant dans le d\'eveloppement du produit $U_n V_n$ se retrouvent dans la somme $w_{2n}$ (puisque les in\'egalit\'es $p\leq n$ et $q\leq n$ entrainent $p+q\leq 2n$) : si les nombres $u_p,~ v_q$ sont tous positifs, on a donc les in\'egalit\'es : 
+\begin{equation}
+ W_n\leq U_n V_n \leq W_{2n} \label{eq1.2}
+\end{equation}
+Ces in\'egalit\'es sont rendues intuitives par le sch\'ema ci-joint:
+%Ici doit être inséré un schéma
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+o\`u l'on a repr\'esent\'e les ensembles de couples d'indices $(p,q)$ v\'erifiant respectivement: $(p+q\leq n),~ (p\leq n$ et $q\leq n),~(p+q\leq 2n)$ et les sommes $W_n,~U_n V_n,~W_{2n}$ correspondantes.\\
+Les in\'egalit\'es (\ref{eq1.2}) montrent que la suite $(W_n)$ est major\'ee. La s\'erie (\`a termes positifs) $\sum W_n$ est donc convergente, et sa somme ${\displaystyle W=\lim_{n\rightarrow+\infty} W_n}$ est aussi la limite de la suite $W_{2n}$. Posant: $$U=\lim_{n\rightarrow+\infty}U_n=\sum_{n=0}^{+\infty} u_n~\text{et}~ V=\lim_{n\rightarrow+\infty}V_n=\sum_{n=0}^{+\infty}v_n,$$ on a donc $$UV=W,~~\text{c'est-\`a-dire}~~ (\ref{eq1.1}).$$
+\item Cas g\'en\'eral. Posons ${\displaystyle w_n=\sum_{p=0}^n|u_p||v_{n-p}|}.$ \\ On a \'evidemment $|w_n|\leq w_n;$ et, d'apr\'es la partie \ref{part1} de la d\'emonstration, la s\'erie $\sum w_n$ (produit des s\'eries $\sum|u_n|$ et $\sum|v_n|$) est convergente. La s\'erie $\sum w_n$ est donc absolument convergente.\\
+Posons $$ U_n=u_0+u_1+\cdots+u_n,~V_n=v_0+v_1+\cdots+v_n,~W_n=w_0+w_1+\cdots+w_n;$$ $$ A_n=|u_0|+|u_1|+\cdots+|u_n|,~B_n=|v_0|+|v_1|+\cdots+|v_n|, ~C_n=|w_0|+|w_1|+\cdots+|w_n|,$$ 
+et d\'esignons par $\Delta_n$, l'ensemble des couples d'entiers $p,q$ 
+v\'erifiant $0\leq p\leq n,~ 0\leq q\leq n,~ p+q>n.$ 
+On a : $$|U_nV_n-W_n|=\Big|\sum_{(p,q)\in \Delta_n} u_p v_q\Big|\leq \sum_{(p,q)\in \Delta_n}|u_p||v_q|=A_nB_n-C_n;$$ et d'apr\`es \ref{part1} on sait (moyennant un changement de notations) que les suites $(A_nB_n)$ et $(C_n)$ ont m\^eme limite. La suite $(U_nV_n-W_n)$ tend donc vers $0$, et on a : $$\lim_{n\rightarrow+\infty}W_n=\lim_{n\rightarrow+\infty}U_nV_n=\sum_{n=0}^{+\infty}u_n \cdot \sum_{n=0}^{+\infty}v_n,~~\text{c'est-\`a-dire}~~(\ref{eq1.1})$$
+\end{enumerate}
+\end{pr}
+\textbf{Exemple}\quad
+Soient $u_n=a^n,~v_n=b^n,~(a,b\in \mathbb{C},|a|<1,|b|<1)$. Les s\'eries g\'eom\'etriques $\sum a^n$, $\sum b^n$ \'etant absolument convergentes, on a: $$\dfrac{1}{(1-a)(1-b)}=\sum_{n=0}^{+\infty}a^n\cdot \sum_{n=0}^{+\infty}b^n=\sum_{n=0}^{+\infty} w_n,~~\text{avec}~~w_n=\sum_{p+q=n}a^pb^q.$$
+Plus g\'en\'eralement, on d\'emontre, par r\'ecurrence, la relation :$$\prod_{k=1}^p\dfrac{1}{1-a_k}=\sum_{n=0}^{+\infty}\left(\sum_{\alpha_1+\alpha_2+\cdots+\alpha_p=n}a_1^{\alpha_1}a_2^{\alpha_2}\cdots a_p^{\alpha_p}\right)$$ o\`u $a_1,a_2,\cdots,a_p$ sont des nombres complexes v\'erifiant $|a_k|<1,~~(k=1,2,\cdots,p).$\\
+Une application tr\`es importante du \textbf{Th\'eor\`eme \ref{teo1.5.2}} consistera \`a prouver que la fonction exponentielle d\'efinie pour tout $z\in \mathbb{C},$ par ${\displaystyle e^z=\sum_{n=0}^{+\infty}\dfrac{z^n}{n!}},$ v\'erifie, $\forall u,v\in \mathbb{C},$ la relation $$e^{u+v}=e^u e^v$$ (conf\`ere \textbf{Paragraphe \ref{para5.4}})
+
+
+\chapter{\'Etude pratique d'une s\'erie}
+Dans ce chapitre, nous donnerons les r\`egles pratiques pour l'\'etude d'une s\'erie.
+
+\section[R\`egle de d'Alembert et de Cauchy]{R\`egle de d'Alembert et de Cauchy (Comparaison \`a une s\'erie g\'eom\'etrique)}
+\subsection{R\`egle de d'Alembert}
+\begin{teo}[R\`egle de d'Alembert] \label{teo2.1.1.1} Soit $\sum u_n$ une s\'erie \`a termes strictement positifs. S'il existe $n_0 \in \mathbb{N}$ et $r \in ]0;1[$ tels que pour tout $n\geq n_0,~ \dfrac{u_{n+1}}{u_n} < r,$ alors $\sum u_n$ est convergente. \end{teo}
+\begin{pr}\quad On suppose les hypoth\`eses v\'erifi\'ee.\\
+On a:\begin{align*}\dfrac{u_{n_{0}+1}}{u_{n_{0}}}  &< r,\\
+\dfrac{u_{n_{0}+2}}{u_{n_{0}+1}} &<r,\\ \vdots &   \\
+\dfrac{u_{n+1}}{u_n}  &<  r.\end{align*}
+ Le produit membre \`a membre donne $\dfrac{u_{n+1}}{u_{n_{0}}}<r^{(n+1)-n_{0}}$ ou encore $u_{n+1}<c r^{n+1}$ o\`u $c=u_{n_{0}}r^{-n_{0}}$ et $n\geq n_0.$\\ La s\'erie g\'eom\'etrique $\sum r^n,~(n\geq 0)$ est convergente donc la s\'erie $\sum r^n,~(n\geq n_0)$ est convergente (\textbf{Proposition ~\ref{pro0i} ii-}). Le th\'eor\`eme de comparaison montre que $\sum u_n,~ (n\geq n_0)$ est convergente, d'o\`u $\sum u_n$ est convergente.
+\end{pr}
+\begin{cor} \label{cor2.1.1.1} Soit $\sum u_n$ une s\'erie \`a termes strictement positifs. Supposons que ${\displaystyle \lim \dfrac{u_{n+1}}{u_n}=\ell.}$ Alors si \begin{enumerate}
+\item[*] $\ell<1$, la s\'erie $\sum u_n$ est convergente.
+\item[*] $\ell>1$, la s\'erie $\sum u_n$ est divergente.
+\item[*] $\ell=1$, on a aucune conclusion. 
+\end{enumerate} \end{cor}
+\begin{pr}\quad \begin{enumerate}
+\item[*] Supposons que ${\displaystyle \lim_{n\rightarrow+\infty} \dfrac{u_{n+1}}{u_{n}}=\ell<1}$. On d\'eduit qu'il existe $r\in ]0,1[$ et $n_0 \in \mathbb{N}$ tels que $ \forall n \geq n_0,~ \dfrac{u_{n+1}}{u_n}<r.$ La conclusion d\'ecoule de la r\`egle de d'Alembert.
+\item[*] Supposons que ${\displaystyle \lim_{n\rightarrow+\infty}\dfrac{u_{n+1}}{u_n}=\ell>1}$\\
+On en d\'eduit qu'il existe $k \in ]1,\ell[$ et $n_0 \in \mathbb{N}$ tels que $\forall n \geq n_0,~ \dfrac{u_{n+1}}{u_n}>k>1.$\\ D'o\`u 
+\begin{align*}\dfrac{u_{n_0 +1}}{u_{n_{0}}}&>1,\\ \dfrac{u_{n_0 +2}}{u_{n_0 +1}}&>1,\\ \vdots,\\ \dfrac{u_{n+1}}{u_n}&>1. 
+\end{align*} En faisant le produit membre \`a membre, on obtient $u_{n+1}>u_{n_{0}},~ \forall n\geq n_0.$ Donc $(u_n)\nrightarrow 0$ alors $\sum u_n$ est grossi\`erement divergente.
+\item[*] Supposons que ${\displaystyle \lim_{n\rightarrow+\infty}\dfrac{u_{n+1}}{u_n}=1.}$ Soit $\sum u_n$ o\`u $u_n=\frac{1}{n} ~(n\geq 1)$ et $\sum v_n$ o\`u $v_n=\dfrac{1}{n^2} ~(n\geq 1).$ On a ${\displaystyle \lim_{n\rightarrow+\infty}\dfrac{u_{n+1}}{u_n}=1}$ et ${\displaystyle \lim_{n\rightarrow+\infty}\dfrac{v_{n+1}}{v_n}=1.}$\\ $\sum u_n$ est divergente alors que $\sum v_n$ est convergente.
+\end{enumerate}
+\end{pr}
+\begin{rem} Si $\dfrac{u_{n+1}}{u_n} \geq 1,~\forall n \geq n_0,$ alors $\sum u_n$ est divergente. La d\'emonstration est semblable \`a celle du \textbf{Th\'eor\`eme \ref{teo2.1.1.1} }. \end{rem}
+\textbf{Exercice:} \quad \'Etudier la s\'erie $\sum u_n$ o\`u $\forall n,~ u_n=n^2 x^n$ et $x\in \mathbb{K}$\\
+Pour pouvoir appliquer la r\`egle de d'Alembert, nous \'etudions la convergence absolue de $\sum u_n.$\\ On a $u_n=0,~\forall n,$ si $x=0.$\\ \begin{enumerate}
+\item[*] Pour $x=0,~ \sum u_n$ est convergente.
+\item[*] Pour $x\neq 0, ~ {\displaystyle \lim_{n\rightarrow+\infty}\dfrac{|u_{n+1}|}{|u_n|}=|x|.}$ \\ D'apr\`es le \textbf{Corollaire \ref{cor2.1.1.1}}, si $|x|<1,$ alors $\sum u_n$ est absolument convergente, donc $\sum u_n$ est convergente (\textbf{Th\'eor\`eme \ref{teo5.1}}).\\ Si $|x|>1,$ alors $(u_n)\nrightarrow0,$ donc $\sum u_n$ est grossi\`erement divergente.\\
+Si $|x|=1, ~(u_n)\nrightarrow0,$ donc $\sum u_n$ est grossi\`erement divergente.
+\end{enumerate} 
+\subsection{R\`egle de Cauchy}
+\begin{teo}[R\`egle de Cauchy] \label{teo2.1.1.2} Soit $\sum u_n$ une s\'erie \`a termes strictement positifs. S'il existe $r\in ]0,1[$ et $n_0 \in \mathbb{N}$ tels que $ \forall n \geq n_0,~ \sqrt[n]{u_n}< r,$ alors $\sum u_n$ est convergente.\end{teo}
+\begin{pr}\quad Supposons les hypoth\`eses satisfaites. On a $u_n \leq r^n,~\forall n \geq n_0.$ Alors $\sum u_n$ est convergente ( Il suffit de reprendre les arguments d\'evelopp\'es dans la d\'emonstration du \textbf{Th\'eor\`eme~ \ref{teo2.1.1.1}}).
+\end{pr}
+\begin{cor} \label{cor2.1.2} Soit $\sum u_n$ une s\'erie \`a termes positifs. Supposons que ${\displaystyle \lim_{n\rightarrow+\infty}\sqrt[n]{u_n}=\ell}.$ Alors si: \begin{enumerate}
+\item[*] $\ell<1$, la s\'erie $\sum u_n$ est convergente.
+\item[*] $\ell>1$, la s\'erie $\sum u_n$ est divergente.
+\item[*] $\ell=1$, on a aucune conclusion.
+\end{enumerate} \end{cor}
+\begin{pr}\quad \begin{enumerate}
+\item[*] Supposons ${\displaystyle \lim_{n\rightarrow+\infty} \sqrt[n]{u_n}=\ell<1.}$ On en d\'eduit qu'il existe $r\in ]0;1[$ et $n_0 \in \mathbb{N},$ tels que $\sqrt[n]{u_n}<r$ pour tout $n\geq n_0$. La cnclusion d\'ecoule du \textbf{Th\'eor\`eme~\ref{teo2.1.1.2}}.
+\item[*] Supposons ${\displaystyle \lim_{n\rightarrow+\infty} \sqrt[n]{u_n}=\ell>1}.$ Alors ${\displaystyle \lim_{n\rightarrow+\infty} u_n>1,~ (u_n)\nrightarrow0. \sum u_n}$ est grossi\`rement divergente.
+\item[*] Supposons $\ell=1.$ Imiter la d\'emonstration faite dans le cas du \textbf{Corollaire \ref{cor2.1.1.1}}. 
+\end{enumerate}
+\end{pr}
+\textbf{Exemple}\quad \'Etudier $\sum u_n$ o\`u $ \forall n, ~u_n= \dfrac{x^n}{n^n}~(n\geq1).$\\
+\begin{enumerate}
+\item[-] Pour $x=0,~ u_n=0,~ \sum u_n$ est convergente.
+\item[-] Pour $x\neq 0$ et fix\'e, on a ${\displaystyle \sqrt[n]{u_n}=\dfrac{|x|}{|n|}. \lim_{n\rightarrow+\infty}\sqrt[n]{u_n}=0<1},$ donc $\sum u_n$ est absolument convergente; par cons\'equent $\sum u_n$ est convergente.
+\end{enumerate}
+\begin{rem} \label{rem2.1.1.2} \begin{enumerate}
+\item[a-] On utilise la r\`egle de Cauchy si le terme g\'en\'eral de la s\'erie $\sum u_n$ comporte des puissances n-i\`emes.
+\item[b-] Si ${\displaystyle \lim_{n\rightarrow+\infty} \dfrac{u_{n+1}}{u_n}}$ existe dans $]0,1[,$ alors ${\displaystyle \lim_{n\rightarrow+\infty}\sqrt[n]{u_n}}$ existe aussi dans $]0,1[.$ De plus, ${\displaystyle \lim_{n\rightarrow+\infty}\dfrac{u_{n+1}}{u_n}=\lim_{n\rightarrow+\infty}\sqrt[n]{u_n}.}$
+\item[c-] La r\'eciproque est fausse en g\'en\'eral, i.e. $({\displaystyle  \lim_{n\rightarrow+\infty}\sqrt[n]{u_n}}$ existe)$\nRightarrow ({\displaystyle \lim_{n\rightarrow+\infty}\dfrac{u_{n+1}}{u_n}}$ existe). C'est en ce sens que l'on dit que la r\`egle de Cauchy est plus g\'en\'erale que celle de d'Alembert.
+\end{enumerate} \end{rem}
+\textbf{Exemple}\quad Soit la s\'erie $\sum u_n$ o\`u $u_{2n}=a^n b^n$ et $u_{2n+1}=a^{n+1}b^n,$ le premier terme $u_1=a,$ on suppose que $a>0,~b>0$ et $ab<1$. ${\displaystyle \lim_{n\rightarrow+\infty}\dfrac{u_{n+1}}{u_n}}$ n'existe pas, alors que ${\displaystyle \lim_{n\rightarrow+\infty}\sqrt[n]{u_n}=\sqrt{ab}}$ car $$\lim_{n\rightarrow+\infty}\sqrt[2n]{u_{2n}}=\sqrt{ab}; ~ \lim_{n\rightarrow+\infty}\sqrt[2n+1]{u_{2n+1}}=\sqrt{ab}.$$
+
+\section{Utilisation d'une int\'egrale} 
+\begin{pro} \label{pro2.2.2.1} Soit $a$ un r\'eel positif, $f:[a,+\infty[\rightarrow \mathbb{R}$ une fonction positive ou nulle et d\'ecroissante. Posons $\forall n\geq 2,~u_n=f(n)$ et ${\displaystyle v_n= \int_{n-1}^n f(x)\,\ud x}.$ Alors $\sum u_n$ est convergente si et seulement si $\sum v_n$ est convergente.\end{pro}
+\begin{pr}\\ Pour tout $x\in [n-1,n],$ on a $f(n)\leq f(x)\leq f(n-1),$ d'o\`u $$ \int_{n-1}^n f(n)\,\ud x \leq \int_{n-1}^n f(x)\,\ud x \leq \int_{n-1}^n f(n-1)\,\ud x$$ i.e. $$ u_n \leq v_n \leq u_{n-1},~ \forall n\geq 2.$$ La conclusion d\'ecoule du \textbf{Th\'eor\`eme de comparaison}.
+\end{pr}
+\begin{cor} \label{cor2.2.2.1} Soit $a>0, ~(a\in \mathbb{R})$ et $f:[a,+\infty[\rightarrow \mathbb{R},$ une fonction positive ou nulle et d\'ecroissante. $\forall n \geq2,$ posons $u_n=f(n).$ Alors $\sum u_n$ est convergente si et seulement si ${\displaystyle \lim_{n\rightarrow+\infty}\int_1^n f(x)\,\ud x}$ existe et est finie.
+\end{cor}
+\begin{pr} \quad Soit ${\displaystyle \forall n\geq2,~v_n=\int_{n-1}^nf(x)\,\ud x}$ et \begin{align*} s_n &=v_1+v_2+\cdots +v_n\\ &=\int_1^2 f(x)\,\ud x+\int_2^3 f(x)\,\ud x+\int_{n-1}^n f(x)\,\ud x\\ &= \int_1^n f(x)\,\ud x. \end{align*} $\sum v_n$ est convergente si ${\displaystyle \lim_{n\rightarrow+\infty} s_n}$ existe et est finie, i.e. si ${\displaystyle \lim_{n\rightarrow+\infty}\int_1^n f(x)\,\ud x}$ existe et est finie.\\ D'apr\`es la \textbf{Proposition \ref{pro2.2.2.1}}, $\sum v_n$ est convergente si et seulement si $\sum u_n$ est convergente.\\ D'o\`u $\sum u_n$ est convergente si et seulement si ${\displaystyle \lim_{n\rightarrow+\infty}\int_1^n f(x)\,\ud x}$ existe et est finie.
+\end{pr}
+\textbf{Exemples}
+\begin{enumerate}
+\item \'Etudier la convergence de $\sum \dfrac{1}{n^\alpha}$ o\`u $\alpha >0$ et $n\geq1$.\\ Soit \begin{align*} f:[2;+\infty[&\rightarrow \mathbb{R}\\  x&\mapsto \dfrac{1}{x^\alpha} \end{align*} $f>0$ et d\'ecroissante. 
+Posons $u_n=f(n)$. $$ \int_1^n f(x)\,\ud x=\int_1^n \dfrac{1}{x^\alpha}\,\ud x= \begin{cases} \lo n &\quad \text{si} ~\alpha=1\\ \dfrac{1}{x^\alpha}\left[\dfrac{1}{n^{\alpha-1}}-1\right] &\quad\text{ si}~ \alpha \neq 1 \end{cases}$$ 
+${\displaystyle \lim_{n\rightarrow+\infty} \int_1^n f(x)\,\ud x }$ existe et est finie si et seulement si $\alpha >1.$ D'apr\`es le \textbf{Corollaire \ref{cor2.2.2.1}}, $\sum \dfrac{1}{n^\alpha},~ n\geq1$ est convergente si et seulement si $\alpha>1.$
+\item \'Etudier $\sum \dfrac{1}{n (\lo n)^\alpha},~(n\geq 2)$\\
+soit \begin{align*} f:[2,+\infty[& \rightarrow \mathbb{R}\\ x&\mapsto \dfrac{1}{x(\lo x)^\alpha}\end{align*} $f>0$ et d\'ecroissante. \\ On a $$ \int_2^n f(x)\,\ud x= \begin{cases} \lo(\lo n)-\lo(\lo2)~&\quad \text{si} ~\alpha=1\\ \dfrac{1}{\alpha -1}\left[\dfrac{1}{(\lo n)^{\alpha -1}}-\dfrac{1}{(\lo 2)^{\alpha -1}}\right]~&\quad \text{si}~ \alpha\neq 1\end{cases}$$  ${\displaystyle  \lim_{n\rightarrow+\infty}\int_2^n f(x)\,\ud x} $ existe si et seulement si $\alpha>1$. Donc $\sum \dfrac{1}{n (\lo n)^\alpha},~(n\geq 2)$ est convergente si et seulement si $\alpha >1.$
+\end{enumerate}
+\begin{defi} On appelle \textbf{s\'erie de Reimann}, une s\'erie dont le terme g\'en\'eral $u_n$ est de la forme $\dfrac{1}{n^\alpha},~(\alpha>0,~n\geq 1).$ \end{defi}
+
+\section[R\`egle de Riemann]{R\`egle de Reimann: Comparaison \`a une s\'erie de Reimann}
+\begin{teo} \label{teo2.3.3.1} Soit $\sum u_n$ une s\'erie \`a termes positifs ou nuls et $\alpha>0.$ \begin{enumerate}
+\item Si  ${\displaystyle \lim_{n\rightarrow+\infty}(n^\alpha u_n)}$ existe dans $ \mathbb{R}$ et est non nulle, alors $\sum u_n$ est convergente si et seulement si $\alpha>1.$
+\item Si $\alpha >1$ et ${\displaystyle \lim_{n\rightarrow+\infty}(n^\alpha u_n)=0}$, alors $\sum u_n$ est convergente.
+\item Si ${\displaystyle \lim_{n\rightarrow+\infty}(n u_n)=+\infty},$ alors $\sum u_n$   est divergente. 
+\end{enumerate} \end{teo}
+\begin{pr}\\ \begin{enumerate}
+\item Soit $v_n=\dfrac{1}{n^\alpha},~(n\geq 1),~\dfrac{u_n}{v_n}=n^\alpha u_n.$ \\ On suppose que ${\displaystyle \lim_{n\rightarrow+\infty}(n^\alpha u_n)}$ existe, est finie et non nulle. Alors d'apr\`es le \textbf{Corllaire \ref{cor1.4.1}}, $\sum u_n$ et $\sum v_n$ convergent ou divergent simultan\'ement. D'apr\`es l'exemple pr\'ec\'edent, $\sum v_n$ converge si et seulement si $\alpha>1.$ D'o\`u $\sum u_n$ est convergente si et seulement si $\alpha>1.$
+\item On suppose que ${\displaystyle \lim_{n\rightarrow+\infty}(n^\alpha u_n)=0}$ et $\alpha>1.$ Donc il existe $n_0, ~\forall n\geq n_0,~u_n\leq \dfrac{1}{n^\alpha}.$\\ On sait que $\sum\dfrac{1}{n^\alpha}$ est convergente car $\alpha>1.$ D'o\`u $\sum u_n,~(n\geq n_0)$ est convergente ( \textbf{Th\'eor\`eme de comparaison}). Par suite $\sum u_n$ est convergente.
+\item Supposons ${\displaystyle \lim_{n\rightarrow+\infty}(n u_n)=+\infty.}$ Alors il existe $n_0$ tel que $\forall n\geq n_0, u_n>\dfrac{1}{n}.$ Comme $\sum \dfrac{1}{n}$ est divergente, alors $\sum u_n$ est divergente ( \textbf{Th\'eor\`eme de comparaison}).
+\end{enumerate}
+\end{pr}
+\textbf{Exemple :}  \'Etudier les s\'eries $\sum \dfrac{\lo n}{n^2}~(n\geq1)$ et $\sum \dfrac{1}{\sqrt{n} \lo n}$ \begin{itemize}
+\item Soit $u_n=\dfrac{\lo n}{n^2},~{\displaystyle \lim_{n\rightarrow+\infty}(n^{\frac{3}{2}} u_n)=\lim_{n\rightarrow+\infty}\dfrac{\lo n}{\sqrt{n}}=0.}$ D'apr\`es le \textbf{Th\'eor\`eme \ref{teo2.3.3.1} 2-}, $\sum u_n$ est convergente.
+\item Soit $v_n=\dfrac{1}{\sqrt{n} \lo n}; ~ n v_n=\dfrac{\sqrt{n}}{\lo n} ~(n\geq2)$\\ ${\displaystyle \lim_{n\rightarrow+\infty}(n v_n)=+\infty}$ (croissance compar\'ee des fonctions logarithme et puissance). D'apr\`es le \textbf{Th\'eor\`eme \ref{teo2.3.3.1} 3-}, $\sum v_n$ est divergente.
+\end{itemize}
+\begin{rem}  Ni la r\`egle de d'Alembert, ni celle de Cauchy ne permettent de conclure.
+ En effet $$ \lim_{n\rightarrow+\infty}\dfrac{u_{n+1}}{u_n}=\lim_{n\rightarrow+\infty} \dfrac{\lo(n+1)}{(n+1)^2}\dfrac{n^2}{\lo n}=1.$$\end{rem}
+
+\section{S\'eries de type $\sum a_n b_n  ~(a_n, b_n \in \mathbb{R})$} 
+\subsection{ Transformation d'Abel }
+\begin{lem} Soit $(a_n), ~(b_n)$ des suites d'\'el\'ements de $ \mathbb{K}$ et $\forall n,~ s_n=a_0+a_1+\cdots+a_n.$
+ Alors $$\forall p,q~(q\geq p)\quad~{\displaystyle  \sum_{n=p}^q a_n b_n =s_q b_q-s_{p-1}b_p+\sum_{n=p}^{q-1} s_n(b_n-b_{n+1})}.$$ \end{lem} 
+\begin{pr}\\ $a_n=s_n -s_{n-1}$ \begin{align*} \sum_{n=p}^q a_n b_n &=\sum_{n=p}^q(s_n-s_{n-1})b_n\\ &=\sum_{n=p}^q s_n b_n -\sum_{n=p}^q s_{n-1}b_n\\ &= s_q b_q-s_{p-1}b_p+\sum_{n=p}^{q-1}s_n b_n- \sum_{n=p+1}^q
+ s_{n-1}b_n \end{align*} \begin{align*} \sum_{n=p+1}^q s_{n-1}b_n &=\sum_{n'=p}^{q-1}s_{n'}b_{n'+1} ~~\text{en posant}~~n-1=n'\\ &=\sum_{n=p}^{q-1}s_n b_{n+1} \end{align*} D'o\`u $$ \sum_{n=p}^q a_n b_n = s_q b_q -s_{p-1}b_p +\sum_{n=p}^{q-1} s_n b_{n+1} -\sum_{n=p}^{q-1} s_n b_{n+1} $$ 
+ \end{pr}
+ \begin{teo} \label{teo2.4.4.1} Soit la s\'erie $\sum a_n b_n $ o\`u $b_n \in \mathbb{R}_{+},~a_n \in \mathbb{K},~\forall n$ et telle que: \begin{enumerate}
+ \item[i-] la suite $(b_n)$ soit d\'ecroissante et ${\displaystyle \lim_{n\rightarrow+\infty}b_n=0.}$ 
+ \item[ii-] la suite $(s_n)$ des sommes partielles de $(a_n)$ soit born\'ee.
+ \end{enumerate}
+ Alors $\sum a_n b_n$ est convergente. \end{teo}
+\begin{pr}\\ Soit $\forall n,~s'_n=a_0 b_0+a_1 b_1+\cdots+a_n b_n.$\\ $\sum a_n b_n$ est convergente si $(s'_n)$ admet une limite finie, i.e. si $(s'_n)$ est de Cauchy.\\ Montrons que $(s'_n)$ est une suite de Cauchy.\\
+ Soit $p,q \in \mathbb{N},~q\geq p.$ \begin{align*} |s'_q-s'_p|&=|\sum_{n=p+1}^q a_n b_n|\\ &\leq |s_q b_q-s_p b_{p+1} +\sum_{n=p+1}^{q-1}s_n (b_n-b_{n+1}|\\ &\leq |s_q||b_q|+|s_p||b_{p+1}|+\sum_{n=p+1}^{q-1}|s_n||b_n-b_{n+1}|. \end{align*} 
+ Comme $(s_n)$ est born\'ee, il existe $M>0$ tel que $\forall n,~|s_n|\leq M.$ Comme $b_n \geq 0$ et $(b_n)$ est d\'ecroissante, $|b_n|=b_n$ et $|b_n -b_{n+1}|=b_n -b_{n+1},~\forall n.$ 
+ Donc \begin{align*} |s'_q -s'_p|&\leq M b_q +M b_{p+1} +\sum_{n=p+1}^{q-1}M(b_n -b_{n+1})\\&=M(b_q-b_{p+1}+\sum_{n=p+1}^{q-1}(b_n-b_{n+1}))\\ &= M(b_q+b_{p+1}+b_{p+1}-b_q)\\ &=2Mb_{p+1}.\end{align*}
+Comme $(b_n)\rightarrow 0,~\forall \varepsilon>0,~\exists n_0,~\forall p>n_0,~ b_p<\dfrac{\varepsilon}{2M}.$\\ D'o\`u $\forall \varepsilon >0,~\exists n_0,~ \forall p>n_0,~\forall q>n_0,~(q\geq p),~|s'_q-s'_p|<\varepsilon.$ D'o\`u $(s'_n)$ est une suite de Cauchy.\end{pr} 
+
+\subsection{Application du th\'eot\`eme \ref{teo2.4.4.1} }
+\begin{defi} On appelle \textbf{s\'erie altern\'ee}, une s\'erie dont le terme g\'en\'eral est de la forme $u_n=(-1)^n b_n$ o\`u $b_n \in \mathbb{R}_+,~(b_n)$ d\'ecroissante et ${\displaystyle \lim_{n\rightarrow+\infty}b_n=0}$\end{defi}
+\begin{pro} \begin{enumerate}
+\item[i-] La s\'erie altern\'ee $\sum (-1)^n b_n$ est convergente.
+\item[ii-] La suite $(s'_n)$ des sommes partielles de $\sum (-1)^n b_n$ et la somme $s$ de $\sum (-1)^n b_n$ v\'erifient les relations suivantes: $$ s'_n\geq s\geq s'_{n-1} ~~\text{et}~~ |s-s'_n|\geq b_{n+1},~\forall.$$
+\end{enumerate} \end{pro}
+\begin{pr}
+\begin{enumerate}
+\item[i-] Soit $\sum (-1)^n b_n$. Soit $a-n=(-1)^n,~\forall n,$ et $ s_n=a_0+a_1+\cdots+a_n.$ On a $|s_n|<2,~\forall n.$ $(s_n)$ est born\'ee, i-) d\'ecoule du \textbf{Th\'eor\`eme \ref{teo2.4.4.1}}. 
+\item[ii-] Soit $s'_n=a_0 b_0 +a_1 b_1 +\cdots+a_n b_n.$ \\
+On a $s'_{2p+2}-s'_{2p}=-b_{2p+1}+b_{2p+2}\leq 0$ donc $(s'_{2p})$ est d\'ecroissante.\\ 
+On a $s'_{2p+1}-s'_{2p-1}=b_{2p}-b_{2p+1}\geq0.$ Donc $(s'_{2p+1}) $ est croissante. De plus, $s'_{2p}-s'_{2p-1}=b_{2p}\geq0$ et ${\displaystyle \lim_{p\rightarrow+\infty}(s'_{2p}-s'_{2p-1})=0}$. \\
+Donc $(s'_{2p})$ et $(s'_{2p+1})$ sont des suites adjacentes. D'o\`u elles poss\`edent une limite commune $s$ qui v\'erifie \begin{equation}
+s'_{2p+1}\leq s\leq s'_{2p},~\forall p \in \mathbb{N} \label{eq1}
+\end{equation}
+La relation \ref{eq1} s'\'ecrit aussi: $$ s'_{n+1}\leq s\leq s'_n ~\text{si}~ n ~\text{est pair}, ~~ s'_n\leq s\leq s'_{n-1} ~\text{si }~ n ~ \text{est impair}.$$ D'o\`u $\forall n\in \mathbb{N},~ s'_n\leq s\leq s'_{n-1}.$ \\ 
+$(-1)^{n+1}b_{n+1}=s'_{n+1}-s'_n\leq s-s'_n\leq0$ ou $s'_n-s'_{n-1}\leq s-s'_{n-1}\leq0.$ \\ Dans tous les cas $|r_n|=|s-s'_n|\leq |s'_{n+1}-s'_n|=b_{n+1}.$
+\end{enumerate}
+\end{pr}
+\begin{pro} Soit la s\'erie $\sum u_n$ o\`u $\forall n,~u_n=e^{in \theta} b_n,$ avec $ \theta \in \mathbb{R}$ et $(b_n)$ une suite d\'ecroissante et ${\displaystyle \lim_{n\rightarrow+\infty}b_n=0.}$\\ Si $ \theta \notin \{ 2k\pi; k\in \mathbb{Z} \}$ alors $\sum u_n$ est convergente (i.e. $\sum \cos n\theta~ b_n$ et $\sum \sin n\theta ~b_n$ sont convergentes).\end{pro}
+\begin{pr}\\ Posons $a_n=e^{in\theta},~n \in \mathbb{N}.$ \\ \begin{align*} s_n &=a_0+a_1+\ldots+a_n\\ &=1+e^{i\theta}+\ldots+e^{in\theta}\\ &= \dfrac{1-e^{i(n+1)\theta}}{1-e^{i\theta}}\\&=\dfrac{1-\cos (n+1)\theta -i\sin(n+1)\theta}{1-\cos\theta-i\sin\theta}\\ &= \dfrac{2\sin^2 (n+1)\frac{\theta}{2} -2i\sin (n+1) \frac{\theta}{2}\cos(n+1)\frac{\theta}{2}}{2\sin^2\frac{\theta}{2}-2i\sin\frac{\theta}{2}\cos\frac{\theta}{2}}\\ &= \dfrac{\sin(n+1)\frac{\theta}{2}}{sin\frac{\theta}{2}}\left[\dfrac{\sin(n+1)\frac{\theta}{2}-i\cos(n+1)\frac{\theta}{2}}{\sin\frac{\theta}{2}-i\cos\frac{\theta}{2}}\right]\\ &=\dfrac{\sin(n+1)\frac{\theta}{2}}{\sin\frac{\theta}{2}}\dfrac{e^{i(n+1)\frac{\theta}{2}}}{e^{i\frac{\theta}{2}}}~ \text{(en multipliant par $i$ le num\'erateur et le d\'enominateur de la fraction entre les crochets)} \\ &=\dfrac{\sin(n+1)\frac{\theta}{2}}{\sin\frac{\theta}{2}}e^{in\frac{\theta}{2}}\end{align*}
+$\forall n,~ |s_n|\leq \dfrac{\sin(n+1)\frac{\theta}{2}}{\sin\frac{\theta}{2}}.$  Si $\theta \notin \{2k\pi,~k\in \mathbb{Z} \}$ alors $(s_n)$ est born\'ee. 
+\end{pr}
+\begin{rem} Pour la s\'erie $\sum (\sin n\theta ~b_n) ,$ la condition $\theta \notin \{2k\pi,~k\in \mathbb{Z}\}$ n'est pas indispensable car si $\theta=2k\pi,~\sin n\theta=0,$ donc $\sum (\sin n\theta ~b_n)$ est convergente. \end{rem}
+\textbf{Exemple}\\ $\forall \alpha>0,~\sum \dfrac{\sin nx}{n^{\alpha}}$ est convergente.
+
+\section{Utilisation d'un d\'eveloppement limit\'e}
+Nous allons illustrer ce cas par des exemples\\ \\
+\textbf{Exemple 1}\quad La s\'erie de terme g\'en\'eral $u_n=\dfrac{1}{\sqrt{n}}-\sqrt{n}\sin \dfrac{1}{n}\quad(n \geq 1)$ est-elle convergente?\\
+\textbf{Solution}\quad On sait que $\sin x=x-\dfrac{x^3}{3!}+x^3 o(1) \quad(x\rightarrow0).$ \\
+Si $n$ est assez grand, on a:
+\begin{align*}  \sin \dfrac{1}{n}&=\dfrac{1}{n}-\dfrac{1}{6n^3}+\dfrac{1}{n^3} o(1)\quad( \text{o\`u}
+~~\lim_{x\rightarrow+\infty} o(1)=0)\\
+\sqrt{n}\sin\dfrac{1}{\sqrt{n}}&=
+\dfrac{1}{\sqrt{n}}-\dfrac{1}{6n^{\frac{5}{2}}}+\dfrac{1}{n^{\frac{5}{2}}} o(1)
+\end{align*}
+D'o\`u \\
+\begin{align*} u_n=\dfrac{1}{6n^{\frac{5}{2}}}-\dfrac{1}{n^{\frac{5}{2}}}\quad\text{ pour $n$ assez grand} \end{align*}
+$\dfrac{1}{n^{\frac{5}{2}}}-\dfrac{1}{n^{\frac{5}{2}}}o(1)$ est positif $\forall n$ assez grand et $ (n^{\frac{5}{2}}u_n)\rightarrow \dfrac{1}{6} \neq 0.$ \\Donc $\sum u_n$ est convergente (\textbf{R\`egle de Riemann})\\
+\textbf{Exemple 2} \quad
+Pour quelle valeur du r\'eel $a$ la s\'erie de terme g\'en\'eral $u_n=(n^2+1)^a-(n^2-1)^a$ est-elle convergente?\\
+\textbf{Solution} $$u_n=n^{2a}\left[ \left(1+\dfrac{1}{n^2}\right)^a-\left(1-\dfrac{1}{n^2}\right)a\right]$$
+On sait que $(1+x)^a=1+ax+x o(1)\quad(x\rightarrow0)$\\ Donc pour $n$ assez grand, $$\left(1+\dfrac{1}{n^2}\right)^a=1+\dfrac{a}{n^{2}}+\dfrac{1}{n}o(1)$$
+Alors $$ u_n=n^{2a}\left( 1+\dfrac{a}{n^2}+\dfrac{o(1)}{n^2} -1+\dfrac{a}{n^2}+\dfrac{o(1)}{n^2}\right) ~~(n\rightarrow+\infty)$$ \begin{align*} u_n&=n^{2a}\left(\dfrac{2a}{n^2}+\dfrac{o(1)}{n^2}\right)\\ &=\dfrac{2a}{n^{2(1-a)}}+\dfrac{o(1)}{n^{2(1-a)}}~~(n\rightarrow+\infty) \end{align*}
+La s\'erie $\sum \dfrac{2a}{n^{2(1-a)}}$ et $\sum \dfrac{o(1)}{n^{2(1-a)}}$ sont convergentes si et seulement si $1-a>\dfrac{1}{2},~$ i.e. $a<\dfrac{1}{2}$. \\ Donc $\sum u_n$ est convergente si et seulement si $a<\dfrac{1}{2}$.\\
+\textbf{Exemple 3}\quad 
+La s\'erie de terme g\'en\'erale $u_n=\lo \left(1+\dfrac{(-1)^n}{\sqrt{n}}\right)$ est-elle convergente?\\
+\textbf{Solution}\quad
+On sait que $\lo (1+x)=x-\dfrac{x^2}{2}+\dfrac{x^3}{3}+x^3o(1) ~~(x\rightarrow0)$.\\
+Donc pour $n$ assez grand, on a: $$ \lo \left(1+\dfrac{(-1)^n}{\sqrt{n}}\right)=\dfrac{(-1)^n}{\sqrt{n}}-\dfrac{1}{2n}+\dfrac{(-1)^n}{3n^{\frac{3}{2}}}+\dfrac{(-1)^n}{3n^{\frac{3}{2}}}o(1).$$
+Posons $v_n=\dfrac{(-1)^n}{\sqrt{n}},\quad t_n=\dfrac{1}{2n}, \quad	b_n=\dfrac{(-1)^n}{3n^{\frac{3}{2}}},\quad c_n=\dfrac{(-1)^n}{3n^{\frac{3}{2}}}o(1).$\\
+$\sum v_n$ est convergente car c'est une s\'erie altern\'ee.\\
+$\sum t_n$ est divergente, $\sum b_n$ est convergente car c'est une s\'erie altern\'ee, $\sum c_n$ est absolument convergente, donc convergente. On a $u_n=(v_n+b_n+c_n)-t_n$.\\
+$\sum u_n$ est alors la somme d'une s\'erie convergente \`a savoir la s\'erie $\sum (v_n+b_n+c_n)$ et d'une s\'erie divergente \`a savoir la s\'erie $\sum t_n$. \\
+Donc $\sum u_n$ est une s\'erie divergente.
+
+\section{Compl\'ement}
+\subsection*{R\'earrangement des termes d'une s\'erie convergente}
+Une des op\'erations importantes dans l'\'etude d'une s\'erie convergente est le r\'earrangement des termes de la s\'erie. Elle consiste \`a d\'efinir \`a partir d'une s\'erie convergente $\sum u_n$ des s\'eries $\sum u_{\sigma(n)}$ o\`u $\sigma$ d\'ecrit l'ensemble $ \mathcal{S}(\mathbb{N})$ des permutations de $\mathbb{N}$. Il se pose alors deux questions: \begin{enumerate}
+\item Les s\'eries $\sum u_{\sigma(n)}$ sont-elles toutes convergentes?
+\item Si oui, a-t-on pour tout $\sigma \in \mathcal{S}(\mathbb{N}),~~{\displaystyle \sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}u_{\sigma(n)}}$?
+\end{enumerate}
+La r\'eponse est non en g\'en\'eral aux deux questions.\\Voici un contre exemple pour la question 2.\\
+Soit $u_n=\dfrac{(-1)^{n-1}}{n}\quad(n\geq1)$.\\
+$\sum u_n$ est convergente car c'est une s\'erie altern\'ee.\\
+Posons ${\displaystyle\sum_{n=1}^{+\infty}u_n=s}$.\\
+$\sum u_n=1-\dfrac{1}{2}+\dfrac{1}{3}-\dfrac{1}{4}+\dfrac{1}{5}+\cdots$ \\
+R\'earrangeons les termes en \'ecrivant:
+\begin{align*} 1-&\dfrac{1}{2}-\dfrac{1}{4}+\dfrac{1}{3}-\dfrac{1}{6}-\dfrac{1}{8}+\cdots+\dfrac{1}{2n+1}-\dfrac{1}{2(2n+1)}-\dfrac{1}{2(2n+2)}+\cdots\\
+=& \dfrac{1}{2}-\dfrac{1}{4}+\dfrac{1}{6}-\dfrac{1}{8}+\cdots+\dfrac{1}{2(2n+1)}-\dfrac{1}{2(2n+2)}+\cdots\\
+=&\dfrac{1}{2}\left( 1-\dfrac{1}{2}+\dfrac{1}{3}+\cdots \right)\\
+=&\dfrac{s}{2} \end{align*}
+D'une mani\`ere g\'en\'erale, on sait que:
+\begin{teo} \'Etant donn\'ee la s\'erie convergente $\sum u_n$, o\`u $u_n=\dfrac{(-1)^{n-1}}{n} \quad(n\geq1)\quad\forall \ell\in \mathbb{R}$, il existe une permutation $\sigma$ de $ \mathbb{N}$ telle que ${\displaystyle \sum _{n=1}^{+\infty}u_{\sigma(n)}=\ell}$ 
+\end{teo}
+Le th\'eor\`eme ci-dessus que nous adoptons, donne le cadre o\`u les r\'eponses aux questions 1. et 2. sont positives.
+\begin{defi} Soit $(u_n) \subset \mathbb{K}.$ On dit que la suite $(u_n)$ est sommable si pour toute permutation $\sigma$ de $ \mathbb{N}$ la suite $(s_{\sigma(n)})$ des sommes partielles $s_{\sigma(n)}=u_{\sigma(1)}+u_{\sigma(2)}+\cdots+u_{\sigma(n)}$ est convergente et si de plus  ${\displaystyle\forall \sigma \in \mathcal{S}( \mathbb{N}),~~ \sum_{n=0}^{+\infty}u_{\sigma(n)}=\sum_{n=0}^{+\infty}u_n.}$
+\end{defi}
+\begin{teo} Soit $(u_n) \subset \mathbb{K}.$ Alors $(u_n)$ est sommable si et seulement si $\sum u_n$ est absolument convergente. 
+\end{teo} 
+
+
+
+\chapter{Int\'egrales g\'en\'eralis\'ees}
+
+\section{Objectif et D\'efinition}
+\subsection{Objectif}
+On a d\'efini en premi\`ere ann\'ee l'int\'egrale d'une fonction sur un intervalle ferm\'e born\'e $[a,b]$. Dans ce chapitre, on \'etudie les conditions dans lesquelles on peut d\'efinir ${\displaystyle \int_a^b f(t)\,\ud t}$ lorsque $f$ n'est d\'efinie que sur $[a,b[$ ou $]a,b]$ \\
+Si $f$ est d\'efinie sur $[a,b[$ \`a valeurs dans $ \mathbb{R}$, $(b\in \mathbb{R}$ ou $b=+\infty,~b>a)$ on supposera que $\forall x \in [a,b[,$ $f$ est int\'egrable sur $[a,x].$\\
+Si $f$ est d\'efinie sur $]a,b] ~(a\in \mathbb{R} $ ou $a=-\infty,~a<b),$ on supposera que $\forall x\in ]a,b]~f$ est int\'egrable sur $[x,b].$\\
+\textbf{Notation}\quad
+Soit $f:[a,b[\longrightarrow \mathbb{R}$ une fonction d\'efinie $[a,b[$ et  int\'egrable sur $[a,x]~\forall x\in [a,b[.$\\
+Soit \begin{align*} F:[a,b[&\longrightarrow \mathbb{R}\\
+x&\longmapsto F(x)=\int_a^x f(t)\,\ud t. \end{align*}
+Si $F$ admet une \underline{limite finie} quand $x\longmapsto b$, on notera cette limite ${\displaystyle \int_a^b f(t)\,\ud t}$.\\
+Soit $g:]a,b]\longrightarrow \mathbb{R}$ et int\'egrable sur $[x,b] ~\forall x\in ]a,b].$\\
+Soit \begin{align*} G:]a,b]&\longrightarrow \mathbb{R}\\ 
+x&\longmapsto G(x)=\int_x^b g(t)\,\ud t.\end{align*}
+Si $G$ admet une \underline{limite finie} lorsque $x\longmapsto a$ alors on notera cette limite ${\displaystyle \int_a^b g(t)\,\ud t}$.\\
+En r\'esum\'e, si ${\displaystyle \lim_{x\rightarrow b}\int_a^x f(t)\,\ud t}$ \underline{existe et est finie} alors cette limite sera not\'ee ${\displaystyle \int_a^b f(t)\,\ud t}$ et si ${\displaystyle \lim_{x\rightarrow a}\int_x^b g(t)\,\ud t}$ \underline{existe et est finie} alors cette limite sera not\'ee ${\displaystyle \int_a^b g(t)\,\ud t.}$
+
+\subsection{D\'efinition}
+\begin{defi} Soit $f:[a,b[\longrightarrow \mathbb{R}$ et $x\in ]a,b[.$ Si ${\displaystyle \lim_{x\rightarrow b}\int_a^x f(t)\,\ud t}$ existe et est finie, on dira que l'int\'egrale impropre ou l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^b f(t)\,\ud t}$ est convergente. Dans le cas contraire on dira qu'elle est divergente. \\
+On emploie les m\^emes expressions si $f$ est d\'efinie sur $]a,b]$ et si ${\displaystyle\lim_{x\rightarrow a}\int_x^b f(t)\,\ud t}$ existe et est finie\quad ($a\in \mathbb{R}$ ou $a=-\infty$).\\
+Supposons maintenant que $f$ soit d\'efinie sur $]a,b[$. Si $\forall c\in ]a,b[,$ les int\'egrales g\'en\'eralis\'ees ${\displaystyle \int_a^c f(t)\,\ud t}$ et ${\displaystyle \int_c^b f(t)\,\ud t}$ convergent simultan\'ement, on dira que ${\displaystyle \int_a^b f(t)\,\ud t}$ est convergente.\end{defi}
+Gr\^ace aux propri\'et\'es des limites et de l'int\'egrale, on a:
+\begin{pro} \label{pro3.1.1} Soient $f$ et $g$ des fonctions d\'efinies sur le m\^eme intervalle $]a,b]$ ou $[a,b[.$ 
+Supposons que $\forall x\in [a,b[, ~f$ et $g$ sont int\'egrables sur $[a,x].$ 
+Si les int\'egrales g\'en\'eralis\'ees ${\displaystyle \int_a^b f(t)\,\ud t}$ et ${\displaystyle \int_a^b g(t)\,\ud t}$ sont convergentes, alors $\forall \lambda \in \mathbb{R}, $ les int\'egrales g\'en\'eralis\'ees ${\displaystyle \int_a^b(\lambda f)(t)\,\ud t}$ et ${\displaystyle \int_a^b (f+g)(t)\,\ud t}$ sont convergentes.
+De plus $$ \int_a^b (\lambda f)(t)\,\ud t=\lambda \int_a^b f(t)\,\ud t$$ et $$ \int_a^b(f+g)(t)\,\ud t=\int_a^b f(t)\,\ud t+\int_a^b g(t)\,\ud t.$$ \end{pro}
+
+\section[Convergence de l'int\'egrale g\'en\'eralis\'ee sur un intervalle non born\'e]{\'Etude de la convergence de l'int\'egrale g\'en\'eralis\'ee sur un intervalle non born\'e}
+Les propri\'et\'es de l'int\'egrale permettent de limiter l'\'etude aux intervalles de type $[a,+\infty[,~a\in \mathbb{R}$.
+\begin{lem} \label{lem3.2.1} Soit $f$ une fonction \`a valeurs positives d\'efinie sur $[a,+\infty[$ et int\'egrable sur $[a,x]\quad \forall x\in ]a,+\infty[.$ Posons ${\displaystyle \forall n\in \mathbb{N},~n>a,~F(n)=\int_a^n f(t)\,\ud t}$ et ${\displaystyle \forall x\in ]a,+\infty[,~F(x)=\int_a^x f(t)\,\ud t}$.\\ Alors l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^{+\infty} f(t)\,\ud t}$ est convergente si et seulement si la suite $(F(n))$ est convergente. \\
+Si c'est le cas, alors ${\displaystyle \lim_{x\rightarrow+\infty}F(x)=\lim_{n\rightarrow+\infty}F(n).}$ \end{lem}
+\begin{pr}\quad
+Supposons que ${\displaystyle \int_a^{+\infty}f(t)\,\ud t}$ soit convergente et notons $\ell$ sa limite. Alors $\forall \varepsilon >0,~\exists A~(A>0)$ tel que $\forall x>A,|F(x)-\ell|<\varepsilon.$\\
+Montrons que ${\displaystyle \lim_{n\rightarrow+\infty}F(n)=\ell}$.\\
+Soit $\varepsilon >0,$ posons $n_0=$E$(A)+1~~ \forall n>n_0,$ on a $|F(n)-\ell|<\varepsilon$ car $n\in \mathbb{R}$ et $n>A$. \\
+Inversement supposons que ${\displaystyle \lim_{n\rightarrow+\infty}F(n)}$ existe et soit finie. D\'esignons par $b$ cette limite. Donc $\forall \varepsilon >0, \exists n_0 ~\forall n>n_0 ~~|F(n)-b|<\varepsilon.$ Soit $x\in \mathbb{R}$ et $x>n_0$. Montrons que $|F(x)-b|<\varepsilon.$ Soit $m\in \mathbb{N},~m>x.$ Comme l'int\'egrale d'une fonction positive est croissante, alors $F(n_0)\leq F(x) \leq F(m).$\\ Donc $-\varepsilon< F(n_0) -b\leq F(x)-b\leq F(m)-b<\varepsilon.$ 
+\end{pr}
+\begin{pro} \label{pro3.2.1} Soit $f:[a,+\infty[\longrightarrow \mathbb{R}_+$ int\'egrable sur $[a,x]~\forall x\in [a,+\infty[.$  Posons $\forall n\in \mathbb{N},~n>a~~~{\displaystyle  F(n)=\int_a^n f(t)\,\ud t.}$ Alors l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^{+\infty} f(t)\,\ud t}$ est convergente si et seulement si la suite $(F(n))$ est major\'ee. \end{pro}
+\begin{pr}\quad
+La suite $(F(n))$ est croissante car $f\geq0.$ Une suite croissante est convergente si et seulement si elle est major\'ee. On applique le \textbf{Lemme \ref{lem3.2.1}} pour conclure.\end{pr}
+
+\textbf{N.B:} Dans le \textbf{Lemme \ref{lem3.2.1}} et la \textbf{Proposition \ref{pro3.2.1}}, si $f$ est d\'efinie sur $]-\infty,a]$ alors on posera\\ ${\displaystyle F(n)=\int^a_{-n} f(t)\,\ud t ~~ (n\in \mathbb{N}).}$ Les conclusions restent inchang\'ees.
+
+\subsection{Th\'eor\`eme de comparaison}
+\begin{teo}[Th\'eor\`eme de comparaison] \label{teo3.3.2} Soient $f$ et $g$ des fonctions \`a valeurs positives d\'efinies sur $[a,+\infty[$ et int\'egrables sur $[a,x]\quad\forall x\in ]a,+\infty[.$ Si $f\leq g$ sur $[b,+\infty[$ o\`u $b\in \mathbb{R},~b\geq a,$ alors: 
+\begin{enumerate}
+\item \label{teo3.3.2.1}( ${\displaystyle \int_a^{+\infty}g(t)\,\ud t}$ est convergente) $\Longrightarrow$ ($ {\displaystyle \int_a^{+\infty}f(t)\,\ud t}$ est convergente).
+\item\label{teo3.3.2.2} (${\displaystyle \int_a^{+\infty}f(t)\,\ud t}$ est divergente)$\Longrightarrow$ (${\displaystyle \int_a^{+\infty}g(t)\,\ud t}$ est divergente).
+\end{enumerate} \end{teo}
+\begin{pr} \quad
+\ref{teo3.3.2.2}- est la contrapos\'ee de \ref{teo3.3.2.1}-. Il suffit donc de prouver \ref{teo3.3.2.1}-. On a 
+\begin{align*} F(n) = \int_a^n f(x)\,\ud t&=\int_a^b f(x)\,\ud x +\int_b^n f(x)\,\ud x \\
+&\leq \int_a^b f(x)\,\ud x +\int_b^n g(x)\,\ud x\\
+&= c+ G(n) \end{align*}
+${\displaystyle c= \int_a^b f(x)\,\ud x}$ est une constante.\\
+Si ${\displaystyle \int_a^{+\infty} g(x)\,\ud x}$ est convergente, alors la suite $(G(n))$ est major\'ee. On en d\'eduit que la suite $(F(n))$ est major\'ee. La conclusion que l'on voulait d\'ecoule de la \textbf{Propsition \ref{pro3.2.1}}.
+\end{pr}
+\subsection{Fonctions tests} 
+\begin{enumerate}
+\item \textbf{Int\'egrales de Riemann}\\
+ Pour quelle valeur de $\alpha ~(\alpha>0)$ l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_1^{+\infty} \dfrac{1}{x^{\alpha}}\,\ud x}$ est-elle convergente?\\
+ On a: ${\displaystyle F(n)=\int_1^n \dfrac{1}{x^{\alpha}}\,\ud x= \begin{cases} \lo n~&\quad~ \text{si}~~ \alpha=1\\ \dfrac{1}{1-\alpha}\left[\dfrac{1}{n^{\alpha-1}}-1 \right]~&\quad~\text{si}~~ \alpha \neq 1.\end{cases}} \\{\displaystyle  \lim_{n\rightarrow+\infty}F(n)}$ existe et est finie si et seulement si $\alpha>1.$\\
+ Donc ${\displaystyle \int_1^{+\infty}\dfrac{1}{x^{\alpha}}\,\ud x }$ est convergente si et seulement si $\alpha >1$ d'apr\`es le \textbf{Lemme \ref{lem3.2.1}}
+\item \textbf{Int\'egrales de Bertrand}\\
+ Pour quelles valeurs de ${\displaystyle \alpha,~~\int_2^{+\infty} \dfrac{1}{x(\lo x)^{\alpha}}\,\ud x}$ est-elle convergente?\\
+ ${\displaystyle F(n)= \int_2^{+\infty} \dfrac{1}{x(\lo x)^\alpha}\,\ud x= \begin{cases} \lo(\lo n)-\lo(\lo2) &\quad~~\text{si}~ \alpha=1.\\ \dfrac{1}{1-\alpha} \left[ \dfrac{1}{(\lo x)^{\alpha-1}}-\dfrac{1}{(\lo2)^{\alpha-1}}\right] &\quad~~\text{si} ~\alpha\neq 1.\end{cases}}\\  {\displaystyle  
+ \lim_{n\rightarrow+\infty}F(n)}$ 
+ existe et est finie si et seulement si $\alpha>1.$\\ Donc ${\displaystyle \int_2^{+\infty} \dfrac{1}{x(\lo x)^\alpha}\,\ud x}$ est convergente si et seulement si $\alpha>1,$ \textbf{Lemme \ref{lem3.2.1} }
+\end{enumerate}
+
+\subsection{Utilisation du d\'eveloppement limit\'e}
+\begin{teo} \label{teo3.2.1} Soit $f,g$ des fonctions d\'efinies sur $[a,+\infty[$ \`a valeurs positives ou nulles et int\'egrables sur $[a,x] ~~\forall x\in ]a,+\infty[.$ Si $f\sim g~~(x\rightarrow +\infty)$ alors les int\'egrales g\'en\'eralis\'ees ${\displaystyle \int_a^{+\infty} f(t)\,\ud t}$ et ${\displaystyle \int_a^{+\infty} g(t)\,\ud t}$ convergent ou divergent simultan\'ement.
+\end{teo}
+\begin{pr}\quad
+Supposons $g\sim f~~(x\rightarrow+\infty)$. Alors il existe une fonction $h$ d\'efinie pour $x$ assez grand \`a valeurs positives telle que ${\displaystyle \lim_{x\rightarrow+\infty}h(x)=1}$ et $f=gh.$\\
+soit $r \in ]0,1[$ fix\'e, il existe alors $A>0$ tel que $1-r\leq h(x)\leq 1+r,~\forall x\in [A,+\infty[.$ D'o\`u $$(1-r)g(x)\leq f(x)\leq (1+r)g(x),~~ \forall x\in [A,+\infty[.$$ \\
+On a la conclusion voulue en se fondant sur le \textbf{Th\'eor\`eme de comparaison}.
+\end{pr}
+\textbf{Exemple}\quad 
+\'Etudier la convergence de ${\displaystyle \int_2^{+\infty} \dfrac{\lo \left(\cos \dfrac{1}{x}\right)}{\lo x}\,\ud x.}$ \\ \textbf{Solution\quad} $\cos \dfrac{1}{x}=1-\dfrac{1}{2x^2}+\dfrac{1}{x^2}o(1)~~(x\rightarrow+\infty)$ o\`u ${\displaystyle \lim_{x\rightarrow+\infty}o(1)=0.}$\\
+$\lo \left(\cos \dfrac{1}{x}\right)=\lo\left(1-\dfrac{1}{2x^2}+\dfrac{1}{x^2}o(1)\right)\sim -\dfrac{1}{2x^2}~~(x\rightarrow+\infty).$ \\ Donc $ \dfrac{\lo \left(\cos \dfrac{1}{x}\right)}{\lo x}\sim -\dfrac{1}{2x^2 \lo x}~~(x\rightarrow+\infty)$\\
+$\dfrac{1}{2x^2 \lo x}\leq \dfrac{1}{2x^2},~\forall x\in [3,+\infty[.$ Comme ${\displaystyle \int_2^{+\infty} \dfrac{1}{2x^2}\,\ud x}$ est convergente, alors ${\displaystyle \int_2^{+\infty} \dfrac{1}{2x^2 \lo x}\,\ud x}$ est convergente, \textbf{Th\'eor\`eme de comparaison}.\\
+On en d\'eduit que ${\displaystyle \int_2^{+\infty}-\dfrac{\lo \left(\cos \dfrac{1}{x}\right)}{\lo x}\,\ud x}$ est convergente, \textbf{Th\'eor\`eme \ref{teo3.2.1}}. Alors ${\displaystyle \int_2^{+\infty} \dfrac{\lo \left(\cos \dfrac{1}{x}\right)}{\lo x}\,\ud x}$ est convergente.
+\begin{cor} Soient $f$ et $g$ des fonctions d\'efinies sur $[a,+\infty[$ \`a valeurs positives et int\'egrables sur $[a,x],~~\forall x\in ]a,+\infty[.$ Si ${\displaystyle \lim_{x\rightarrow+\infty}\dfrac{f(x)}{g(x)}=\ell}$ et si $\ell\neq0$ alors ${\displaystyle \int_a^{+\infty}f(x)\,\ud x}$ et ${\displaystyle \int_a^{+\infty}g(x)\,\ud x}$ convergent ou divergent simultan\'ement. 
+\end{cor}
+\begin{pr}\quad Les conditions ${\displaystyle \lim_{x\rightarrow+\infty}\dfrac{f(x)}{g(x)}=\ell}$ et $\ell\neq0$ impliquent $f\sim \ell g.$
+\end{pr}
+
+\subsection{Convergence absolue}
+Soit $f:[a,+\infty[\longrightarrow \mathbb{R},$ $a\in \mathbb{R}$ ou $a=-\infty.$ \\Posons $f^+= \sup (f,0)$, $f^-=\sup (-f,0)$ avec $\forall x\in [a,+\infty[, ~f^+(x)=\sup (f(x),0),~f^-(x)=\sup(-f(x),0).$ On a $f=f^+-f^-,~~|f|=f^++f^-.~~f^+\leq |f|$ et $f^-\leq |f|.$
+\begin{defi} Soit $f:[a,+\infty[\longrightarrow \mathbb{R}$ telle que $\forall x\in [a,+\infty[,$ $f$ soit int\'egrable sur $[a,x].$ On dit que l'int\'egrale g\'en\'eralis\'ee ou l'int\'egrale impropre ${\displaystyle \int_a^{+\infty} f(x)\,\ud x}$ est absolument convergente, si l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^{+\infty} |f(x)|\,\ud x}$ est convergente. 
+\end{defi}
+\begin{teo} \label{teo3.2.2}
+Une int\'egrale g\'en\'eralis\'ee absolument convergente est convergente.
+\end{teo}
+\begin{pr}\quad
+Supposons ${\displaystyle \int_a^{+\infty} |f(x)|\,\ud x}$ convergente. Alors les relations ($f^+\leq |f|$ et $f^-\leq |f|$) impliquent (${\displaystyle \int_a^{+\infty} f^-(x)\,\ud x}$ et ${\displaystyle \int_a^{+\infty} f^+(x)\,\ud x}$ convergent), \textbf{Th\'eor\`eme de comparaison}\\
+Comme $f=f^+-f^-$ alors ${\displaystyle \int_a^{+\infty} f(x)\,\ud x}$ est convergente, \textbf{Proposition \ref{pro3.1.1}}.\end{pr}
+\textbf{Exemple}\quad ${\displaystyle \int_1^{+\infty} \dfrac{\cos x}{x^2}\,\ud x}$ est absolument convergente.
+\begin{rem} \label{rem3.2.1}
+L'implication (${\displaystyle \int_a^{+\infty} f(x)\,\ud x}$ convergente) $\Longrightarrow$ (${\displaystyle \int_a^{+\infty} |f(x)|\,\ud x}$ convergente) n'est pas toujours vraie.
+\end{rem}
+\textbf{Contre-exemple}\quad Montrons que ${\displaystyle \int_1^{+\infty} \dfrac{\sin x}{x}\,\ud x}$ est convergente.\\
+\begin{align*} \int_1^{+\infty} \dfrac{\sin x}{x}\,\ud x &= \lim_{x\rightarrow+\infty} \int_1^{x} \dfrac{\sin t}{t} \,\ud t\\ &= \lim_{x\rightarrow+\infty}\left[ \int_1^x \dfrac{\,\ud(-\cos t)}{t}\right]\\ &= \cos1-\lim_{x\rightarrow+\infty} \int_1^x \dfrac{1}{t^2}\,\ud t
+\end{align*}
+${\displaystyle \int_1^x \dfrac{1}{t^2}\,\ud t}$ est convergente, donc ${\displaystyle \int_1^{+\infty} \dfrac{\sin t}{t}\,\ud t}$ est convergente.\\
+Montrons que ${\displaystyle \int_1^{+\infty}\Big|\dfrac{\sin t}{t}\Big|\,\ud t}$ n'est pas convergente.\\
+On a: 
+\begin{align*} \int_1^{+\infty} \dfrac{|\sin t|}{t}\,\ud t &\geq \lim_{n\rightarrow+\infty} \int_\pi ^{n\pi} \dfrac{|\sin t|}{t}\,\ud t\\&=\lim_{n\rightarrow+\infty} \sum_{k=2}^n \int_{(k-1)\pi}^{k\pi} \dfrac{|\sin t|}{t}\,\ud t \\ &\geq \lim_{n\rightarrow+\infty} \sum_{k=2}^n \int_{(k-1)\pi}^{k\pi} \dfrac{|\sin t|}{t}\,\ud t\\&=\lim_{n\rightarrow+\infty} \sum_{k=2}^n \int_0^\pi \dfrac{\sin [u+(k-1)\pi]}{k\pi}\,\ud u ~~\text{o\`u} ~~ u=t-(k-1)\pi\\ &=\lim_{n\rightarrow+\infty} \sum_{k=2}^n \dfrac{1}{k\pi}\int_0^\pi \sin u \,\ud u \\&= \lim_{n\rightarrow+\infty}\left(\sum_{k=2}^n \dfrac{1}{k\pi}\times 2\right)\\ &= \dfrac{2}{\pi}\lim_{n\rightarrow+\infty} \sum_{k=2}^n \dfrac{1}{k}\\
+&=+\infty \quad~~\text{car $\sum \dfrac{1}{k}$ est divergente.}
+\end{align*} 
+
+\section[Convergence de l'int\'egrale g\'en\'eralis\'ee sur un intervalle born\'e]{Convergence de l'int\'egrale g\'en\'eralis\'ee dans le cas d'un intervalle born\'e $]a,b[ ~~(a,b \in \mathbb{R})$}
+Gr\^ace aux propri\'et\'es des int\'egrales et des limites, on \'etudiera seulement le cas $]a,b]$.
+\begin{lem} \label{lem3.3.1}
+Soit $f:]a,b]\longrightarrow \mathbb{R}_+$ et int\'egrable sur $[x,b]~~\forall x\in ]a,b].$
+ Posons $\forall n\in \mathbb{N}^*,~{\displaystyle F(n)=\int_{a+\frac{1}{n}}^b f(t)\,\ud t}$ et $\forall x\in ]a,b],~{\displaystyle F(x)=\int_x^b f(t)\,\ud t .}$ \\
+Alors l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^b f(t)\, \ud t }$ est convergente si et seulement si la suite $(F(n))$ est convergente. 
+De plus ${\displaystyle\lim_{n\rightarrow+\infty}F(n)=\lim_{x\rightarrow a}F(x).}$
+\end{lem}
+\begin{pr}\quad
+Supposons ${\displaystyle \int_a^b f(t)\,\ud t }$ convergente.\\
+Soit ${\displaystyle b=\lim_{x\rightarrow a}F(x).}$ Montrons que ${\displaystyle \lim_{n\rightarrow+\infty}F(n)=b}$.\\
+On a: $\forall \varepsilon>0, \exists \eta>0 ~\forall x\in ]a,b],~|x-a|<\eta\Rightarrow |F(x)-b|<\varepsilon.$\\
+Soit $n_0\in \mathbb{N}$ tel que $ \dfrac{1}{n_0}<\eta$. On a $\forall n>n_0 ~|a+\dfrac{1}{n}-a|<\eta$ donc $x=a+\dfrac{1}{n}$ v\'erifie $|F(x)-b|<\varepsilon$ i.e. $|F(n)-b|<\varepsilon$. \\
+Inversement supposons que ${\displaystyle \lim_{n\rightarrow+\infty}F(n)=\ell.}$ Alors $\forall \varepsilon >0,~\exists n_0 ~\forall n>n_0 ~~|F(n)-\ell|<\varepsilon .$ Posons $\eta=\dfrac{1}{n_0}.$ Soit $x\in]a,b]$ tel que $x-a<\dfrac{1}{n_0}.$ Soit $m>n_0$ et tel que $a+\dfrac{1}{m}<x$. On a $a+\dfrac{1}{m}<x<a+\dfrac{1}{n_0}.$ Ceci implique $F(n_0)\leq F(x)\leq F(m) $ car $F$ est une fonction croissante. Donc $-\varepsilon \leq F(n_0)-\ell\leq F(x)-\ell\leq F(m)-\ell\leq \varepsilon.$ Donc $\forall x\in ]a,b]$ et $x-a\leq \eta =\dfrac{1}{n_0}$ on a $|F(x)-\ell|\leq \varepsilon$ 
+\end{pr}
+\begin{teo}[de comparaison] \label{teo3.3.1}
+Soit $f,g$ des fonctions d\'efinies sur $]a,b]$ \`a valeurs positives ou nulles et int\'egrables sur $[x,b]~\forall x\in ]a,b]$. On suppose $f\leq g$ sur $]a,c]$ o\`u $c\in ]a,b].$ Alors 
+\begin{enumerate}
+\item[i-] ${\displaystyle \int_a^b f(t)\,\ud t}$ est convergente si ${\displaystyle \int_a^b g(t)\,\ud t}$ est convergente.
+\item[ii-] ${\displaystyle \int_a^b g(t)\, \ud t}$ est divergente si ${\displaystyle \int_a^b f(t)\,\ud t}$ est divergente.
+\end{enumerate}
+\end{teo}
+\begin{pr}\quad
+ii- est la contrapos\'ee de i-. Il suffit donc de prouver i-.\\
+Supposons ${\displaystyle \int_a^b g(t)\, \ud t}$ convergente. On a $\forall n\in \mathbb{N}$ 
+\begin{align*} F(n) &= \int_{a+\frac{1}{n}}^b f(t)\,\ud t \\ 
+&= \int_{a+\frac{1}{n}}^c f(t)\,\ud t+\int_c^b f(t)\,\ud t\\
+&= \int_{a+\frac{1}{n}}^c f(t)\,\ud t+K\\
+&\leq \int_{a+\frac{1}{n}}^c g(t)\,\ud t\\ 
+&= G(n)+K
+\end{align*}
+La suite $(G(n))$ est convergente, elle est donc major\'ee. Par suite $(F(n))$ aussi, comme $(F(n))$ est croissante, elle est convergente.\end{pr} 
+
+\textbf{Fonction test}\\
+${\displaystyle \int_a^b \dfrac{1}{(x-a)^\alpha}\,\ud x}$ est convergente si et seulement si $\alpha<1.$
+
+\begin{teo} \label{teo3.2.2}
+Soient $f,g$ des fonctions d\'efinies sur $]a,b]$ \`a valeurs positives et int\'egrables sur $[x,b]~~\forall x\in ]a,b].$ Si $f\sim g ~~(x\rightarrow a),$ alors les int\'egrales g\'en\'eralis\'ees ${\displaystyle \int_a^b f(t)\,\ud t}$ et ${\displaystyle \int_a^b g(t)\,\ud t}$ convergent ou divergent simultan\'ement
+\end{teo}
+\begin{pr}\quad
+Elle est analogue \`a celle du \textbf{Th\'er\`eme \ref{teo3.2.1}}.
+\end{pr}
+\textbf{Exemple}
+\begin{enumerate}
+\item \'Etudier la convergence de ${\displaystyle \int^2_1 \dfrac{1}{\sqrt{t^2-1}}\,\ud t}$.\\
+On a $\dfrac{1}{\sqrt{t^2-1}}=\dfrac{1}{\sqrt{t-1}}\dfrac{1}{\sqrt{1+t}}$\\
+$\dfrac{1}{\sqrt{1+t}}\sim \dfrac{1}{\sqrt{2}} ~ ~ (t\rightarrow 1)$ donc $\dfrac{1}{\sqrt{t^2-1}} \sim \dfrac{1}{\sqrt{2}\sqrt{t-1}}$.\\
+${\displaystyle \int_1^2 \dfrac{1}{\sqrt{t-1}}\,\ud t}$ est convergente donc ${\displaystyle \int_1^2\dfrac{1}{\sqrt{t^2-1}}}\,\ud t$ est aussi convergente.
+\item \'Etudier la convergence de ${\displaystyle \int_0^2\sqrt{\dfrac{|1-t^2|}{t}}\dfrac{1}{\lo t}\,\ud t}$\\
+$t\longmapsto f(t)=\sqrt{\dfrac{|1-t^2|}{t}}\dfrac{1}{\lo t}$ n'est pas d\'efinie en $0$ et $1$.\\
+${\displaystyle \int_0^2 f(t)\,\ud t=\int_0^\frac{1}{2} f(t)\,\ud t +\int_\frac{1}{2}^1f(t)\,\ud t +\int_1^2f(t)\,\ud t}$.\\
+\begin{itemize}
+\item \'Etudions la convergence de ${\displaystyle \int_0^\frac{1}{2}f(t)\,\ud t.} $  Si $t\longrightarrow 0$, on a $\sqrt{\dfrac{|1-t|}{t}} \sim \dfrac{1}{\sqrt{t}}$ donc sur $]0,\frac{1}{2}],~ (-f(t))\sim \dfrac{1}{\sqrt{t}}\dfrac{-1}{\lo t}$\\
+$\dfrac{-1}{\sqrt{t\ln t}}\leq \dfrac{1}{\sqrt{t}}$ et comme ${\displaystyle \int_0^\frac{1}{2}}\dfrac{1}{\sqrt{t}}\,\ud t$ est convergente, alors ${\displaystyle \int_0^\frac{1}{2}\dfrac{-1}{\sqrt{t}\lo t}\,\ud t}$ est convergente (\textbf{Th\'eor\`eme de comparaison}) d'o\`u  ${\displaystyle \int_0^-\frac{1}{2}f(t)\,\ud t}$ est convergente, alors ${\displaystyle \int_0^\frac{1}{2}f(t)\,\ud t}$ est convergente.
+\item \'Etudions la convergence de ${\displaystyle \int_\frac{1}{2}^1f(t)\,\ud t.}$\\
+$\ln t \sim t-1~~(t\longrightarrow1)$\\
+\begin{align*} f(t)&\sim \dfrac{\sqrt{2}\sqrt{|1-t|}}{\sqrt{t}}\dfrac{1}{t-1}=\dfrac{\sqrt{2}\sqrt{|1-t|}}{\sqrt{t}}\dfrac{1}{-(1-t)}=\dfrac{\sqrt{2}\sqrt{1-t}}{\sqrt{t}}\dfrac{1}{-(1-t)}~~(t\longrightarrow 1)\\ &\sim -\dfrac{1}{\sqrt{t}\sqrt{1-t}}\\& \sim -\dfrac{1}{\sqrt{1-t}}~(t\longrightarrow 1) \end{align*}
+Comme ${\displaystyle \int_\frac{1}{2}^1\dfrac{1}{\sqrt{1-t}}\,\ud t}$ est convergente alors ${\displaystyle \int_\frac{1}{2}^1-\dfrac{1}{\sqrt{1-t}}\,\ud t}$ est convergente, d'o\`u ${\displaystyle \int_\frac{1}{2}^1 f(t)\,\ud t}$ est convergente.
+\item \'Etudions  la convergence de ${\displaystyle \int_1^2f(t)\,\ud t}$.\\
+Comme pr\'ec\'edemment, on montre que $f\sim \dfrac{1}{\sqrt{1-t}},$ on conclut que ${\displaystyle \int_1^2f(t)\,\ud t}$ est convergente.
+\end{itemize}
+Les trois int\'egrales g\'en\'eralis\'ees \'etant convergentes, ${\displaystyle \int_0^2f(t)\,\ud t}$ est convergente.\\
+\end{enumerate}
+
+\textbf{NB:}\quad Si $f$ est d\'efinie sur $[a,b[$ dans le \textbf{Lemme \ref{lem3.3.1}} et le \textbf{Th\'eor\`eme \ref{teo3.3.1}} on posera ${\displaystyle F(n)=\int_a^{b-\frac{1}{n}}f(t)\,\ud t~~(n\in \mathbb{N})}.$ Les conclusions restent inchang\'ees.
+\begin{defi} Soit $f$ une fontion d\'efinie sur $]-\infty,+\infty[$ \`a valeurs dans $\mathbb{R}$. On suppose que $\forall a,b\in \mathbb{R},~ f$ est int\'egrable sur $[a,b]$. On dira que l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_{-\infty}^{+\infty}f(t)\,\ud t}$ est convergente si $\forall a \in \mathbb{R},$ les int\'egrales g\'en\'eralis\'ees ${\displaystyle \int_{-\infty}^af(t)dt}$ et ${\displaystyle \int_a^{+\infty}f(t)\,\ud t}$ sont convergentes. Alors on pose $$ \int_{-\infty}^{+\infty}f(t)\,\ud t=\int_{-\infty}^af(t)\,\ud t+\int_a^{+\infty}f(t)\,\ud t.$$ \end{defi}
+\begin{defi} Soit $f$ une fonction d\'efinie sur $]a,b[,~~(a,b\in \mathbb{R})$ \`a valeurs dans $\mathbb{R}$. On suppose que $ \forall c,c' \in ]a,b[, ~(c<c')~f$ est int\'egrable sur $[c,c']$. On dira que l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^bf(t)\,\ud t }$ est convergente si $ \forall c\in ]a,b[,$ les int\'egrales g\'en\'eralis\'ees ${\displaystyle \int_a^cf(t)\,\ud t }$ et ${\displaystyle \int_c^bf(t)\,\ud t }$ sont convergentes. 
+\end{defi}
+ 
+\section{Fausse int\'egrale g\'en\'eralis\'ee}
+Soit $f:]a,b]\longrightarrow \mathbb{R}$. Si ${\displaystyle \lim_{x\rightarrow a}f(x)}$ existe et est finie alors $f$ peut \^etre prolong\'ee par continuit\'e en posant: \begin{align*}  \tilde{f} : [a,b]&\longrightarrow \mathbb{R} \\ x&\longmapsto \tilde{f}(x)= \begin{cases} f(x) &\quad\text{si}~x\in ]a,b]\\{\displaystyle \lim_{x\rightarrow a}f(x)} &\quad\text{si}~x=a.\end{cases} \end{align*}
+On montre que l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^bf(x)\,\ud x=\int_a^b \tilde{f}(x)\,\ud x,~~\tilde{f}}$ \'etant continue, $\tilde{f}$ est int\'egrable sur $[a,b]$. Par cons\'equent l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^bf(x)\,\ud x }$ est convergente.\\
+\textbf{Exemple:}  ${\displaystyle \int_{0}^{\frac{1}{2}}\left( \dfrac{1}{\lo x}-\dfrac{1}{x-1}\right) \,\ud x.~~\lim_{x\rightarrow 0}\left[ \dfrac{1}{\lo x}-\dfrac{1}{x-1}\right] =1}$\\ 
+La fonction $x\mapsto f(x)=\dfrac{1}{\lo x}-\dfrac{1}{x-1}$ peut \^etre prolong\'ee en $0$ en posant $$ \tilde{f}(0)=1 \text{ et}~  \forall x \in ]0,\frac{1}{2}],~ \tilde{f}(x)=\dfrac{1}{\lo x}-\dfrac{1}{x-1}.$$  $\tilde{f} $  est continue sur $[0,\frac{1}{2}]$ donc int\'egrable sur $[0,\frac{1}{2}]$. Alors ${\displaystyle  \int_0^{\frac{1}{2}}\left( \dfrac{1}{\lo x}-\dfrac{1}{x-1}\right) \,\ud x}$ est convergente.\\ \\
+Nous terminons le chapitre par un des crit\`eres tr\`es d\'etest\'es par les \'etudiants.
+\begin{pro} \label{pro3.4.1}
+Soit $f:[a,b[\longrightarrow \mathbb{R}$ int\'egrable sur $[x,b] ~~\forall x\in ]a,b[$. Pour que ${\displaystyle \int_a^b f(t)\,\ud t}$ soit convergente, il faut et il suffit que toute suite $(x_n)$ de points de $[a,b[$ convergeant vers $b$, la suite de terme g\'en\'eral ${\displaystyle F(x_n)=\int_a^{x_n} f(t)\,\ud t}$ ait une limite et cette limite est alors \'egale \`a ${\displaystyle \int_a^b f(t)\,\ud t}$.
+\end{pro}
+\begin{pr}\quad
+C'est un cas particulier du r\'esultat suivant (cf cours premi\`ere ann\'ee)\\
+${\displaystyle \lim_{x\rightarrow a}F(x)}$ existe si et seulement si por toute suite $(x_n)$ de points appartenant au domaine de d\'efinition de $F$ et convergeant vers $a$, ${\displaystyle \lim_{n\rightarrow +\infty} F(x_n)}$ existe. Alors ${\displaystyle \lim_{x\rightarrow a} F(x)=\lim_{n\rightarrow+\infty} F(x_n).}$
+\end{pr}
+\begin{teo}[Crit\`ere de Cauchy]  \label{teo3.4.1}
+Soit $f:[a,b[\longrightarrow \mathbb{R}$ int\'egrable sur $[a,x]~~\forall x\in [a,b[.$ Alors l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^b f(t)\,\ud t}$ est convergente si et seulement si $\forall \varepsilon >0,~\exists r_x$ tel que les in\'egalit\'es $b>v>u\geq r_x$ entra\^inent $$ \Big|\int_u^v f(t)dt\Big|\leq \varepsilon.$$
+\end{teo}
+\begin{pr}\quad
+Montrons que la condition est n\'ecessaire.\\
+
+Supposons que l'int\'egrale g\'en\'eralis\'ee soit convergente et posons ${\displaystyle A=\int_a^b f(t)\,\ud t}$. Posons ${\displaystyle F(x)=\int_a^x f(t)\,\ud t};$ par d\'efinition ${\displaystyle A= \lim_{x\rightarrow b} F(x)}$ donc $\forall \varepsilon >0~\exists r_\varepsilon$ tel que les in\'egalit\'es $b>x\geq r_\varepsilon$ entra\^inent $|F(x)-A|\leq \dfrac{\varepsilon}{2}.$ Si $u,v$ v\'erifient $b>v>u\geq r_\varepsilon$ on a donc $|F(v)-A|\leq \dfrac{\varepsilon}{2}$ et $|F(u)-A|\leq \dfrac{\varepsilon}{2}$ d'o\`u $$\Big| \int_u^v f(t)\,\ud t\Big|=|F(v)-F(u)|<\varepsilon.$$
+Montrons que la condition est suffisante.\\
+
+ Supposons cette condition v\'erifi\'ee. Soit $(x_n)$ une suite quelconque de points de $[a,b[$ convergeant vers $b$. Soit $\varepsilon>0,~\exists N_\varepsilon \in \mathbb{N}$ tel que l'in\'egalit\'e $n>N_\varepsilon$ entra\^ine $x_n>r_\varepsilon.$ Les in\'egalit\'es $n>N_\varepsilon$ et $p>N_\varepsilon$ entra\^inent donc: $$|F(x_n)-F(x_p)|=\Big|\int_{x_n}^{x_p} f(t)\,\ud t\Big|<\varepsilon.$$ La suite $(F(x_n))$ est donc de Cauchy, par suite convergente. La conclusion voulue d\'ecoule de la \textbf{Proposition \ref{pro3.4.1}}. 
+\end{pr}
+
+
+\chapter{Suites et s\'eries de fonctions}
+\section{Objectifs}
+Dans ce chapitre, on d\'efinit les diff\'erentes sortes de convergences d'une suite de fonctions. On \'etudie particuli\`erement les conditions dans lesquelles la limite (respectivement la somme) d'une suite (respectivement une s\'erie) de fonctions continues, d\'erivables ou int\'egrables, est continue, d\'erivable, ou int\'egrable. Ces conditions sont celles d'interversions de limites
+\section{D\'efinition}
+On pose $ \mathbb{K}=\mathbb{R}$ ou $ \mathbb{C}$ et $D$ une partie non vide de $ \mathbb{K}.$ Soient $f_0,f_1,\cdots,f_n$, une suite de fonctions d\'efinies dans \`a valeurs dans $ \mathbb{K}$. Pour tout $n\in \mathbb{N}$, on pose $s_n=f_0+f_1+\cdots+f_n.$ On obtient une nouvelle suite $(s_n)$ d\'efinie sur $D$ \`a valeurs dans $ \mathbb{K}.$ Pour tout $x\in D,~s_n(x)=f_0(x)+f_1(x)+\cdots+f_n(x).$\\
+Le couple $(f_n,s_n)$ est appel\'e s\'erie de fonctions de terme g\'en\'eral $f_n$. Elle est d\'esign\'ee par $\sum f_n$. La suite $(s_n)$ est appel\'ee suite des sommes partielles de la s\'erie$\sum f_n$.\\
+
+Soit $(f_n)$ une suite de fonctions d\'efinies sur $D$ \`a valeurs dans $ \mathbb{K}$. Soit $A \subset D$ et une fonction $g:A\longrightarrow \mathbb{K}.$\\
+On dit que la suite de fonctions $(f_n)$ \textbf{converge simplement} (ou ponctuellement) dans $A$ vers $g$ si pour tout $x\in A$, la suite num\'erique $(f_n(x))$ converge vers $g(x)$. En d'autres termes, $\forall x\in A ~~\forall \varepsilon>0, \exists n_0(x,\varepsilon) ~~\forall n\geq n_0(x,\varepsilon) ~~|f_n(x)-g(x)|\leq \varepsilon.$ Ce type de convergence est appel\'ee \textbf{convergence simple}\\
+\textbf{Exemples}
+\begin{enumerate}
+\item Soit 
+\begin{align*} \forall n, f_n:[0,1]&\longrightarrow \mathbb{R}\\ x&\longmapsto \dfrac{n}{nx+1}. 
+\end{align*}
+\textbf{\'Etude de la convergence simple de la suite de fonctions $(f_n),\quad n\in \mathbb{R}$ }\\
+Pour $x=0,~f_n(0)=n,~~{\displaystyle \lim _{n\rightarrow +\infty}f_n(0)=+\infty.}$ \\
+Soit $x\in ]0,1],~~{\displaystyle \lim_{n\rightarrow+\infty}f_n(x)=\dfrac{1}{x}.}$ \\
+En conclusion la suite de fonctions $(f_n)$ converge simplement dans $]0,1]$ vers la fonction 
+\begin{align*} g:]0,1]&\longrightarrow \mathbb{R}\\ x&\longmapsto g(x)=\dfrac{1}{x}.
+\end{align*}
+\item Soit\begin{align*} \forall n\in \mathbb{N},~~f_n:[0,+\infty[&\longrightarrow \mathbb{R}\\ x&\longmapsto f_n(x)=\dfrac{nx}{2+nx}
+\end{align*}
+\textbf{\'Etude de la convergence simple de  $(f_n)$}\\
+Pour $x=0,~~{\displaystyle \lim_{n\rightarrow+\infty}f_n(0)=0.}$\\
+Pour $x\in ]0,+\infty[,~~{\displaystyle \lim_{n\rightarrow+\infty}f_n(x)=1.}$\\
+Donc $(f_n)$ converge simplement dans $[0,+\infty[$ vers la fonction  
+\begin{align*} g:[0,+\infty[&\longrightarrow \mathbb{R}\\ x&\longmapsto g(x)= 
+\begin{cases} 0 &\quad~~\text{si}~~x=0\\
+1 &\quad~~\text{si}~~x\neq 0 
+\end{cases} 
+\end{align*}
+\end{enumerate}
+\begin{rem} \label{rem4.2.1}
+\begin{enumerate}
+\item $g$ n'est pas continue dans $[0,+\infty[$ bien que $\forall n~~f_n$ le soit.
+\item ${\displaystyle \lim_{n\rightarrow+\infty} \lim_{x\rightarrow0}f_n(x)=0}$ mais ${\displaystyle \lim_{x\rightarrow0} \lim_{n\rightarrow+\infty}f_n(x)=1}$ (Exemple 2).
+\end{enumerate}
+\end{rem}
+
+On remarquera que la limite simple d'une suite de fonctions continues n'est pas toujours continue et que l'on ne doit pas syst\'ematiquement intervertir les ${\displaystyle \lim_{n\rightarrow+\infty}}$ et ${\displaystyle  \lim_{x\rightarrow0}}$ dans ${\displaystyle \lim_{n\rightarrow+\infty} \lim_{x\rightarrow0}f_n(x)}$.\\
+Soit $(f_n)$ une suite de fonctions d\'efinies dans $D$ \`a valeurs dans $ \mathbb{K}$. Soit $A \subset D$. On dit que la s\'erie $\sum f_n$ converge simplement vers $s$ dans $A$ si la suite $(s_n)$ des sommes partielles de la s\'erie converge simplement vers $s$ dans $A$. Dans le cas contraire on dit que la s\'erie $\sum f-n$ est divergente. On pose $\forall t\in A ~~{\displaystyle s(t)=\sum_{n=0}^{+\infty} f_n(t)}$ si $\sum f_n$ converge simplement vers $s$ dans $A$.\\
+\textbf{Exemple}\quad
+\'Etudier la convergence simple de $\sum f_n$ o\`u $\forall n\in \mathbb{N},$ \begin{align*} f_n: \mathbb{R}& \longrightarrow \mathbb{R}\\ x& \longmapsto f_n(x)=x^n.\end{align*}
+\textbf{Solution}\quad
+\begin{align*} s_n&=1+x+x^2+\cdots+x^n\\ &=\dfrac{1-x^{n+1}}{1-x}\end{align*}
+$(s_n)$ converge si et seulement si $|x|<1$ et ${\displaystyle \lim_{n\rightarrow+\infty} s_n(x)=\dfrac{1}{1-x}.}$\\
+Donc $\sum f_n$ converge simplement dans $]-1,1[$ vers la fonction $g$ o\`u \begin{align*} g: ]-1,1[&\longrightarrow \mathbb{R}\\ x&\longmapsto g(x)=\dfrac{1}{1-x} \end{align*} 
+Pour tout $x\in ]-1,1[,~{\displaystyle \sum_{n=0}^{+\infty} x^n=\dfrac{1}{1-x}.}$ \\
+$\sum x^n$ est divergente sur $ \mathbb{R} \setminus ]-1,1[$.\\
+
+Pour pallier aux insuffisances de la convergence simple (voir \textbf{Remarque \ref{rem4.2.1}}), on va introduire d'autres types de convergence.
+\begin{defi} Soit $(f_n)$ une suite de fonctions d\'efinies dans $D$ \`a valeurs dans $ \mathbb{K}.$ Soit $A \subset D$ et une fonction $g:A\longrightarrow \mathbb{K}.$ On dit que $(f_n)$ converge uniform\'ement sur $A$ vers $g$ si ${\displaystyle \lim_{n\rightarrow+\infty} \sup_{x\in A}|f_n(x)-g(x)|=0.}$\\
+En d'autres termes, 
+$$ \forall \varepsilon >0,~\exists n_0(\varepsilon)~~\forall n\geq n_0(\varepsilon),~\forall x\in A, |f_n(x)-g(x)|\leq\varepsilon$$
+
+On dit que la s\'erie $\sum f_n$ converge uniform\'ement vers $s$ sur $A$ si la somme des sommes partielles de la s\'erie $\sum f_n$ converge vers uniform\'ement vers $s$ sur $A$.
+\end{defi}
+\begin{rem} \label{rem4.2.2}   \begin{enumerate}
+\item[i-] La limite simple et la limite uniforme co\"{i}ncident, c'est-\`a-dire si $(f_n)$ converge simplement vers $f$ dans $A$ et si $(f_n)$ converge uniform\'ement sur $A$ vers $g$ alors $f=g$.
+\item[ii-] La s\'erie $\sum f_n$ converge uniform\'ement sur $A$ si et seulement si ${\displaystyle \lim_{n\rightarrow+\infty} \sup_{x\in A} \Big|\sum_{k=n+1}^{+\infty} f_k(x)\Big|=0}$.
+\item[iii-] La convergence uniforme implique la convergence simple. On dit que la convergence uniforme est plus forte que la convergence simple.
+\end{enumerate}
+\end{rem}
+\begin{defi} Soit $D \subset \mathbb{K},~~A \subset D$ et $(f_n)$ une suite de fonctions d\'efinies sur $A$. On dit que la s\'erie de fonctions $\sum f_n$ converge normalement sur $A$ s'il existe une s\'erie $\sum u_n$ \`a termes positifs ou nuls convergente telle que $\forall n$ et $\forall x\in A,~~|f_n(x)|\leq u_n.$ 
+\end{defi}
+\textbf{Exemple}\quad
+\begin{align*} f_n: \mathbb{R}& \longrightarrow \mathbb{R}\\ x& \longmapsto f_n(x)=\dfrac{\cos nx}{n^2+1} \end{align*} 
+Pour tout $n$, pour tout $x\in \mathbb{R}$, $|f_n(x)|\leq \dfrac{1}{1+n^2}$.\\
+$\sum \dfrac{1}{1+n^2}$ est une  s\'erie convergente. Donc $\sum f_n$ est normalement convergente.
+\begin{pro} \label{pro4.2.1} Toute s\'erie normalement convergente est uniform\'ement convergente.
+\end{pro}
+\begin{pr}\quad
+
+Supposons la s\'erie $\sum f_n$ normalement convergente sur $A$. Alors $\forall x\in A, ~x$ fix\'e, $\sum |f_n|$ est convergente, ( \textbf{Th\'eor\`eme \ref{teo1}}). Alors elle converge simplement dans $A$ vers la fonction $ x\longmapsto{\displaystyle  \sum _{n=0}^{+\infty}f_n(x)=s(x)}.$ Soit $(s_n)$ la suite des sommes partielles de la s\'erie $\sum f_n$. On a $$ \sup_{x\in A}|s(x)-s_n(x)|=\sup_{x\in A} \Big|\sum_{k=n+1}^{+\infty} f_k(x)\Big|\leq \sum_{k=n+1}^{+\infty} u_k.$$
+On a $$\lim_{n\rightarrow+\infty} \sup_{x\in A}|s(x)-s_n(x)|\leq \lim_{n\rightarrow+\infty} \left( \sum_{k=n+1}^{+\infty} u_k \right) $$.
+\end{pr}
+
+\section{\'Etude de la convergence uniforme}
+\subsection{Crit\`ere de Cauchy de la convergence uniforme}
+\begin{teo} \label{teo4.3.1} Soient $D \subset \mathbb{K}, A \subset D$ et $(f_n)$ une suite de fonctions d\'efinies dans $D$ \`a valeurs dans $ \mathbb{K}$. Alors $(f_n)$ converge uniform\'ement sur $A$ vers la fonction $f: A \longrightarrow \mathbb{K}$ si et seulement si $ \forall \varepsilon>0, ~~\exists n_0~\forall p,q\geq n_0, ~~\forall x\in A,~~|f_p(x)-f_q(x)|\leq \varepsilon$
+\end{teo}
+\begin{pr} \quad
+
+Supposons que $(f_n)$ converge uniform\'ement sur $A$. Alors $\forall \varepsilon>0,~\exists n_0~\forall m\geq n_0 ~\forall x\in A, ~|f_m(x)-f(x)|\leq \dfrac{\varepsilon}{2}$. Donc $\forall x\in A,~\forall p,q\geq n_0$, \begin{align*} |f_p(x)-f_q(x)|&=|f_p(x)-f(x)+f(x)-f_q(x)|\\ &\leq |f_p(x)-f(x)| +|f_q(x)-f(x)|\\ &\leq \dfrac{\varepsilon}{2}+\dfrac{\varepsilon}{2}\\&=\varepsilon \end{align*}
+Montrons que la condition est suffisante\\
+
+Supposons que $ \forall \varepsilon>0~\exists n_0 ~\forall p,q\geq n_0,~\forall x\in A,~|f_p(x)-f_q(x)|\leq \varepsilon.$ Soit $x\in A$, fix\'e; la suite $(f_n)$ est donc de Cauchy dans $ \mathbb{K}$, elle est donc convergente. Posons $ \forall x\in A,~{\displaystyle f(x)=\lim_{n\rightarrow+\infty}f_n(x).}$ On d\'efinit ainsi une application $ f:A\longrightarrow \mathbb{K}.$ Montrons que $f$ est la limite uniforme de $(f_n)$ sur $A$.  On a $|f_p(x)-f_q(x)|\leq |f_p(x)-f(x)|+|f_q(x)+f(x)|.$ \\ Fixons $p\geq n_0$ et faisons tendre $q$ vers $+\infty$. $ \forall x\in A, ~|f_p(x)-f(x)|\leq \dfrac{\varepsilon}{2}$ et $|f_q(x)-f(x)|\leq \dfrac{\varepsilon}{2}$ d'o\`u $ \forall \varepsilon >0~\exists n_0~\forall p,q\geq n_0~\forall x\in A,~|f_p(x)-f(x)|<\varepsilon$.
+\end{pr}
+
+\subsection{Th\'eor\`eme fondamental d'interversion des limites}
+\begin{teo} \label{teo4.3.2}
+Soit $D$ un intervalle de $ \mathbb{R}$ ou un disque du plan complexe. Soit $x$ un point de $D$ ou limite d'une suite d'\'el\'ements de $D$. Soit $(f_n)$ une suite de fonctions d\'efinie dans $D$ \`a valeurs dans $ \mathbb{K}$ qui v\'erifie les conditions suivantes:
+\begin{enumerate}
+\item  $(f_n)$ converge uniform\'ement sur $D$ vers $f$.
+\item  \label{no2} $ \forall n\in \mathbb{N} ~{\displaystyle \lim_{t\rightarrow x} f_n(t)}$ existe dans $ \mathbb{K}.$
+\end{enumerate}
+Soit $\ell_n$ cette limite.\\
+Alors la suite $(\ell_n)$ est convergente (i.e. ${\displaystyle \lim_{n\rightarrow +\infty}\lim_{t\rightarrow x} f_n(t)}$ existe) et $$\lim_{n\rightarrow +\infty}\lim_{t\rightarrow x} f_n(t)=\lim_{t\rightarrow x}\lim_{n\rightarrow +\infty}f_n(t).$$
+\end{teo}
+\begin{pr}\quad
+1. $\Longrightarrow ~~(\forall \varepsilon>0~\exists n_0 \forall p,q\geq n_0 ~~\forall t\in D, ~|f_p(x)-f_q(x)|<\varepsilon)$. \\
+En passant \`a la limite $t\rightarrow x$, on a $ \forall \varepsilon >0, \exists n_0 ~~\forall p,q\geq n_0~~ |\ell_p-\ell_q|<\varepsilon$\\
+Donc $(\ell_n)$ est suite de Cauchy dans $ \mathbb{K}$; elle est donc convergente. Soit $\ell$ sa limite. Il reste \`a prouver que ${\displaystyle \lim_{t\rightarrow x}f(t)=\ell}$ i.e. $\forall \varepsilon>0,~\exists \eta>0 ~\forall t\in D,~|x-t|<\eta \Rightarrow |f(t)-\ell|\leq \varepsilon$. \\
+On a 
+\begin{align*}
+|f(t)-\ell|= & |f(t)-f_{n_{0}}(t)+f_{n_{0}}(t)-\ell_{n_{0}}+\ell_{n_{0}}-\ell|\\
+\leq & |f(t)-f_{n_{0}}(t)|+|f_{n_{0}}(t)-\ell_{n_{0}}|+|\ell_{n_{0}}-\ell|
+\end{align*}
+Soit $\varepsilon >0;$ 
+choisissons $n_{0}$ tels que $|\ell_{n_{0}}-\ell|\leq \dfrac{\varepsilon}{3}$ 
+et $\forall t\in D,$ $|f_{n_{0}}(t)-f(t)|\leq \dfrac{\varepsilon}{3}$\\
+D'apr\`es \ref{no2}. il existe $\eta >0$ tel que $\forall t\in D,$ $|x-t|< \eta$ implique $|f_{n_{0}}(t)-\ell_{n_{0}}|\leq \dfrac{\varepsilon}{3}.$ Donc $\forall \varepsilon >0 ~~\exists \eta >0~~\forall t\in D,~~|x-t|<\eta$ implique $|f(t)-\ell|\leq \dfrac{\varepsilon}{3}+\dfrac{\varepsilon}{3}+\dfrac{\varepsilon}{3}=\varepsilon$. 
+\end{pr}
+
+
+\section{Applications}
+\begin{teo} \label{teo4.4.1} Soit $D$, un intervalle de $\mathbb{R}$ ou un disque du plan complexe. Soit $x$ un point de $D$ ou limite d'une suite de points de $D$. Soit $(f_n)$ une suite de fonctions d\'efinies \`a valeurs dans $\mathbb{K}$ qui v\`erifie les conditions suivantes:
+\begin{enumerate}
+\item[i-] $\sum f_n$ converge uniform\'ement sur $D$ vers la fonction $g$. (${\displaystyle g= \sum_{n=0}^{+\infty} f_n}$).
+\item[ii-] $\forall n\in \mathbb{N} ~~{\displaystyle \lim_{t\rightarrow x} f_n (t)}$ existe. Soit $\ell_n$ cette limite. 
+\end{enumerate}
+Alors la s\'erie $\sum_n \ell_n $ est convergente et $$ \sum_{n=0}^{+\infty} \left( \lim_{t\rightarrow x} f_n (t)\right)=\lim_{t\rightarrow x} \left(\sum_{n=0}^{+\infty} f_n(t)\right).$$
+\end{teo}
+\begin{pr}\quad
+
+Soit $(s_n)$ la suite des sommes partielles de la s\'erie $\sum f_n$.\\
+i- implique $(s_n)$ converge uniform\'ement vers $g$ sur $D$.\\
+ii- implique $\forall n,~~{\displaystyle \lim_{t\rightarrow x}s_n(t)}$ existe. Soit $b_n$ cette limite. On a $b_n=\ell_0+\ell_1+\cdots+\ell_n.~~(b_n)$ est convergente. \\
+Dire que $(b_n)$ est convergente signifie que la s\'erie $\sum \ell_n$ est convergente. La suite $(s_n)$ v\'erifie les conditions du \textbf{Th\'eor\`eme \ref{teo4.3.2}}\\
+Donc $$ \lim_{t\rightarrow x}\lim_{n\rightarrow+\infty}s_n(t)=\lim_{n\rightarrow+\infty}\lim_{t\rightarrow x}s_n(t)$$ i.e. $$ \sum_{n=0}^{+\infty} \left( \lim_{t\rightarrow x} f_n (t)\right)=\lim_{t\rightarrow x} \left(\sum_{n=0}^{+\infty} f_n(t)\right).$$
+\end{pr}
+\begin{teo}  \label{teo4.4.2} Soit $D$ un intervalle de $\mathbb{R}$ ou un disque du plan complexe. Soit $x_0$ un point de $D$ ou limite d'une suite d'\'el\'ements de $D$. Soit $(f_n)$ une suite de fonctions d\'efinies dans $D$ \`a valeurs dans $\mathbb{K}$.
+\begin{enumerate}
+\item Supposons que $\forall n,~~f_n$ soit continue en $x_0$. Alors :
+\begin{itemize}
+\item[i-] Si $(f_n)$ converge uniform\'ement sur $D$ vers $f$ alors $f$ est continue en $x_0$
+\item[ii-] Si la s\'erie $\sum f_n$ converge uniform\'ement sur $D$ alors sa somme est continue en $x_0$.
+\end{itemize}
+\item Supposons que $\forall n,~~f_n$ soit continue sur $D$. Alors :
+\begin{itemize}
+\item[i-] Si $(f_n)$ converge uniform\'ement sur $D$ vers $f$ alors $f$ est continue sur $D$.
+\item[ii-] Si $\sum f_n$ est uniform\'ement convergente sur $D$ alors la somme ${\displaystyle  t\longmapsto \sum_{n=0}^{+\infty}f_n(t)}$ est continue sur $D$.
+\end{itemize}
+\end{enumerate}
+\end{teo}
+\begin{pr}\quad
+
+La continuit\'e \'etant une propri\'et\'e locale, il suffit de prouver l'assertion i- de 1-. L'assertion ii- est une cons\'equence de i-.\\
+Montrons que $f$ est continue en $x_0$ i.e. ${\displaystyle \lim_{t \rightarrow x_0}f_n(t)=f(x_0)}$. \\ Les hyppth\`eses du \textbf{Th\'eor\`eme \ref{teo4.3.2}} sont v\'erifi\'ees.
+\begin{enumerate}
+\item $\forall n,~~{\displaystyle \lim_{t\rightarrow x_0}f_n(t)=f_n(x_0)}$ (existe car $f_n$ est continue en $x_0$).
+\item $(f_n)$ converge uniform\'ement vers $f$ sur $D$.
+\end{enumerate}
+Donc ${\displaystyle \lim_{t\rightarrow x_0}\lim_{n\rightarrow +\infty} f_n(t)=\lim_{n\rightarrow+\infty}\lim_{t\rightarrow x_0}f_n(t)}$ ou encore ${\displaystyle \lim_{t\rightarrow x_0}f(t)=f(x_0).}$ 
+\end{pr}
+\textbf{Exemple 1:}\quad Soit $\forall n,$ 
+\begin{align*}
+f_n:\mathbb{R} & \longrightarrow \mathbb{R}\\
+x & \longmapsto f_n(x)=x+\dfrac{x}{1+x}+\cdots+\dfrac{x}{(1+x)^n}
+\end{align*}
+\'Etudier la convergence de $(f_n)$.\\
+\textbf{Solution}\quad On a $$f_n(x)=
+\begin{cases}(1+x)\left[1-\dfrac{1}{(1+x)^{n+1}}\right] &\quad~~\text{si} ~~x\neq 0\\ 0 &\quad~~\text{si}~~x=0 \end{cases}$$
+\textbf{Convergence simple}\\
+${\displaystyle \lim_{n\rightarrow+\infty}f_n(0)=0}$ et ${\displaystyle \lim_{n\rightarrow+\infty}f_n(x)=1+x}$ si $x\neq0$\\
+$(f_n)$  converge simplement dans vers la fonction 
+\begin{align*}
+g:\mathbb{R_+}&\longrightarrow\mathbb{R}\\ x&\longmapsto g(x)=\begin{cases} 0&\quad\text{si}~~x=0\\1+x~&\quad\text{si}~~x\neq 0 \end{cases}
+\end{align*}
+\textbf{Convergence uniforme}\\
+$g$ n'est pas continue dans $\mathbb{R_+}$, d'apr\`es l'assertion 2-i-, $(f_n)$ n'est pas uniform\'ement convergente sur $\mathbb{R_+}.$\\
+V\'erifions ceci:\\
+Si $(f_n)$ convergeait uniform\'ement vers $g$, on aurait ${\displaystyle \lim_{n\rightarrow+\infty}\sup|f_n(x)-g(x)|=0.}$\\
+ On a 
+\begin{align*}
+\sup_{x\in \mathbb{R_+}}|f_n(x)-g(x)|&=\sup_{x\in \mathbb{R_+}}\Big|\dfrac{1}{(1+x)^n}\Big|\\ &\geq \dfrac{1}{(1+\frac{1}{n})^n}\\&=\left(\dfrac{n+1}{n}\right)^{-n}
+\end{align*}
+\begin{align*}
+\lim_{n\rightarrow+\infty}\sup_{x\in\mathbb{R}_+}|f_n(x)-g(x)|\geq\lim_{n\rightarrow+\infty}\left(\dfrac{n+1}{n}\right)^{-n}=\dfrac{1}{e}
+\end{align*}
+Alors ${\displaystyle\sup_{x\in\mathbb{R_+}}|f_n(x)-g(x)|}$ ne tend pas uniform\'ement vers $0$ quand $n\rightarrow+\infty$\\
+Donc la suite $(f_n)$ ne converge pas uniform\'ement vers $g$ sur $\mathbb{R_+}.$ Par contre $(f_n)$ converge uniform\'ement vers $g$ sur tout intervalle $[a,+\infty[$ o\`u $a>0$ car ${\displaystyle \sup_{x\in[a,+\infty[}|f_n(x)-g(x)|\leq\dfrac{1}{(1+a)^n}.}$\\ Donc $$\lim_{n\rightarrow+\infty}\left(\sup_{x\in[a,+\infty[}|f_n(x)-g(x)|\right)=0.$$\\
+\textbf{Exemple 2:}\quad \'Etudier la convergence de la suite de fonctions $(f_n)$ o\`u $\forall n$ 
+\begin{align*}
+f_n: \mathbb{R_+}&\longrightarrow\mathbb{R}\\ x&\longmapsto f_n(x)=\dfrac{x}{e^{nx}}
+\end{align*}
+\textbf{Convergence simple}\\
+$\forall x\in \mathbb{R_+},~~(f_n)$ converge simplement vers la fonction nulle $g$ dans $\mathbb{R_+}$\\
+\textbf{Convergence uniforme}\\
+$$\lim_{n\rightarrow+\infty}\sup_{x\in\mathbb{R_+}}=\lim_{n\rightarrow+\infty}\left(\sup_{x\in \mathbb{R_+}}\left(\dfrac{x}{e^{nx}}\right)\right)$$\\
+\'Etudions $f_n(x)=\dfrac{x}{e^{nx}}$ $$f'_n(x)=\dfrac{1-nx}{e^{nx}}\quad(x\in \mathbb{R_+})$$
+Donc $$\sup_{x\in\mathbb{R_+}}|f_n(x)-g(x)|=\dfrac{1}{ne};$$ alors $$\lim_{n\rightarrow +\infty}\left(\sup_{x\in\mathbb{R_+}}|f_n(x)-g(x)|\right)=0.$$ Donc $(f_n)$ converge uniform\'ement vers $g$ sur $\mathbb{R_+}$.
+\begin{teo} \label{teo4.4.3} Soit $[a,b]\subset\mathbb{R},~~(f_n)$ une suite de fonctions d\'efinies et d\'erivables sur $[a,b]$ et \`a valeurs dans $\mathbb{R}$ telle que la suite $(f_n(x_0))$ soit convergente pour un $x_0\in [a,b]$ et telle que $(f'_n)$ soit uniform\'ement convergente sur $[a,b]$. Alors 
+\begin{enumerate}
+\item $(f_n)$ converge uniform\'ement vers une fonction $f$ sur $[a,b]$.
+\item $f$ est d\'erivable et ${\displaystyle f'(x)=\lim_{n\rightarrow+\infty}f'_n(x)\quad\forall x\in [a,b]}$
+\end{enumerate}
+\end{teo}
+\begin{pr}\quad
+
+Soit $\varepsilon>0$, choisissons $N$ tel que $\forall n,m>N,$ on ait $|f_m(x_0)-f_n(x_0)|\leq\dfrac{\varepsilon}{2}$ et $\forall x\in [a,b],~~~|f'_m(x)-f'_n(x)|<\dfrac{\varepsilon}{2(b-a)}.$\\
+Appliquons \`a la fonction $f_m-f_n$, le th\'eor\`eme des accroissements finis sur $[x,x']$ o\`u $x,x'\in [a,b].$ On a $$|(f_m(x)-f_n(x))-(f_m(x')-f_n(x'))|\leq|x-x'|\sup_{t\in [a,b]}|f'_m(t)-f'_n(t)| \qquad\qquad\qquad(*)$$
+En prenant $x'=x_0$ et en tenant compte de l'in\'egalit\'e $|x-x'|<(b-a),$ on obtient:
+$$\forall \varepsilon>0,\exists N,~~~\forall n,m>N,\forall x\in[a,b]~~|f_m(x)-f_n(x)-(f_m(x_0)-f_n(x_0))|\leq\dfrac{\varepsilon}{2}$$ D'o\`u 
+\begin{align*}
+|f_m(x)-f_n(x)|&\leq|f_m(x)-f_n(x)-\left(f_m(x_0)-f_n(x_0)\right)|+|f_m(x_0)-f_n(x_0)|\\&\leq \dfrac{\varepsilon}{2}+\dfrac{\varepsilon}{2}\\&=\varepsilon.
+\end{align*}
+On conclut que $(f_n)$ v\'erifie le crit\`ere de Cauchy pour la convergence uniforme. Alors $(f_n)$ est uniform\'ement convergente. Posons $f=\lim f_n$. Fixons $x$ dans $[a,b]$ et posons $$ g_n(t)=\dfrac{f_n(t)-f_n(x)}{t-x}\quad\text{et}  \quad g(t)=\dfrac{f(t)-f(x)}{t-x}$$
+\begin{enumerate}
+\item ${\displaystyle \forall n,~~\lim_{t\rightarrow x}g_n(t)}$ existe (c'est $f'_n(x)$)
+\item Montrons que $(g_n)$ converge uniform\'ement vers $g$. 
+\end{enumerate}
+Dans (*), en posant $x'=t$, on a:$$|g_n(t)-g_m(t)|\leq\dfrac{\varepsilon}{2(b-a)}.$$ Ceci prouve que $(g_n)$ v\'erifie le crit\`ere de Cauchy pour la convergence uniforme. Elle est donc convergente sur $[a,b]\setminus\{x\}.$ \\
+D'autre part, l'\'egalit\'e $g_n(t)=\dfrac{f_n(t)-f_n(x)}{t-x}$ montre que $(g_n)$ converge simplement vers $g$ sur $[a,b]\setminus\{x\}$ car $(f_n)$ converge uniform\'ement vers $f$ sur $[a,b]$. D'o\`u $(g_n)$ converge uniform\'ement vers $g$ sur $[a,b]\setminus\{x\}$. D'apr\`es le \textbf{Th\'eor\`eme \ref{teo4.3.2}} appliqu\'e \`a $(g_n)$ on a: ${\displaystyle \lim_{t\rightarrow x}g(t)=\lim_{n\rightarrow+\infty}f'_n(x)}$ i.e. ${\displaystyle f'(x)=\lim_{n\rightarrow+\infty}f'_n(x)}$ \end{pr}
+\begin{rem}[ importante] L'hypoth\`ese de la convergence uniforme porte sur $(f'_n)$.
+\end{rem}
+\begin{rem} Ce th\'eor\`eme est relatif \`a l'interversion des limites, puisque \begin{align*}
+ \left( f'(x)=\lim_{n\rightarrow +\infty}f'_n(x)\right)\Leftrightarrow \left[\lim_{t\rightarrow x}\left(\lim_{n\rightarrow+\infty}\dfrac{f_n(t)-f_n(x)}{t-x}\right)\right]=\lim_{n\rightarrow+\infty}\lim_{t\rightarrow x}\dfrac{f_n(t)-f_n(x)}{t-x}.
+\end{align*}
+\end{rem}
+\begin{cor} \label{cor4.4.1} Soit $(f_n)$ une suite de fonctions d\'erivables et d\'efinies sur $[a,b]$ et \`a valeurs dans $\mathbb{R}$ telle que la s\'erie num\'erique $\sum f_n(x_0)$ soit convergente pour un $x_0$ de $[a,b]$ et telle que la s\'erie $\sum f'_n$ soit uniform\'ement convergente sur $[a,b]$. Alors:
+\begin{enumerate}
+\item $\sum f_n$ est uniform\'ement convergente sur $[a,b]$.
+\item La somme ${\displaystyle t\mapsto \sum_{n=0}^{+\infty}f_n(t)}$ est d\'erivable sur $[a,b]$ et $\forall x\in [a,b]$ $$\left(\sum_{n=0}^{+\infty}f_n\right)'(x)=\sum_{n=0}^{+\infty} f'_n(x).$$
+\end{enumerate}
+\end{cor}
+\begin{pr}\quad
+Il suffit d'appliquer le \textbf{Th\'eo\`eme \ref{teo4.4.3}} aux suites des sommes partielles des s\'eries $\sum f_n(x_0)$ et $\sum f'_n$.
+\end{pr}
+\begin{teo} \label{teo4.4.4}
+\begin{enumerate}
+\item \label{teo4.4.4.1} Soit $[a,b]\subset \mathbb{R}$ et $(f_n)$ une suite de fonctions continues sur $[a,b]$ \`a valeurs dans $\mathbb{R}$ qui converge uniform\'ement vers $f$ sur $[a,b]$. Alors $f$ est int\'egrable sur $[a,b]$ et $$\lim_{n\rightarrow+\infty}\int_a^b f_n(t)\,\ud t=\int_a^b \left( \lim_{n\rightarrow+\infty}f_n(t)\right)\,\ud t=\int_a^b f(t)\,\ud t$$
+\item \label{teo4.4.4.2} Soit $\sum f_n$ une s\'erie de fonctions continues sur $[a,b]$. Alors la fonction ${\displaystyle t\longmapsto g(t)=\sum_{n=0}^{+\infty} f_n(t)}$ est int\'egrable sur $[a,b]$ et si $\sum f_n$ converge uniform\'ement sur $[a,b],$ alors $$ \sum_{n=0}^{+\infty}\int_a^bf_n(t)\,\ud t=\int_a^b\left(\sum_{n=0}^{+\infty} f_n(t)\right)\,\ud t$$
+\end{enumerate}
+\end{teo}
+\begin{pr}\quad \ref{teo4.4.4.2}. d\'ecoule de \ref{teo4.4.4.1}. Il suffit donc de prouver \ref{teo4.4.4.1}.\\
+Soit $x\in [a,b],$ posons ${\displaystyle g_n(x)=\int_a^x f_n(t)\,\ud t}$. La fonction $f$ est continue sur $[a,b]$ (\textbf{Th\'eor\`eme \ref{teo4.4.2}}).\\
+Toute fonction continue sur un segment est int\'egrable sur ce segment donc $f$ est int\'egrable sur $[a,b]$;\\ Comme $\forall n,~f_n$ est continue, $g_n$ est d\'erivable et $g'_n(x)=f_n(x).$ Aussi a-t-on $g_n(a)=0$.\\ Donc $(g'_n)$ converge uniform\'ement vers $f$ et ${\displaystyle \lim_{n\rightarrow+\infty}g_n(x)}$ existe. D'apr\`es le \textbf{Th\'eor\`eme \ref{teo4.4.3}}, $(g_n)$ converge uniform\'ement sur $[a,b]$ vers une fonction $g$ avec $g(a)=0$. De plus, ${\displaystyle g'(x)=\lim_{n\rightarrow+\infty}g'_n(x)=f(x),~~\forall x\in [a,b].}$\\
+Donc ${\displaystyle g(x)=\int_\alpha^x f(t)\,\ud t}$ comme $g(a)=0,~~\alpha=a.$ D'o\`u $$\lim_{n\rightarrow+\infty}g_n(x)=\lim_{n\rightarrow+\infty}\int_a^x f_n(t)\,\ud t=\int_a^x f(t)\,\ud t=\int_a^x\left(\lim_{n\rightarrow+\infty}f_n(t)\right)\,\ud t.$$
+Comme ceci est vrai $\forall x\in [a,b],$ c'est vrai en particulier pour $x=b$. 
+\end{pr}
+\begin{teo} \label{teo4.4.5}
+Soit $(g_n)$ une suite de fonctions d\'efinies sur un intervalle $I$ de $\mathbb{R}$ telles que $\forall x\in I,~~\forall n\in \mathbb{N},~~0\leq g_{n+1}(x)\leq g_n(x).$\\
+Supposons qu'il existe une suite $(a_n)$ telle que $\forall x\in I,~~\forall n\in \mathbb{N},~~g_n(x)\leq a_n$ et ${\displaystyle \lim_{n\rightarrow+\infty} a_n=0}$. \\
+Alors la s\'erie de terme g\'en\'eral $\sum(-1)^ng_n$ est uniform\'ement convergente sur $I$.
+\end{teo}
+\begin{pr}\quad
+
+Soit $x\in I$ fix\'e. La suite num\'erique $(g_n(x))$ est d\'ecroissante et ${\displaystyle \lim_{n\rightarrow+\infty}g_n(x)=0}$ car ${\displaystyle \lim_{n\rightarrow+\infty}a_n=0}$. Donc la s\'erie num\'erique ${\displaystyle \sum (-1)^ng_n(x)}$ est une s\'erie altern\'ee, par suite convergente. Posons $f(x)$ sa somme et $\forall n,~~(s_n(x))$ la suite des sommes partielles de ${\displaystyle \sum (-1)^ng_n(x)}$. On a $|f(x)-s_n(x)|\leq g_{n+1}(x)\leq a_{n+1}.$ \\Par cons\'equent ${\displaystyle \lim_{n\rightarrow+\infty}\left(\sup_{x\in I}|f(x)-s_n(x)|\right)\leq \lim_{n\rightarrow+\infty}a_{n+1}=0.}$ Ceci signifie que $\sum(-1)^ng_n$ converge uniform\'ement sur $I$ vers $f.$
+\end{pr}
+\textbf{Exemple :}\quad Soit $\forall n,$ 
+\begin{align*}
+f_n:[0,+\infty[&\longrightarrow\mathbb{R}\\
+x&\longmapsto f_n(x)=\dfrac{(-1)^n}{n+x}
+\end{align*}
+Soit $g_n(x)=\dfrac{1}{n+x}\leq\dfrac{1}{n},~~\forall n\geq1$ et $\forall x\in I.$ Les hypoth\`eses du th\'eor\`eme sont v\'erifi\'ees.\\
+Terminons ce paragraphe par cet exercice\\
+\textbf{Exercice :}\quad $\forall n\geq 1,$ soit 
+\begin{align*}
+f_n:[0,+\infty[&\longrightarrow\mathbb{R}\\
+x&\longmapsto f_n(x)=\dfrac{(-1)^n}{n(1+nx)}
+\end{align*}
+\begin{enumerate}
+\item Montrer que $\sum f_n$ est uniform\'ement convergente sur $[0,+\infty[$.\\
+Pour tout $x\geq0,$ posons ${\displaystyle f(x)=\sum_{n=1}^{+\infty}f_n(x).}$
+\item Montrer que $f$ est continue.
+\item Calculer ${\displaystyle \lim_{x\rightarrow0}f(x)}$ et ${\displaystyle \lim_{x\rightarrow+\infty}f(x).}$
+\item Montrer que $f$ est d\'erivable sur $]0,+\infty[.$
+\item Montrer que $f$ est strictement croissante sur $[0,+\infty[.$
+\end{enumerate}
+\textbf{Solution}\quad
+Soit $g_n(x)=\dfrac{1}{n(1+nx)}~~(n\geq1);~~x\in [0,+\infty[.$
+\begin{enumerate}
+\item On a $(g_n(x))$ d\'ecroissante et ${\displaystyle \lim_{n\rightarrow+\infty}g_n(x)=0.}$\\ On a aussi $g_n(x)\leq \dfrac{1}{n},~~\forall n\geq1$ et $x\geq0.$ Les hypoth\`eses du \textbf{Th\'eor\`eme \ref{teo4.4.5}} sont v\'erifi\'ees, d'o\`u 1-.
+\item $f$ est continue d'apr\`es le \textbf{Th\'eor\`eme \ref{teo4.4.2} (2)}.
+\item $f$ \'etant continue, on a: $$\lim_{x\rightarrow0}f(x)=f(0)=\sum_{n=1}^{+\infty}f_n(0)=\sum_{n=1}^{+\infty}\dfrac{(-1)^n}{n}=-\lo 2.$$ $$\lim_{x\rightarrow+\infty}f(x)=\lim_{x\rightarrow+\infty}\left(\sum_{n=1}^{+\infty}f(x)\right)=\sum_{n=1}^{+\infty}\lim_{x\rightarrow+\infty}f_n(x)=0~~\text{\textbf{(Th\'eor\`eme \ref{teo4.4.1}}})$$
+\item Prouvons que $f$ est d\'erivable sur $]0,+\infty[.$ \\
+$\forall n,~f_n$ est d\'erivable sur $]0,+\infty[$ et $f'_n=\dfrac{(-1)^{n+1}}{(1+nx)^2}.$ Soit $a>0,~|f'_n(x)|\leq \dfrac{1}{(na+1)^2}\leq\dfrac{1}{n^2a^2}~(n\geq1).$ La s\'erie $\sum\dfrac{1}{(1+nx)^2}$ est convergente donc $\sum f'_n$ est normalement convergente sur $[a,+\infty[$ \textbf{Proposition \ref{pro4.2.1}}. \\ Comme c'est vrai $\forall a>0,$ la convergence est uniforme sur tout segment inclus dans $]0,+\infty[.$ \\ La s\'erie $\sum f_n$ v\'erifie les hypoth\`eses du \textbf{Corollaire \ref{cor4.4.1}} sur tout segment inclus dans $]0,+\infty[.$ En particulier en tout point de $]0,+\infty[.$
+\item On a $\forall x\in ]0,+\infty[,~f'_n(x)=\dfrac{(-1)^{n+1}}{(1+nx)^2}.$ Fixons $x$ dans $]0,+\infty[.~\sum f'_n(x)$ est une s\'erie altrn\'ee donc la somme $f'(x)$ v\'erifie $|f'(x)-f'_1(x)|\leq |f'_2(x)|.$ Donc $\forall x\in ]0,+\infty[$ $$ f'(x)\geq f'_1(x)-|f'_2(x)|=\dfrac{1}{(1+x)^2}-\dfrac{1}{(1+2x)^2}>0$$
+$f$ est continue et $f'>0$ donc $f$ est strictement croissante.
+\end{enumerate}
+
+\section{Les s\'eries doubles }
+Soit l'application $u: \mathbb{N}\times\mathbb{N}\longrightarrow\mathbb{K}~~(\mathbb{K}=\mathbb{R}$ ou $\mathbb{C})$, $u$ une suite; $u(n,p)$ se note $u_{n,p}.$ \\ La s\'erie de terme g\'en\'eral $u_{n,p}$ est appel\'ee \textbf{s\'erie double}.
+\begin{pro} \label{pro4.5.1}
+Soit la s\'erie double de terme g\'en\'eral $u_{n,p}.$ Supposons que $\forall n,~$ le nombre ${\displaystyle a_n=\sum_{p=0}^{+\infty}|u_{n,p}|}$ existe et supposons que la suite de terme g\'en\'eral $(a_n)$ soit convergente\\ Alors les nombres ${\displaystyle \sum_{n=0}^{+\infty}u_{n,p}}$ et ${\displaystyle\sum_{p=0}^{+\infty}u_{n,p}}$ existent; les s\'eries de terme g\'en\'eral ${\displaystyle\sum_{n=0}^{+\infty}u_{n,p}}$ et ${\displaystyle\sum_{p=0}^{+\infty}u_{n,p}}$ sont convergentes et on a: $$\sum_{p=0}^{+\infty}\left(\sum_{n=0}^{+\infty}u_{n,p}\right) =\sum_{n=0}^{+\infty} \left(\sum_{p=0}^{+\infty}u_{n,p}\right)$$
+\end{pro}
+\begin{pr}\quad
+C'est un cas particulier du \textbf{Th\'eor\`eme \ref{teo4.4.1}}.
+\end{pr}
+
+
+\chapter{S\'eries enti\`eres} 
+\section{D\'efinitions}
+Posons $\mathbb{K}=\mathbb{R}$ ou $\mathbb{C}$.\\
+On appelle \textbf{s\'erie enti\`ere} de variable complexe (ou r\'eelle) $z$, la s\'erie de terme g\'en\'eral $u_n=a_nz^n$ o\`u $a_n\in \mathbb{K}$ et $z\in \mathbb{K}.$ \\
+\textbf{Exemples :}\quad
+Soit $z\in\mathbb{C},~\sum\left(\dfrac{1}{2+i}\right)^n z^n;$ soit $z=x\in \mathbb{R},~\sum\left(\dfrac{1}{3}\right)^n x^n.$\\
+Soit ${\displaystyle\sum a_n z^n~~(a_n,z\in \mathbb{K})}$ une s\'erie enti\`ere. On appelle domaine de convergence de ${\displaystyle\sum a_n z^n}$ l'ensemble des $u\in \mathbb{K}$ tels que $\sum a_n u^n$ soit convergente.\\
+\textbf{Exemple :} Soit $\sum \dfrac{z^n}{n^2}~~(n\geq1)$ Le domaine de convergence de cette s\'erie est $\overline{D}(0,1)=\{z\in \mathbb{C};|z|\leq1\}.$
+\section{Disque et rayon de convergence}
+\subsection{Th\'eor\`eme}
+\begin{teo} \label{teo5.2.1} \'Etant donn\'ee une s\'erie enti\`ere $\sum a_nz^n~~(a_n,z\in \mathbb{K}),~\exists !R\in [0,+\infty]$ tel que :
+\begin{enumerate}
+\item $\forall z\in \mathbb{K}$ et $|z|<R,$ alors $\sum a_n z^n$ est absolument convergente.
+\item $\forall z\in \mathbb{K}$ et $|z|>R$, alors $\sum a_n z^n$ est divergente.
+\item $\forall R'>0$ et $R'<R$, alors $\sum a_n z^n$ est normalement convergente sur $\overline{D}(0,1)=\{z\in \mathbb{K};|z|\leq R'\}.$ Autrement dit, $\sum a_nz^n$ est normalement convergente sur tout disque ferm\'e (respectivement intervalle ferm\'e) contenu dans $\overline{D}(0,1)=\{z\in \mathbb{K};|z|\leq R\}.$
+\end{enumerate}
+\end{teo}
+\begin{pr}\quad
+Soit $\sum a_n z^n$ une s\'erie enti\`ere; posons $A=\{r\in \mathbb{R}_+$ tel que $(a_nr^n)$ soit born\'ee$\}$. $A\neq \emptyset$ car $0\in A.$ Posons $R=\sup A, ~R\in [0,+\infty]$. 
+\begin{enumerate}
+\item Soit $z_0\in \mathbb{K}$ et $|z_0|<R.$ Alors $\exists r\in A$ tel que $|z_0|<r<R.$ On a $|a_nz^n|=|a_nr^n|\cdot\Big|\dfrac{z_0}{r}\Big|^n.$ Comme $(a_nr^n)$ est born\'ee, $\exists M>0$ tel que $|a_nz^n|\leq M~\forall n.$ Aussi a-t-on $\Big|\dfrac{z_0}{r}\Big|<1.$ Donc $|a_nz^n|\leq M\Big|\dfrac{z_0}{r}\Big|^n.$\\
+$\sum \left(\dfrac{z_0}{r}\right)^n$ est une s\'erie g\'eom\'etrique convergente, alors $\sum a_nz^n$ est absolument convergente (\textbf{Th\'eor\`eme de comparaison})
+\item Soit $z_0\in \mathbb{K}$ tel que $|z_0|>R.$ Alors $|z_0|\notin A;$ donc la suite $(a_n|z_0|^n)$ n'est pas born\'ee, d'o\`u $(a_nz_0^n)$ ne tend pas vers $0$ quand $n\rightarrow+\infty.$ La s\'erie $\sum a_n z_0^n$ est alors grossi\`erement divergente.
+\item Soit $R'>0$ et $R'<R$. D'apr\`es 1- $\sum a_nR'^n$ est absolument convergente. Soit $z\in \mathbb{K}$ tel que $|z|\leq R';$ on a $|a_nz^n|\leq |a_n|R'^n$ d'o\`u $\sum a_n z^n$ est normalement convergente sur $\overline{D}(0,R').$
+\end{enumerate}
+\end{pr}
+\begin{defi}
+Le nombre $R$ est appel\'e \textbf{rayon de convergence } de la s\'erie $a_n z^n.$\\
+L'ensemble $D(0,R)=\{z\in \mathbb{K};|z|<R\}$ est appel\'e \textbf{disque de convergence} de $\sum a_nz^n.$ \\
+Si $z=x\in \mathbb{R},$ alors $D(0,R)=]-R,R[;~~]-R,R[$ est appel\'e \textbf{intervalle de convergence}.
+\end{defi}
+\begin{cor} \label{cor5.2.1} Soit la s\'erie enti\`ere $\sum a_nz^n$ de rayon de convergence $R$. Alors la fonction 
+\begin{align*}
+f:D(0,R)&\longrightarrow\mathbb{K}\\ x&\longmapsto f(z)=\sum_{n=0}^{+\infty} a_nz^n
+\end{align*} est continue sur $D(0,R)$.
+\end{cor}
+\begin{pr}\quad
+Soit $z_0\in D(0,R);$ il existe alors $R'>0$ tel que $|z_0|<R'<R.$ La s\'erie $\sum a_nz^n$ est normalement convergente sur $D(0,R)$ (\textbf{Th\'eor\`eme \ref{teo5.2.1} (3)}). D'autre part, $\forall n$ la fonction $f:z\mapsto f_n(z)=a_n z^n$ est continue sur $D(0,R)$. Donc $z\mapsto f(z)$ est continue sur $\overline{D}(0,R')$ (c'est la somme d'une s\'erie de fonctions continues uniform\'ement convergente). En particulier $z\mapsto f(z)$ est continue en $z_0$. Comme $z_0$ est arbitrairement choisi, on en d\'eduit que $f$ est continue sur $D(0,R).$
+\end{pr}
+\subsection{Formules}
+Appliquons \textbf{le corollaire \ref{cor2.1.2}} \`a la s\'erie $\sum a_n z^n.$ On a ${\displaystyle\lim_{n\rightarrow+\infty}|a_nz^n|^{\frac{1}{n}}=|z|\lim_{n\rightarrow+\infty}|a_n|^{\frac{1}{n}}=L|z|}$ o\`u on a pos\'e ${\displaystyle L=\lim_{n\rightarrow+\infty}|a_n|^{\frac{1}{n}}}$. \\ Ce \textbf{corollaire \ref{cor2.1.2}} nous donne les r\'esultats suivants:
+\begin{enumerate}
+\item Si $L=+\infty$, la s\'erie $\sum a_n z^n$ diverge $\forall z\neq0.$
+\item Si $L=0,$ la s\'erie $\sum a_nz^n$ converge $\forall z\in \mathbb{C}.$
+\item Si $0<L<+\infty$, la s\'erie $a_nz^n$ converge pour $|z|<\dfrac{1}{L}$ et diverge pour $|z|>\dfrac{1}{L}.$
+\end{enumerate}
+Le rayon de convergence de la s\'erie $\sum a_nz^n$ est donc $R=\dfrac{1}{L}.$\\
+ Nous pouvons \'enoncer : \\
+\textbf{Formule d'Hadamard :} Le rayon de convergence de la s\'erie enti\`ere $\sum a_nz^n$ est le nombre $R$ d\'efini par ${\displaystyle\dfrac{1}{R}=\lim_{n\rightarrow+\infty}|a_n|^\frac{1}{n}.}$ On pose $R=+\infty$ si $L=0$ et $R=0$ si $L=+\infty$.
+\begin{rem} Les s\'eries $\sum a_nz^n$ et $\sum |a_n|z^n$ ont le m\^eme rayon de convergence.\end{rem}
+La r\`egle suivante se r\'ev\`ele souvent plus pratique.\\
+\textbf{R\`egle de d'Alembert }\\
+Si la suite $\left(\Big|\dfrac{a_{n+1}}{a_n}\Big|\right)$ tend vers $L$, $(0\leq L\leq +\infty)$ quand $n\rightarrow+\infty,$ le rayon de convergence de la s\'erie $\sum a_nz^n$ est $R=\dfrac{1}{L}.$ On posera $R=+\infty~~($ respectivement $R=0)$ si $L=0~~($ respectivement $L=+\infty)$ 
+\begin{rem} La r\`egle de d'Alembert n'admet pas de r\'eciproque: \\ Le fait que le rayon de convergence soit $R$ n'implique pas que la suite $\left(\Big|\dfrac{a_{n+1}}{a_n}\Big|\right)$ tend vers $\dfrac{1}{R}$ (en supposant que cette suite soit d\'efinie).
+\begin{enumerate}
+\item[$\cdot$] Si $R=0$, on dira que $\sum a_n z^n$ est divergente.
+\end{enumerate}
+\end{rem}
+\textbf{Exemple :}\quad \'Etudier la convergence des s\'eries enti\`eres suivantes: $\sum \dfrac{z^n}{n!},~\sum \dfrac{z^n}{n},~ \sum\dfrac{z^n}{n^2},~\sum n! z^n.$ \\
+\textbf{R\'eponse} 
+\begin{enumerate}
+\item[$\cdot$] Soit ${\displaystyle u_n=\dfrac{1}{n!},~~\lim_{n\rightarrow+\infty}\dfrac{u_n}{u_{n+1}}=\lim_{n\rightarrow+\infty}\dfrac{(n+1)!}{n!}=+\infty.}$\\ Donc $\sum u_nz^n$ est absolument convergente $\forall z\in \mathbb{C}$
+\item[$\cdot$] Posons ${\displaystyle u_n=\dfrac{1}{n},~\lim_{n\rightarrow+\infty}\dfrac{u_n}{u_{n+1}}=1.}$ Le rayon de convergence de la s\'erie $\sum u_n z^n$ est \'egale \`a $1$.\\
+Soit $z\in \mathbb{C};~|z|=1$ alors $z=e^{i\theta}$\\
+$\sum \dfrac{e^{in\theta}}{n}$ est convergente si et seulement si $\theta \notin 2\pi\mathbb{Z}.$\\
+Et donc en conclusion \begin{itemize}
+\item $\sum \dfrac{z^n}{n}$ est convergente si $z\in\{z\in \mathbb{C};|z|\leq1\}\setminus\{(0,1)\}$\\
+\item $\sum \dfrac{z^n}{n}$ est absolument convergente sur $\{z\in \mathbb{C};|z|<1\}$\\
+\item$\sum \dfrac{z^n}{n}$ est divergente ailleurs.
+\end{itemize}
+\item[$\cdot$] Soit ${\displaystyle u_n=\dfrac{1}{n^2},~\lim_{n\rightarrow+\infty}\dfrac{u_n}{u_{n+1}}=\lim_{n\to+\infty}\dfrac{(n+1)^2}{n^2}=1.}$ D'autre part $\forall z\in \mathbb{C}$ et $|z|=1,~\sum_n \Big|\dfrac{z^n}{n^2}\Big|=\sum_n \dfrac{1}{n^2}$ est convergente.\\
+En conclusion le rayon de convergence $R$ de $\sum \dfrac{z^n}{n^2}$ est $1$. $\sum \dfrac{z^n}{n^2}$ est absolument convergente sur $\overline{D}(0,1).$ Elle est divergente sur $\mathbb{C}\setminus\overline{D}(0,1).$ \\
+\item[$\cdot$] ${\displaystyle\sum n!z^n.~~~R=\lim_{n\rightarrow+\infty}\dfrac{n!}{(n+1)!}=0.}$ Donc $\sum n!z^n$ est divergente.
+\end{enumerate}
+ \section{Op\'erations sur les s\'eries enti\`eres}
+ Soient $\sum a_nz^n,~\sum b_nz^n$ des s\'eries enti\`ers. Soient $\lambda, \mu \in \mathbb{K}.$ La s\'erie somme des s\'eries $\sum a_nz^n$ et $\sum b_nz^n$ est la s\'erie enti\`ere $\sum (a_n+b_n)z^n.$ La s\'erie produit des s\'eries $\sum a_nz^n$ et $\sum b_nz^n$ est la s\'erie enti\`ere $\sum c_nz^n$ o\`u : $$\forall n,~~c_n =a_0b_n+a_1b_{n-1}+\cdots+a_nb_0.$$ Le produit de $\sum a_nz^n$ par $\lambda$ est la s\'erie enti\`ere $\sum (\lambda a_n)z^n.$
+\begin{pro} \label{pro5.3.1} Soit $\sum a_nz^n$ et $\sum b_nz^n$ des s\'eries enti\`eres de rayon de convergence $R_A$ et $R_B$ respectivement. Soit $\lambda, \mu \in \mathbb{C}.$ Alors : 
+\begin{enumerate}
+\item \label{pro5.3.1.1} Le rayon de convergence $R_{A+B}$ de $\sum \left(\mu a_n+\lambda b_n\right)z^n$ v\'erifie $R_{A+B}\geq \inf(R_A,R_B).$
+\item \label{pro5.3.1.2} Le rayon de convergence $R_{AB}$ de $\sum c_nz^n$ v\'erifie $R_{AB}\geq \inf (R_A,R_B).$
+\item \label{pro5.3.1.3} $\forall z\in \mathbb{K},~|z|<\inf(R_A,R_B)$ alors $$ \sum_{n=0}^{+\infty}\left(\mu a_n+\lambda b_n\right)z^n =\mu \left(\sum_{n=0}^{+\infty} a_nz^n\right)+\lambda\left(\sum_{n=0}^{+\infty} b_nz^n\right)$$
+$$\sum_{n=0}^{+\infty}c_nz^n=\left( \sum_{n=0}^{+\infty}a_nz^n\right)\left(\sum_{n=0}^{+\infty}b_nz^n\right)$$~
+\end{enumerate} 
+\end{pro}
+\begin{pr} \quad
+\begin{enumerate}
+\item Soit $z\in \mathbb{K},~~|z|<\inf(R_A,R_B),$ alors $\sum a_n z^n$ et $\sum b_nz^n$ sont absolument convergentes. On en d\'eduit que $\sum\left(\mu a_nz^n+\lambda b_nz^n\right)$ est absolument convergente. On vient de montrer que $\forall z\in \mathbb{K},~~|z|<\inf(R_A,R_B)$ implique $|z|<R_{A+B}$ d'o\`u $\inf(R_A,R_B)\leq R_{A+B}.$ D'apr\`es la \textbf{Proposition \ref{pro3.4.1}}, on a : \begin{align*}
+\sum_{n=0}^{+\infty}\left(\mu a_nz^n+\lambda b_nz^n\right)&=\sum_{n=0}^{+\infty}\left(\mu a_nz^n\right)+\sum \left(\lambda b_nz^n\right)\\ &=\mu \sum_{n=0}^{+\infty} a_nz^n+\lambda\sum_{n=0}^{+\infty}b_nz^n.
+\end{align*}
+Les assertions \ref{pro5.3.1.2}. et \ref{pro5.3.1.3}. d\'ecoulent de la \textbf{Proposition \ref{pro0i}} et le \textbf{Th\'eor\`eme \ref{teo1.5.2}}.
+\end{enumerate}
+\end{pr}
+\begin{rem} Si $R_A\neq R_B$, on a l'\'egalit\'e $R_{A+B}=\inf(R_A, R_B).$ \end{rem}
+
+\section{D\'erivation et int\'egration d'une s\'erie enti\`ere }
+\begin{defi}
+La s\'erie d\'eriv\'ee de la s\'erie enti\`ere $\sum a_nz^n~~(n\in \mathbb{N})$ est la s\'erie enti\`ere $\sum(n+1)a_{n+1}z^n~~(n\in\mathbb{N})$
+\end{defi}
+\begin{pro} \label{pro5.4.1} La s\'erie enti\`ere et sa d\'eriv\'ee ont m\^eme rayon de convergence. 
+\end{pro}
+\begin{pr}\quad
+Soit $R$ le rayon de convergence de $\sum a_nz^n$ et $R'$ le rayon de convergence de $\sum (n+1)a_{n+1}z^n.$\\
+ On a par d\'effinition ${\displaystyle R=\lim_{n\rightarrow+\infty}\dfrac{1}{\sqrt[n]{|a_n|}}}$ et ${\displaystyle R'=\lim_{n\rightarrow+\infty}\dfrac{1}{\sqrt[n]{(n+1)|a_{n+1}|}},}$ 
+or $$R=\lim_{n\rightarrow+\infty}\dfrac{1}{\sqrt[n]{|a_n|}}=\lim_{n\rightarrow+\infty}\dfrac{1}{\sqrt[n+1]{|a_{n+1}|}}=\lim_{n\rightarrow+\infty}\dfrac{1}{|a_{n+1}|^{n}}$$ car $$\dfrac{1}{n}\lo|a_{n+1}|\sim\dfrac{1}{n+1}\lo|a_{n+1}|~~(n\rightarrow+\infty)$$ $$(|a_{n+1}|=e^{\frac{1}{n+1}\lo |a_{n+1}|}~~\text{et}~~|a_{n+1}|^\frac{1}{n}=e^{\frac{1}{n}\lo|a_{n+1}|}).$$
+D'o\`u $$\lim_{n\rightarrow+\infty}\left(\dfrac{1}{n}\lo|a_{n+1}|\right)=\lim_{n\rightarrow+\infty}\left(\dfrac{1}{n+1}\lo|a_{n+1}|\right).$$ D'autre part $$R'=\dfrac{1}{{\displaystyle\lim_{n\rightarrow+\infty}|(n+1)^\frac{1}{n}|\cdot\lim_{n\rightarrow+\infty}(|a_{n+1}|^\frac{1}{n})}}=\dfrac{1}{{\displaystyle \lim_{n\rightarrow+\infty}(|a_{n+1}|^\frac{1}{n})}}.$$ D'o\`u $R=R'.$
+\end{pr}
+\begin{defi} Soit $I$, un intervalle de $\mathbb{R}$ et $f$ une fonction de $I$ dans $\mathbb{R}$. On dit que $f$ est de classe $\mathcal{C}^k~~(k\in \mathbb{N}^*)$ dans $I$ si $f$ est $k$-fois d\'erivable et si la d\'eri\'ee $f^{(k)}$ d'ordre $k$ est continue dans $I$; on dit que $f$ est de classe $\mathcal{C}^\infty$ dans $I$ si $\forall k\in \mathbb{N},$ $f$ est de classe $\mathcal{C}^k$ dans $I$. 
+\end{defi}
+\begin{teo}\label{teo5.4.1} Soit la s\'erie enti\`ere $\sum a_nz^n$ de rayon de convergence $R\neq0.$ $\forall x\in ]-R,R[,$ posons ${\displaystyle f(x)=\sum_{n=0}^{+\infty}a_nx^n}$. Alors :
+\begin{enumerate}
+\item $f$ est de classe $\mathcal{C}^\infty.$ 
+\item $\forall x\in ]-R,R[,$ on a ${\displaystyle f'(x)=\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^n.}$
+\item La primitive de $f$ qui s'annule en 0 est la fonction \begin{align*}
+F:]-R,R[&\longrightarrow\mathbb{R}\\ x&\longmapsto F(x)=\sum_{n=0}^{+\infty}\dfrac{a_n}{n+1}x^{n+1}
+\end{align*}
+\end{enumerate} 
+\end{teo}
+\begin{pr}\quad
+Soit $x\in ]-R,R[,$ posons $f_n(x)=a_nx^n ~~\forall n$ et $f'_n(x)=na_nx^{n-1}.$\\
+La s\'erie enti\`ere $\sum f'_n(x)$ a le m\^eme rayon de convergence que $\sum (n+1)a_{n+1}z^n$. Donc son rayon de convergence est $R$. Elle est normalement convergente sur tout segment inclus dans $]-R,R[$ (\textbf{Th\'or\`eme \ref{teo5.2.1}}). Rappelons que la convergence normale implique la convergence uniforme.\\
+D'autre part $\forall x_0\in ]-R,R[,~~\sum f_n(x_0)$ est convergente. On peut donc appliquer le th\'eor\`eme de d\'erivation terme \`a terme. La s\'erie $\sum f_n(x)$ est uniform\'ement convergente sur tout segment inclus dans $]-R,R[.$ De plus: $$\left(\sum_{n=0}^{+\infty}f_n(x)\right)'=\sum_{n=0}^{+\infty}f'_n(x)=\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^{n}.$$ D'o\`u $$ \forall x\in ]-R,R[~~f'(x)=\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^n.$$ L'assertion 2- est prouv\'ee.\\
+Comme $\sum f_{n+1}(x)$ est uniform\'ement convergente sur tout segment de $]-R,R[$ et comme $\forall n,~~f'_{n+1}(\cdot)$ est  continue sur $]-R,R[$, alors sa somme $f'$ est continue en tout point de $]-R,R[$ (\textbf{Th\'eor\`eme \ref{teo4.3.2}}).\\
+On vient de montrer que $f$ est de classe $\mathcal{C}^1$ dans $]-R,R[.$\\
+D\'emontrons l'assertion suivante : \\ 
+Pour toute s\'erie enti\`ere \`a coefficients r\'eels $a_n$, de rayon de convergence $R'$, la somme ${\displaystyle f(x)=\sum_{n=0}^{+\infty}a_nx^n}$ est de $\mathcal{C}^k~~(k\geq1)$ sur $]-R,R[.$\\
+L'assertion est vraie au rang $k=1$ d'apr\`es ce qui pr\'ec\`ede. Supposons qu'elle soit vraie au rang $k$.\\
+Soit ${\displaystyle f'(x)=\sum_{n=0}^{+\infty}(n+1)a_{n+1}x^n.}$\\
+Le rayon de convergence de $\sum (n+1)a_{n+1}x^n$ est $R'$. On applique \`a $f'$ l'hypoth\`ese de r\'ecurrence, i.e. $f'$ est de classe $\mathcal{C}^k.$ Autrement dit $f$ est de classe $\mathcal{C}^{k+1}.$ Il reste \`a prouver 3-.\\
+$\sum \dfrac{a_n}{n+1}z^{n+1}$ a pour s\'erie d\'eriv\'ee $\sum a_nz^n.$ Donc $\sum\dfrac{a_n}{n+1}z^{n+1}$ a pour rayon de convergence $R$ (\textbf{Proposition \ref{pro5.4.1}}) et d'apr\`es la premi\`ere partie, en posant ${\displaystyle\forall x\in]-R,R[,~~F(x)=\sum_{n=0}^{+\infty}\dfrac{a_n}{n+1}x^{n+1},}$ on a $F'(x)=f(x)~~\forall x\in ]-R,R[.$ Comme $F(0)=0,~F$ est la primitive voulue.
+\end{pr}
+\begin{defi} Soit $I$ un ouvert de $\mathbb{R}$ ou $I=\mathbb{R}$ contenant $0$ et $f:I\longrightarrow\mathbb{R}$ une application. Soit $r>0$ ou $r=+\infty$ tel que $]-r,r[\subset I.$ On dit que $f$ est d\'eveloppable en s\'erie enti\`ere sur $]-r,r[$ s'il existe une s\'erie enti\`ere $\sum a_nx^n$ \`a coefficients r\'eels de rayon de convergence $R\geq r$ telle que ${\displaystyle\forall x\in ]-r,r[,~~f(x)=\sum_{n=0}^{+\infty}a_nx^n.}$
+\end{defi}
+\begin{pro} \label{pro5.4.2} Soit $f$ une fonction d\'eveloppable en s\'erie enti\`ere sur $]-r,r[$. Alors $f$ est de classe $\mathcal{C}^\infty$ sur $]-r,r[$ et si ${\displaystyle f(x)=\sum_{n=0}^{+\infty}a_nx^n~~\forall x\in ]-r,r[,}$ on a :$$ a_n=\dfrac{f^{(n)}(0)}{n!}~~\forall n\geq0.~~(f^{(0)}=f)$$
+Le d\'eveloppement en s\'erie enti\`ere donc unique.
+\end{pro}
+\begin{pr}\quad
+Supposons $f$ d\'eveloppable en s\'erie enti\`ere sur $]-r,r[$. Alors $f$ est de classe $\mathcal{C}^\infty$ sur $]-r,r[$ (\textbf{Th\'eor\`eme \ref{teo5.4.1}}). Posons ${\displaystyle f(x)=\sum_{n=0}^{+\infty}a_nx^n}$ sur $]-r,r[$. On a $$f'(x)=\sum_{n=1}^{+\infty}na_nx^{n-1},\cdots, f^{(k)}(x)=\sum_{n=k}^{+\infty}n(n-1)(n-2)\cdots(n-k+1)a_nx^{n-k};$$ d'o\`u $$f^{(k)}(0)=k!a_k.$$
+L'unicit\'e d\'ecoule de la relation $a_n=\dfrac{f^{(n)}}{n!}.$
+\end{pr}
+\begin{rem} ($f$ est de classe $\mathcal{C}^\infty$ sur $]-r,r[$)$\nRightarrow$($f$ d\'eveloppable en s\'erie enti\`ere sur $]-r,r[$).
+\end{rem}
+\textbf{Contre-exemple}\quad
+Soit \begin{align*}
+f:\mathbb{R}&\longrightarrow\mathbb{R}\\x&\mapsto f(x)=
+\begin{cases}0 &\quad~\text{si}~x\leq 0\\ e^{\frac{1}{x^2}}&\quad~\text{si}~x>0\end{cases}
+\end{align*}
+Par r\'ecurrence sur $n$, on montre que $f^{(k)}(o)=0~~\forall k\geq0$ et que $f$ est de classe $\mathcal{C}^\infty.$\\
+Si $f$ \'etait d\'eveloppable en s\'erie enti\`ere sur $]-r,r[,$ on aurait ${\displaystyle\forall x\in ]-r,r[,~~f(x)=\sum_{n=0}^{+\infty}\dfrac{f^{(k)}(0)}{k!}x^k=0=e^{\frac{1}{x^2}}.}$ c'est absurde.
+
+\section{D\'eveloppement en s\'erie enti\`ere de fonctions usuelles}
+${\displaystyle\dfrac{1}{az+b}=\dfrac{1}{b}\times\dfrac{1}{\frac{a}{b}z+1}=\sum_{n=0}^{+\infty}\dfrac{(-a)^n}{b^{n+1}}z^n}\quad$ si $\Big|\dfrac{az}{b}\Big|<1\Leftrightarrow|z|<\Big|\dfrac{b}{a}\Big|$\\
+\textbf{Cas particuliers} :\\
+\begin{equation}
+a=-1,~b=1,~\dfrac{1}{1-z}=\sum_{n=0}^{+\infty}z^n,\quad~\text{si}~|z|<1 \label{eqn1}
+\end{equation}
+\begin{equation}
+a=1,~b=1,~\dfrac{1}{1+z}=\sum_{n=0}^{+\infty}(-1)^nz^n\quad~\text{si}~|z|<1 \label{eqn2}
+\end{equation}
+(\ref{eqn1}) permet d'avoir, par d\'erivation, $$\dfrac{1}{(1-z)^2}=\sum_{n=1}^{+\infty}nz^{n-1}\quad~\text{si}~|z|<1$$\\
+(\ref{eqn2}) permet d'avoir, par int\'egration, $$ \lo (1+x)=\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n}x^n\quad~\text{si}~|x|<1$$
+(\ref{eqn2})$\Rightarrow{\displaystyle\dfrac{1}{1+x^2}=\sum_{n=0}^{+\infty}(-1)^nx^{2n}}\quad$ si $|x|<1.$ Alors par int\'egration on a : $$ \arctan x=\sum_{n=0}^{+\infty}(-1)^n\dfrac{x^{2n+1}}{2n+1}\quad~\text{si}~|x|<1.$$
+En utilisant la formule ${\displaystyle e^x=\sum_{n=0}^{+\infty}\dfrac{x^n}{n!}}$ on a : $$ \cosh x=\sum_{n=0}^{+\infty}\dfrac{x^{2n}}{(2n)!}\quad~\text{o\`u}~\cosh x=\dfrac{e^x+e^{-x}}{2}~\quad(\forall x\in \mathbb{R})$$ 
+$$\sinh x=\sum_{n=0}^{+\infty}\dfrac{x^{2n+1}}{(2n+1)!}\quad~\text{o\`u}~\sinh x=\dfrac{e^x-e^{-x}}{2}~\quad(\forall x\in \mathbb{R})$$
+$$\cos x=\sum_{n=0}^{+\infty}(-1)^n\dfrac{x^{2n}}{(2n)!}~\text{car}~\cos x=\cosh (ix)$$
+$$\sin x=\sum_{n=0}^{+\infty}(-1)^n\dfrac{x^{2n+1}}{(2n+1)!}~\text{car}~\sin x=\sinh(ix).$$
+$$(1+x)^m=1+\sum_{n=1}^{+\infty}\dfrac{m(m-1)\cdots(m-n+1)}{n!}x^n,\quad x\in ]-1,1[.$$
+Pour $m=\dfrac{1}{2},$ on a $$\sqrt{1+x}=1+\sum_{n=1}^{+\infty}(-1)^{n-1}\dfrac{1\cdot2\cdot3\cdots(2n-3)}{2\cdot4\cdots2n}x^n,\quad x\in ]-1,1[$$
+Pour $m=-\dfrac{1}{2},$ on a: $$\dfrac{1}{\sqrt{1+x}}=1+\sum_{n=1}^{+\infty}(-1)^n\dfrac{1\cdot3\cdots(2n-1)}{2\cdot4\cdots2n}x^n,\quad x\in ]-1,1[.$$
+En rempla\c{c}ant $x$ par $-x$, on obtient les d\'eveloppements en s\'erie enti\`ere des fonctions $x\mapsto\sqrt{1-x},~~x\mapsto\dfrac{1}{\sqrt{1-x}}.$ \\
+En rempla\c{c}ant $x$ par $x^2$ dans $\dfrac{1}{\sqrt{1+x}}$ et $\dfrac{1}{\sqrt{1-x}}$ et en int\'egrant, on obtient les d\'eveloppement en s\'erie enti\`ere des fonctions $\arccos$ et $\arcsin,$ etc....\\
+\textbf{Exemple : }\quad D\'evelopper en s\'erie enti\`ere la fonction : $x\mapsto f(x)=\dfrac{x^2+x-3}{(x-2)^2(2x-1)}$ et pr\'eciser le rayon de convergence de la s\'erie obtenue.\\
+\textbf{Solution :} \quad
+$f(x)=\dfrac{a}{(x-2)^2}+\dfrac{b}{x-2}+\dfrac{c}{2x-1}.$ \\
+On d\'etermine $a,b,$ et $c$ et on trouve $a=1,b=1,c=-1.$
+$$f(x)=\dfrac{1}{(x-2)^2}+\dfrac{1}{x-2}-\dfrac{1}{2x-1}$$ $$\forall x\neq2,~~\dfrac{1}{x-2}=\dfrac{1}{2}\times\dfrac{1}{1-\frac{x}{2}}.$$
+Si $\Big|\dfrac{x}{2}\Big|<1,$ on a $$\dfrac{1}{1-\frac{x}{2}}=\sum_{n=0}^{+\infty}\left(\dfrac{x}{2}\right)^n$$ 
+i.e. $$\dfrac{1}{x-2}=\sum_{n=0}^{+\infty}-\dfrac{1}{2^{n+1}}x^n\quad~~\forall x\in ]-2,2[.$$\\
+\begin{align*}
+-\dfrac{1}{(x-2)^2}&=\left(\dfrac{1}{x-2}\right)'\\
+&=\left( \sum_{n=0}^{+\infty}-\dfrac{1}{2^{n+1}}x^n\right)'\\
+&=\sum_{n=1}^{+\infty}-\dfrac{n}{2^{2n+1}}x^{n-1}\\
+&=\sum_{n=0}^{+\infty}-\dfrac{n+1}{2^{n+2}}x^n \quad~~\forall x\in ]-2,2[.
+\end{align*}
+Donc $$\dfrac{1}{(x-2)^2}=\sum_{n=0}^{+\infty}-\dfrac{n+1}{2^{n+2}}x^n \quad~~\forall x\in ]-2,2[$$
+${\displaystyle -\dfrac{1}{2x-1}=\dfrac{1}{1-2x}=\sum_{n=0}^{+\infty}2^nx^n}\quad$ si $|2x|<1,$ soit $x\in ]-\frac{1}{2},\frac{1}{2}[.$\\
+${\displaystyle f(x)=\sum_{n=0}^{+\infty}a_nx^n}\quad$ o\`u $a_n=-\dfrac{1}{2^{n+1}}+\dfrac{n+1}{2^{n+2}}+2^n=\dfrac{n-1}{2^{n+2}},~~n\geq0$\\
+Comme $R=2$ et $R'=\dfrac{1}{2}~~(R\neq R')$, le rayon de convergence de la s\'erie $\sum a_nx^n$ est $\inf\left(2,\dfrac{1}{2}\right)=\dfrac{1}{2}.$\\
+\textbf{Exercice}\quad
+\begin{enumerate}
+\item D\'eterminer le rayon de convergence $R$ de la s\'erie enti\`ere $\sum \dfrac{(-1)^{n+1}}{n(2n+1)}z^{2n+1}.$
+\item \begin{itemize}
+\item[i-] Exprimer au moyen des fonctions usuelles la somme de la s\'erie d\'eriv\'ee sur l'intervalle $]-R,R[.$
+\item[ii-] Calculer la somme $$\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n(2n+1)}x^{2n+1}\quad~\text{si}~|x|<R.$$
+\end{itemize} 
+\item Montrer que la s\'erie de terme g\'en\'eral $\dfrac{(-1)^{n+1}}{n(2n+1)}$ est convergente et calculer le nombre $$\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n(2n+1)}.$$
+\end{enumerate}
+\textbf{Solution}\quad
+Posons $u_n=\sum \dfrac{(-1)^{n+1}}{n(2n+1)}z^{2n+1}.$ $$\lim_{n\rightarrow+\infty}\Big|\dfrac{u_{n+1}}{u_n}\Big|=|z|^2.$$
+\begin{enumerate}
+\item D'apr\`es la r\`egle de d'Alembert, si $|z|^2<1, $ i.e. $|z|<1,$ la s\'erie est absolument convergente et si $|z|>1,$ elle est divergente. Donc $R=1$
+\item \begin{itemize}
+\item[i-] La s\'erie d\'eriv\'ee est $\sum \dfrac{(-1)^{n+1}}{n}\left(x^2\right)^n.$ Son rayon de convergence est $R'=1$. 
+$$\sum \dfrac{(-1)^{n+1}}{n}(x^2)^n=\lo (1+x^2)\quad~~\forall x\in ]-1,1[.$$
+Soit ${\displaystyle f(x)=\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n(2n+1)}x^{2n+1},~~x\in ]-1,1[.}$ On sait que 
+\begin{align*} f'(x)&=\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n}x^{2n} \quad~~\text{(\textbf{Th\'eor\`eme \ref{teo5.4.1}})}\\
+&=\lo(1+x^2)
+\end{align*}
+\item[ii-]
+\begin{align*}
+f(x)&=\int_\alpha^x\lo (1+t^2)\,\ud t\\
+&=x\lo (1+x^2)-\int_\alpha^x t\dfrac{2t}{1+t^2}\,\ud t~~(\text{Int\'egration par parties})\\
+&=x\lo (1+x^2)-2\int_\alpha^x\dfrac{1+t^2-1}{1+t^2}\,\ud t\\
+&=x\lo(1+x^2)-2(x-\arct x)+c
+\end{align*}
+on a $f(0)=0$ d'o\`u $c=0$ (et $\alpha=0$).\\
+Alors $$f(x)=x\lo (1+x^2)-2(x-\arct x)~~\forall x\in ]-1,1[$$
+\end{itemize}
+\item ${\displaystyle\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n(2n+1)}}$ est convergente; c'est une s\'erie altern\'ee.\\
+Calcul de ${\displaystyle\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n(2n+1)}.}$ Soit $I=[-1,1];~~\forall x\in I,~~|u_n(x)|\leq\dfrac{1}{n(2n+1)},$ \\donc ${\displaystyle\sum u_n(x),~~\left(u_n(x)=\dfrac{(-1)^{n+1}}{n(2n+1)}\right)}$ est uniform\'ement convergente sur $I$. 
+D'autre part $$\lim_{x\rightarrow1}u_n(x)=\dfrac{(-1)^{n+1}}{n(2n+1)}.$$ Alors $$\lim_{x\rightarrow1}\left(\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n(2n+1)}x^{2n+1}\right)=\sum_{n=1}^{+\infty}\left(\lim_{x\rightarrow1}\dfrac{(-1)^{n+1}}{n(2n+1)}x^{2n+1}\right)~~(\text{\textbf{Th\'eor\`eme \ref{teo4.3.1}}}).$$
+Donc $$\lim_{x\rightarrow1}\left(x\lo(1+x^2)-2(x-\arct x)\right)=\sum_{n=1}^{+\infty}\dfrac{(-1]^{n+1}}{n(2n+1)}.$$ D'o\`u $$\lo2-2+\dfrac{2\pi}{4}=\sum_{n=1}^{+\infty}\dfrac{(-1)^{n+1}}{n(2n+1)}.$$
+\end{enumerate}
+Voici une application du \textbf{Th\'eor\`eme \ref{teo4.3.2}}.
+\begin{teo}[d'Abel] \label{teo5.5.1}
+Soit $f$ une fonction d\'eveloppable en s\'erie enti\`ere sur $]-1,1[.$ Soit $(a_n)$ une suite de nombres r\'eels telle que ${\displaystyle\forall x\in ]-1,1[,~~f(x)=\sum_{n=0}^{+\infty}a_nx^n.}$\\
+Si la s\'erie de terme g\'en\'eral $a_n$ est convergente alors $$\lim_{x\rightarrow1}\left(\sum_{n=0}^{+\infty}a_nx^n\right)=\sum_{n=0}^{+\infty}a_n.$$
+\end{teo}
+\begin{pr}\quad
+Soit la suite de fonctions \begin{align*}
+g_k:[0,1]&\rightarrow\mathbb{R}\\x&\mapsto g_k(x)=a_kx^k.
+\end{align*}
+Par hypoth\`ese la s\'erie de fonctions $\sum g_k$ est simplement convergente dans $[0,1]$ vers \begin{align*}
+g:[0,1]&\rightarrow\mathbb{R}\\ x&\mapsto g(x)=\begin{cases} f(x)&\quad\text{si $x\in [0,1[$}\\ {\displaystyle\sum_{n=0}^{+\infty}a_n}&\quad \text{si $x=1$}\end{cases}
+\end{align*}
+Prouvons que $\sum g_k$ est uniform\'ement convergente sur $[0,1].$\\
+Pour cela, on montrera qu'elle v\'erifie la condition de Cauchy pour la convergence uniforme. \\
+Soit $p,q\in \mathbb{N}~(q>p).$ Posons $\forall n\geq p,~B_n=a_p+a_{p+1}+\cdots+a_n.$
+\begin{align*}
+\sum_{n=p}^qa_kx^k&=x^pB_p+x^{p+1}(B_{p+1}-B_p)+\cdots+x^{q-1}=(B_{q-1}-B_{q-2})+x^q(B_q-B_{q-1})\\ &=B_p(x^p-x^{p+1})+B_{p+1}(x^{p+1}-x^{p+2})+\cdots+B_{q-1}(x^{q-1}-x^q)+B_qx^q.
+\end{align*}
+La suite $(x^n)$ est positive ou nulle et d\'ecroit vers $0$. Alors $|x^n-x^{n+1}|=x^n-x^{n+1}~\forall n;$ donc $$\Big|\sum_{k=p}^qa_kx^k\Big|\leq |B_p|(x^p-x^{p+1})+|B_{p+1}|(x^{p+1}-x^{p+2})+\cdots+|B_{q-1}|(x^{q-1}-x^q)+B_qx^q.$$
+Soit $(s_n)$ la suite des sommes partielles de $\sum a_n.$ Comme $\sum a_n$ est convergente, $(s_n)$ est une suite de Cauchy. Donc $\forall \varepsilon>0,~\exists N ~\forall p~\forall n$ tels que $p-1>N$ et $n\geq p,~~|s_n-s_{p-1}|\leq\varepsilon.$ \\
+Alors $\{|B_p|;|B_{p+1}|;\cdots;|B_q|\}$ est major\'e par $\varepsilon$ car $\forall n=p,~s_n-s_{p-1}=B_p;\cdots$ et $n=q,~s_q-s_{p-1}=B_q.$\\
+Donc $\forall p\geq N,~n=q>p~\forall x\in [0,1]$ 
+\begin{align*}\Big|\sum_{k=p}^qa_kx^k\Big|&\leq \varepsilon\left((x^p-x^{p+1})+(x^{p+1}-x^{p+2})+\cdots+(x^{q-1}-x^q)+x^q\right)\\&=\varepsilon x^p\\&\leq \varepsilon~\quad \text{car}\;|x|\leq1.
+\end{align*}
+La condition de Cauchy est v\'erifi\'ee.\\ 
+Alors $\sum g_k$ converge uniform\'ement vers $g$ sur $[0,1].$ Comme $g_k$ est continue $\forall k$, $g$ est alors continue (\textbf{Th\'eor\`eme \ref{teo4.3.2}}).\\ D'o\`u $$\lim_{x\rightarrow1}g(x)=g(1)\Leftrightarrow\lim_{x\rightarrow1}f(x)=\sum_{n=0}^{+\infty}a_n.$$
+\end{pr}
+\textbf{Exemple :} \\
+On sait que $$\arct x=\sum_{n=0}^{+\infty}\dfrac{(-1)^n}{2n+1}x^{2n+1}\quad~\text{si}~x\in ]-1,1[.$$ $\sum \dfrac{(-1)^n}{2n+1}$ est convergente (c'est une s\'erie altern\'ee).\\
+Donc $$\lim_{x\rightarrow1}\arct x=\sum_{n=0}^{+\infty}\dfrac{(-1)^n}{2n+1}$$
+$$\arct1=\dfrac{\pi}{4}=\sum_{n=0}^{+\infty}\dfrac{(-1)^n}{2n+1}.$$
+
+\section{Applications aux \'equations diff\'erentielles} 
+Les solutions de certaines \'equations diff\'erentielles peuvent s'exprimer au moyen de leur d\'eveloppement en s\'erie enti\`ere\\
+\textbf{Exemple :}\quad Soit l'\'equation diff\'erentielle $(A):y''+xy'+y=1.$\\
+Trouver toutes les solutions de $(A)$ d\'eveloppables en s\'erie enti\`ere.\\
+\textbf{R\'eponse :} Soit $f$ une solution de $(A)$, d\'eveloppable en s\'erie enti\'ere. Alors il existe $r>0$ tel que $\forall x\in ]-r,r[~~{\displaystyle f(x)=\sum_{n=0}^{+\infty}a_nx^n}$ et $$\left(\sum_{n=0}^{+\infty}a_nx^n\right)''+x\left(\sum_{n=0}^{+\infty}a_nx^n\right)'+\left(\sum_{n=0}^{+\infty}a_nx^n\right)=1$$ i.e. $$\sum_{n=2}^{+\infty}n(n-1)a_nx^{n-2}+x\left(\sum_{n=1}^{+\infty}na_nx^{n-1}\right)+\sum_{n=0}^{+\infty}a_nx^n=1$$
+$$\sum_{n=0}^{+\infty}(n+1)\left((n+2)a_{n+2}+a_n\right)x^n=1$$
+En posant $b_n=(n+1)\left((n+2)a_{n+2}+a_n\right),$ il vient $$\sum_{n=0}^{+\infty}b_nx^n=1.$$ Donc le d\'eveloppement en s\'erie enti\`ere de la fonction $f:]-r,r[\rightarrow\mathbb{R}~~(x\mapsto f(x)=1)$ solution de $(A)$ est ${\displaystyle\sum_{n=0}^{+\infty}b_nx^n.}$\\ Le d\'eveloppement en s\'erie enti\`ere \'etant unique, on a : $b_0=1$ et $b_n=0 ~\forall n\geq1$ i.e. $2a_2=1-a_0;~~(n+2)a_{n+2}=-a_n~~\forall n\geq 1. $ D'o\`u si $n\geq2,$ \begin{align*}
+a_{2n}&=\left(\frac{-1}{2n}\right)\times\left(\frac{-1}{2n-2}\right)\times\cdots\times\left(\frac{-1}{4}\right)\times\left(\frac{-1}{2}\right)\times\left(a_0-1\right)\\&=\dfrac{(-1)^n}{2\times4\times\cdots\times2n}(a_0-1).
+\end{align*}
+D'autre part si $n\geq1,~~a_{2n+1}=\dfrac{-a_{2n-1}}{a_{2n+1}};$ donc \begin{align*}
+a_{2n+1}&=\left(\dfrac{-1}{2n+1}\right)\times\left(\dfrac{-1}{2n-1}\right)\times\cdots\times\left(\dfrac{-1}{3}\right)a_1\\&=\dfrac{(-1)^n}{3\times5\times\cdots\times(2n+1)}a_1.
+\end{align*}
+Consid\'erons les s\'eries de terme g\'en\'eral $$u_n(x)=\dfrac{(-1)^n}{2\times4\times\cdots\times2n}(a_0-1),~n\geq1$$ et $$v_n=\dfrac{(-1)^n}{3\times5\times\cdots\times(2n+1)}a_1, ~n\geq0.$$
+$\sum u_n(x)$ et $\sum v_n(x)$ ont pour rayon de convergence $R=+\infty.$ Elles sont donc convergentes dans $\mathbb{R}$. Soit $u$ et $v$ leur somme : ${\displaystyle u(x)=\sum_{n=1}^{+\infty}u_n(x)}$ et ${\displaystyle v(x)=\sum_{n=1}^{+\infty}v_n(x)}.$ D'o\`u toute solution de $(A)$ d\'eveloppable en s\'erie enti\`ere est \begin{align*}
+f(x)&=\sum_{n=0}^{+\infty}a_nx^n\\&= a_0 +(a_0-1)u+a_1v\\&=f(0)+\left(f(0)-1\right)u+f'(0)v~\text{car}~a_0=f(0)~\text{et}~a_1=f'(0).
+\end{align*}
+La solution unique $g$ qui v\'erifie les conditions $g(0)=g'(0)=0$ est alors $g=-u$ o\`u $$u(x)=\sum_{n=1}^{+\infty}\dfrac{(-1)^n}{2\times4\times\cdots\times2n}x^{2n}=\sum_{n=1}^{+\infty}\dfrac{(-1)^n}{2^nn!}x^{2n}$$ \begin{align*}
+g(x)&=\sum_{n=1}^{+\infty}\dfrac{1}{n!}\left(-\dfrac{x^2}{2}\right)^n\\&=-\left(e^{-\dfrac{x^2}{2}}-1\right)\\&=\left(1-e^{-\dfrac{x^2}{2}}\right)~~\forall x\in \mathbb{R}.
+\end{align*}
+\section{Exponentielle complexe}  \label{para5.4}
+Soit $u_n(z)=\dfrac{z^n}{n!}.$ La s\'erie de terme g\'en\'eral $u_n(z)$ a pour rayon de convergence $R=+\infty$. Donc elle est absolument convergente $\forall z\in \mathbb{C}.$ On pose : $$e^z=\sum_{n=0}^{+\infty}\dfrac{z^n}{n!}.$$ 
+\begin{align*}
+\text{La fonction}\quad\mathbb{C}&\rightarrow\mathbb{C}\\z&\mapsto e^z
+\end{align*}   est appel\'ee \textbf{exponentielle complexe.}
+\begin{pro} \label{pro5.7.1} $$ \forall z,z'\in \mathbb{C}, ~~e^{z+z'}=\left(e^z\right)\left(e^{z'}\right).$$ \end{pro}
+\begin{pr}\quad
+Soit ${\displaystyle e^z=\sum_{n=0}^{+\infty}\dfrac{z^n}{n!}}$ et ${\displaystyle e^{z'}=\sum_{n=0}^{+\infty}\dfrac{z'^n}{n!}.}$\\ La s\'erie produit de $\sum \dfrac{z^n}{n!}$ et $\sum\dfrac{z'^n}{n!}$ a pour terme g\'en\'eral $$ a_n=\sum_{k=0}^n\dfrac{z^k}{k!}\cdot\dfrac{z'^{n-k}}{(n-k)!}=\sum_{k=0}^n\dfrac{C_n^kz^kz'^{n-k}}{n!}=\dfrac{(z+z')^n}{n!}.$$ Donc la s\'erie produit est $\sum \dfrac{(z+z')^n}{n!}.$ Comme $\sum\dfrac{z^n}{n!}$ et $\sum\dfrac{z'^n}{n!}$ sont absolument convergentes, on a : $$\sum_{n=0}^{+\infty}\dfrac{(z+z')^n}{n!}=\left(\sum_{n=0}^{+\infty}\dfrac{z^n}{n!}\right)\left(\sum_{n=0}^{\infty}\dfrac{z'^n}{n!}\right)~~\text{(\textbf{Th\'eor\`eme \ref{teo1.5.2})}}$$ $$e^{z+z'}=e^z\cdot e^{z'}$$
+\end{pr}
+\begin{pro} \label{pro5.7.2} \begin{enumerate}
+\item $\forall z\in \mathbb{C},~\overline{e^z}=e^{\overline{z}}$
+\item $\forall z\in \mathbb{C},~|e^z|=e^{Re(z)}$
+\item $\forall t\in \mathbb{R},~\overline{e^{it}}=e^{-it}$ et $|e^{it}|=1.$
+\end{enumerate}
+\end{pro}
+\begin{pr}\quad
+\begin{enumerate}
+\item \begin{align*}\overline{e^z}&=\lim_{n\rightarrow+\infty}s_n(z)~\text{o\`u}~s_n(z)=1+\dfrac{z}{1!}+\dfrac{z^2}{2!}+\cdots+\dfrac{z^n}{n!}\\ &=\lim_{n\rightarrow+\infty}\left(\overline{s_n(z)}\right)\\ &=\lim_{n\rightarrow+\infty}\left(1+\dfrac{\overline{z}}{1!}+\dfrac{\overline{z^2}}{2!}+\cdots+\dfrac{\overline{z^n}}{n!}\right)\\&=e^{\overline{z}} \end{align*}
+\item \begin{align*}|e^z|^2&=e^z\cdot\overline{e^z}\\ &=e^z\cdot e^{\overline{z}}\\&=e^{z+\overline{z}}\\&=\left(e^{Re(z)}\right)^2 \end{align*}
+d'o\`u $$|e^z|=e^{Re(z)}.$$
+\end{enumerate}
+\end{pr}
+
+
+\chapter{Int\'egrale d\'ependant d'un param\`etre }
+\section{Introduction}
+Soit $I$ et $J$ des intervalles de $\mathbb{R},$ et \begin{align*}
+f:I\times J&\rightarrow\mathbb{R}\\(x,t)&\mapsto f(x,t)
+\end{align*}
+une fonction.\\
+Supposons que $\forall x\in I$, fix\'e, la fonction \begin{align*}
+f_x:J&\rightarrow\mathbb{R}\\t&\mapsto f_x(t)=f(x,t)
+\end{align*} soit int\'egrable sur $J$. Alors l'int\'egrale ${\displaystyle\int_Jf_x(t)\,\ud t}$ d\'epend du param\`etre $x.$ On dit que l'int\'egrale ${\displaystyle\int_Jf_x(t)\,\ud t}$ d\'epend du param\`etre $x$ si $\forall x\in I,~f_x$ est int\'egrable sur $J$. On d\'efinira la fonction \begin{align*}
+F:I&\rightarrow \mathbb{R}\\x&\mapsto F(x)=\int_Jf_x(t)\,\ud t.
+\end{align*} Dans ce chapitre nous \'etudions les th\'eor\`emes de continuit\'e et de d\'erivabilit\'e de $F$, m\^eme si $F$ n'est explicitement d\'etermin\'ee.
+\section{Continuit\'e uniforme d'une fonction \`a deux variables}
+\begin{defi} Soit $I,J$ des intervalles de $\mathbb{R};~f:I\times J\rightarrow\mathbb{R}$ une fonction, et $(x_0,t_0)\in I\times J.$ On dit que $f$ est continue en $(x_0,t_0)$ si $\forall \varepsilon>0,~\exists \eta>0$ tel que $\forall (x,t)\in I\times J,~(|x-x_0|<\eta$ et $|t-t_0|<\eta)\Rightarrow(|f(x,t)-f(x_0,t_0)|<\varepsilon).$
+\end{defi}
+\begin{defi} Soit $I,J$ des intervalles de $\mathbb{R},~f:I\times J\rightarrow\mathbb{R}$ une fonction. On dit que $f$ est uniform\'ement continue sur $I\times J$ si $\forall \varepsilon>0,~\exists \eta>0$ tel que $\forall (x,t)\in I\times J$ et $\forall(x',t')\in I\times J,~(|x-x'|<\eta$ et $|t-t'|<\eta)\Rightarrow(|f(x,t)-f(x',t')|<\varepsilon).$
+\end{defi}
+\begin{defi} Soit $f:I\times J\rightarrow\mathbb{R},$ une fonction. Si $f$ est continue en tout point de $I\times J,$ on dira que $f$ est continue dans $I\times J.$
+\end{defi}
+\textbf{Exemple de continuit\'e uniforme}\quad
+\begin{align*}
+f:\mathbb{R}\times\mathbb{R}&\rightarrow\mathbb{R}\\(x,t)&\mapsto f(x,t)=x+t
+\end{align*} 
+Soit $\varepsilon<0.$ Choisissons $\eta=\dfrac{\varepsilon}{2}.$\\ $\forall (x,t)\in \mathbb{R}\times\mathbb{R},~\forall (x',t')\in \mathbb{R}\times\mathbb{R},$ $$(|x-x'|<\frac{\varepsilon}{2}~\text{et}~|t-t'|<\frac{\varepsilon}{2})\Rightarrow(|f(x,t)-f(x',t')|\leq|x-x'|+|t'-t'|<\varepsilon)$$
+\begin{rem} \begin{enumerate}
+\item[a-] $(f$ uniform\'ement continue sur $I\times J)\Rightarrow(f$ continue dans $I\times J)$
+\item[b-] $(f$ continue dans $I\times J)\nRightarrow(f$ uniform\'ement continue sur $I\times J)$ 
+\end{enumerate}
+\end{rem}
+\textbf{Contre-exemple}\quad
+\begin{align*}
+f:\mathbb{R}&\rightarrow\mathbb{R}\\x&\mapsto f(x)=x^2
+\end{align*}
+Montrons que $f$ n'est pas uniform\'ement continue sur $\mathbb{R}$ i.e. $\exists \varepsilon>0~\forall \eta>0,~\exists x\in \mathbb{R},\exists x'\in \mathbb{R}$ tels que $|x-x'|<\varepsilon$ et $|f(x)-f(x')|\geq\varepsilon.$ Prenons $\varepsilon=\dfrac{1}{2}.$ Soit $\eta>0.$ Posons $x=\dfrac{1}{\eta}$ et $x'=\dfrac{1}{\eta}+\dfrac{\eta}{2}.$ On a \\
+$|x-x'|<\eta$ et $|f(x)-f(x')|=|\dfrac{1}{\eta^2}-(\dfrac{1}{\eta}+\dfrac{\eta}{2})^2|=|1+\dfrac{\eta^2}{4}|>1=\varepsilon.$ \\
+La notation ${\displaystyle\lim_{(x,t)\rightarrow(x_0,t_0)}f(x,t)=\ell}$ signifie $$ \forall \varepsilon>0,~\exists \eta>0~\text{tels que}~\forall (x,t)\in I\times J,~(|x-x_0|<\eta~\text{et}~|t-t_0|<\eta)\Rightarrow(|f(x,t)-\ell|<\varepsilon).$$ Donc d'apr\`es la d\'efinition de la continuit\'e de $f$ on a 
+\begin{pro} \label{pro6.2.1} Soit $I,J$ des intervalles de $\mathbb{R},~f:I\times J\rightarrow\mathbb{R}$ une fonction et $(x_0,t_0)\in I\times J.$ Alors $f$ est continue en $(x_0,t_0) $ si et seulement si ${\displaystyle\lim_{(x,t)\rightarrow(x_0,t_0)}f(x,t)=f(x_0,t_0)}$
+\end{pro}
+\begin{pr}\quad
+La preuve est \'evidente.
+\end{pr}
+\begin{pro}	\label{pro6.2.2} Soit $I,J$ des intervalles de $\mathbb{R},f:I\times J\rightarrow\mathbb{R}$ une fonction et $(x_0,t_0)\in I\times J.$ Posons \begin{align*}
+f_{x_0}:J&\rightarrow\mathbb{R}\\ t&\mapsto f_{x_0}(t)=f(x_0,t)
+\end{align*} 
+et \begin{align*}
+f_{t_0}:I&\rightarrow\mathbb{R}\\x&\mapsto f_{t_0}(x)=f(x,t_0)
+\end{align*}
+Si $f$ est continue en $(x_0,t_0)$ alors $f_{t_0}$ et $f_{x_0}$ sont continues en $x_0$ et $t_0$ respectivement.
+\end{pro}
+\begin{pr}\\
+Montrons que $f_{x_0}$ est continue en $t_0.$ Soit $\varepsilon>0;$ comme $f$ est continue en $(x_0,t_0),$ il existe $\eta>0$ tel que $\forall (x,t)\in I\times J,~(|x-x_0|<\eta $	et $|t-t_0|<\eta)\Rightarrow|f(x,t)-f(x_0,t_0)|<\varepsilon$ i.e. $|f_x(t)-f_{x_0}(t_0)|<\varepsilon.$ En particulier $|t-t_0|<\eta \Rightarrow|f_{x_0}(t)-f_{x_0}(t_0)|<\varepsilon.$\\
+donc $f_{x_0}$ est continue en $t_0$. La continuit\'e de $f_{t_0}$ se d\'emontre de fa\c{c}on analogue.
+\end{pr}
+\begin{rem} La r\'eciproque est fausse.\end{rem}
+\textbf{Contre-exemple} \begin{align*}
+f:\mathbb{R}\times\mathbb{R}&\rightarrow\mathbb{R}\\ (x,t)&\mapsto f(x,t)=\begin{cases} \dfrac{xt}{x^2+t^2}&\quad \text{si}~(x,t)\neq(0,0)\\ 0&\quad \text{si}~(x,t)=(0,0) \end{cases}
+\end{align*}
+Posons $x_0=0$ et $t_0=0$. \\
+$f_{x_0}$ et $f_{t_0}$ sont continues en $0\in \mathbb{R}$ car \begin{align*}
+f_{t_0}:\mathbb{R}&\rightarrow\mathbb{R}\\ x&\mapsto f_{t_0}=f(x,0)=0
+\end{align*} et \begin{align*}
+f_{x_0}:\mathbb{R}&\rightarrow\mathbb{R}\\ t&\mapsto f_{x_0}(t)=f(0,t)=0
+\end{align*}
+$f_{x_0}$ et $f_{t_0}$ sont continues dans $\mathbb{R}$ en particulier en $0$. Mais $f$ n'est pas continue en $(0,0).$ \\ ${\displaystyle\lim_{(x,t)\rightarrow(x_0,t_0)}f(x,t)\neq	f(x_0,t_0)=0.}$\\ En effet, en prenant $t=2x$, on a $f(x,2x)=\dfrac{2}{5}$; ${\displaystyle\lim_{(x,2x)\rightarrow(0,0)}f(x,2x)=\dfrac{2}{5}\neq f(0,0)}.$ 
+\begin{teo} \label{teo6.2.1}
+Supposons que $I$ et $J$ soient des intervalles ferm\'es de $\mathbb{R}$ (i.e. $I=[\alpha,\beta];~J=[a,b]$). Soit $f:I\times J\rightarrow\mathbb{R}$ une fonction. Si $f$ est continue dans $I\times J$, alors $f$ est uniform\'ement continues sur $I\times J.$
+\end{teo}
+\begin{pr}\quad La d\'emonstration est analogue \`a celle qui est faite en premi\`ere ann\'ee pour les fonctions d'une variable.
+\end{pr}
+\begin{lem} \label{lem6.2.1} Soit \begin{align*}
+f:[\alpha,\beta]\times[a,b]&\rightarrow\mathbb{R}\\ (x,t)&\mapsto f(x,t)
+\end{align*} une fonction continue. Soit $(x_n)$ une suit d'\'el\'ements de $[\alpha,\beta]$ et $u_0\in [\alpha,\beta].$ Posons $\forall n,$ \begin{align*} f_{x_n}:[a,b]&\rightarrow\mathbb{R}\\ t&\mapsto f_{x_n}=f(x_n,t)\end{align*} et \begin{align*}
+f_{u_0}:[a,b]&\rightarrow\mathbb{R}\\t&\mapsto f_{u_0}(t)= f(u_0,t).
+\end{align*} Si $(x_n)$ converge vers $u_0$ alors la suite de fonctions $(f_{x_n})$ converge uniform\'ement vers $f_{u_0}$ sur $[a,b].$
+\end{lem}
+\begin{pr}\quad $f$ est uniform\'ement continue sur $[\alpha,\beta]\times[a,b]$ (\textbf{Th\'eor\`eme \ref{teo6.2.1}}). On en d\'eduit que $\forall \varepsilon >0,~\exists\eta>0$ tel que $\forall x,x'\in [\alpha,\beta], ~\forall t\in [a,b],~~(|x-x'|<\eta)\Rightarrow(|f(x,t)-f(x',t)|<\varepsilon).$\\
+Comme $(x_n)$ converge vers $u_0$, $\exists N,~\forall n\geq N,~|x_n-u_0|<\eta.$ Donc $\forall \varepsilon>0,\forall n\geq N,~\forall t\in [a,b],~|f(x_n,t)-f(u_0,t)|=|f_{x_n}(t)-f_{u_0}(t)|<\varepsilon.$
+\end{pr} 
+\section{Continuit\'e et d\'erivabilit\'e de l'int\'egrale d\'ependant d'un param\`etre}
+\subsection{Cas d'une int\'egrale d\'efinie}
+Soit $f:]\alpha,\beta[\times[a,b]\rightarrow\mathbb{R}$ une fonction continue. Alors $\forall x\in ]\alpha,\beta[,$ fix\'e, l'application $f_x:[a,b]\rightarrow\mathbb{R}~~(t\mapsto f_x(t)=f(x,t))$ est continue; donc l'int\'egrale ${\displaystyle \int_a^b f(x,t)\,\ud t}$ est d\'efinie.
+\begin{teo}	\label{teo6.3.1} Soit $f:]\alpha,\beta[\times[a,b]\times\mathbb{R}$ une fonction continue dans $]\alpha,\beta[\times[a,b].$\\ Alors l'application ${\displaystyle F:]\alpha,\beta[\rightarrow\mathbb{R}~~(x\mapsto F(x)=\int_a^bf(x,t)\,\ud t)}$ est continue dans $]\alpha,\beta[.$
+\end{teo}
+\begin{pr}\quad
+Soit $u_0\in ]\alpha,\beta[.$ Il suffit de montrer que pour toute suite $(x_n)\subset]\alpha,\beta[$ qui converge vers $u_0,$ la suite $(F(x_n))$ converge vers $F(u_0)$.\\
+Choisissons $\alpha',\beta'\in \mathbb{R}$ tels que $\{x_n,n\in \mathbb{N}\}\cup\{u_0\}\subset[\alpha',\beta']$ et $[\alpha',\beta']\subset]\alpha,\beta[.$ Soit \begin{align*}
+\varphi:[\alpha',\beta']\times[a,b]&\rightarrow \mathbb{R}\\ (x,t)&\mapsto \varphi(x,t)=f(x,t)
+\end{align*}
+$\varphi$ est continue donc uniform\'ement continue (\textbf{Th\'eor\`eme \ref{teo6.2.1}}). Soit \begin{align*}
+\psi_n:[a,b]&\rightarrow\mathbb{R}\\ t&\mapsto \psi_n(t)=f(x_n,t).
+\end{align*}
+La suite de fonctions $(\psi_n)$ converge uniform\'ement vers $\psi_{u_0}$ dans $[a,b]$ (\textbf{Lemme \ref{lem6.2.1}}). Alors $$ \lim_{n\rightarrow+\infty}\int_a^b\psi_{n}(t)\,\ud t=\int_a^b\lim_{n\rightarrow+\infty}\psi_n(t)\,\ud t$$ i.e. $$\lim_{n\rightarrow+\infty}\int_a^bf(x_n,t)\,\ud t=\int_a^bf(u_0,t)\,\ud t.$$
+\end{pr}
+
+\subsection{D\'eriv\'ee partielle}
+Soient $I$ et $J$ des intervalles ouverts de $\mathbb{R}$ et $f:I\times J\rightarrow\mathbb{R}~~((x,t)\mapsto f(x,t))$ une fonction. Soit $(x_0,t_0)\in I\times J.$ \\
+Si $$\lim_{h\rightarrow0}\dfrac{f(x_0+h,t_0)-f(x_0,t_o)}{h}$$ existe et est finie, elle est appel\'ee d\'eriv\'ee partielle de $f$ relativement \`a la variable $x$ au point $(x_0,t_0).$ Elle est not\'ee $$\dfrac{\partial f}{\partial x}(x_0,t_0).$$
+La d\'eriv\'eee partielle de $f$ relativement \`a la variable $t$ au point $(x_0,t_0)$ est le nombre $$\lim_{h\rightarrow0}\dfrac{f(x_0,t_0+h)-f(x_0,t_0)}{h}$$ s'il existe. On la note $$\dfrac{\partial f}{\partial t}(x_0,t_0).$$
+\textbf{Exemple:} \begin{align*}
+f:\mathbb{R}\times\mathbb{R}&\rightarrow\mathbb{R}\\ (x,t)&\mapsto f(x,t)=e^{-xt}+2x^2
+\end{align*}
+Soit $(x_0,t_0)\in \mathbb{R}^2;$ $$ \dfrac{\partial f}{\partial x}(x_0,t_0)=-t_0e^{-x_0t_0}+4x_0~~~~~\dfrac{\partial f}{\partial t}(x_0,t_0)=-x_0e^{-x_0t_0}.$$
+Si $\forall (x,t)\in I\times J~~\dfrac{\partial f}{\partial x}(x,t)$ existe, on d\'efinira la fonction d\'eriv\'ee partielle de $f$ relativement \`a $x$ : \begin{align*}
+\dfrac{\partial f}{\partial x}:I\times J&\rightarrow\mathbb{R}\\ (x,t)&\mapsto \dfrac{\partial f}{\partial x}(x,t).
+\end{align*}
+\begin{teo} \label{teo6.3.2} Soit $f:]\alpha,\beta[\times[a,b]\rightarrow\mathbb{R}$ une fonction continue dans $]\alpha,\beta[\times[a,b]$ telle que ${\displaystyle \dfrac{\partial f}{\partial x}}$ existe et soit continue dans $]\alpha,\beta[\times[a,b]$. Alors l'application \begin{align*}
+F:]\alpha,\beta[&\rightarrow\mathbb{R}\\x&\mapsto F(x)=\int_a^bf(x,t)\,\ud t
+\end{align*} est d\'erivable sur $]\alpha,\beta[$ et $\forall x\in ]\alpha,\beta[,~{\displaystyle F'(x)=\int_a^b\dfrac{\partial f}{\partial x}(x,t)\,\ud t.}$
+\end{teo}
+\begin{pr}\quad
+Soit $x_0\in ]\alpha,\beta[.$ Il faut d\'emontrer que ${\displaystyle \lim_{h\rightarrow0}\dfrac{F(x_0+h)-F(x_0)}{h}=\int_a^b\dfrac{\partial f}{\partial x}(x_0,t)\,\ud t}$ i.e. 
+$$\lim_{h\rightarrow0}\Big|\dfrac{1}{h}\int_a^b\left(f(x_0+h,t)-f(x_0,t)-h\dfrac{\partial f}{\partial x}(x_0,t)\right)\,\ud t\Big|=0.$$ En d'autres termes : 
+$$\forall \varepsilon>0,~\exists\eta>0,~\forall h\in \mathbb{R},~|h|<\eta\Rightarrow {\displaystyle \dfrac{1}{|h|}\Big|\int_a^b\left(f(x_0+h,t)-f(x_0,t)-h\dfrac{\partial f}{\partial x}(x_0,t)\right)\,\ud t\Big|<\varepsilon.}$$ Choisissons $\alpha',\beta'\in \mathbb{R}$ tels que $x_0\in ]\alpha',\beta'[$ et $[\alpha',\beta']\subset]\alpha,\beta[.$ Soit $h\in \mathbb{R}$ tel que $x_0+h\in [\alpha',\beta'].$ Appliquons le th\'eor\`eme des accroissements finis \`a la fonction \begin{align*}
+f_t:[x_0,x_0+h]&\rightarrow\mathbb{R}\\x&\mapsto f_t(x)=f(x,t).
+\end{align*} Alors $\exists c\in]x_0,x_0+h[$ tel que $f(x_0+h,t)-f(x_0,t)=h\dfrac{\partial f}{\partial x}(c,t).$ La fonction $\dfrac{\partial f}{\partial x}:[x_0+h,x_0]\times[a,b]\rightarrow\mathbb{R}$ \'etant continue, elle est uniform\'ement continue  sur $[x_0,x_0+h]\times[a,b].$ On en d\'ediuit que $$\forall \varepsilon>0,~\exists\eta>0~\forall x_1,x_2\in [x_0,x_0+h],~\forall t\in [a,b],~|x_1-x_2|<\eta\Rightarrow\Big|\dfrac{\partial f}{\partial x}(x_1,t)-\dfrac{\partial f}{\partial x}(x_2,t)\Big|<\dfrac{\varepsilon}{b-a}.$$ En prenant $|h|<\eta,$ on a $|x_0-c|<\eta$ car $|x_0-c|<|h|,$ d'o\`u $$\Big|\dfrac{\partial f}{\partial x}(c,t)-\dfrac{\partial f}{\partial x}(x_0,t)\Big|<\dfrac{\varepsilon}{b-a}.$$ \\
+On vient de montrer que $\forall \varepsilon>0,~\exists \eta>0~\forall h\in \mathbb{R},~|h|<\eta\Rightarrow$ \begin{align*}
+\dfrac{1}{|h|}\Big|\int_a^b\left(f(x_0+h,t)-f(x_0,t)-h\dfrac{\partial f}{\partial x}(x_0,t)\right)\,\ud t\Big| &=\dfrac{1}{|h|}\Big|h\int_a^b\left(\dfrac{\partial f}{\partial x}(c,t)-\dfrac{\partial f}{\partial x}(x_0,t)\right)\,\ud t\Big|\\ 
+&\leq \dfrac{1}{|h|}\int_a^b|h|\Big|\dfrac{\partial f}{\partial x}(c,t)- \dfrac{\partial f}{\partial x}(x_0,t)\Big|\,\ud t \\
+&\leq \dfrac{|h|}{|h|}\int_a^b\dfrac{\varepsilon}{b-a}\,\ud t\\&=\varepsilon.
+\end{align*}
+\end{pr}
+\textbf{Exemple :} Soit \begin{align*}
+F:]0,+\infty[&\rightarrow\mathbb{R}\\ x&\mapsto F(x)=\int_0^1\dfrac{e^{-x^2t}}{1+t^2}\,\ud t
+\end{align*}
+$F$ est continue et d\'erivable sur $]0,+\infty[.$ $\forall x\in ]0,+\infty[, {\displaystyle F'(x)= \int_0^1\dfrac{-2xte^{-x^2t}}{1+t^2}\,\ud t}$ car \begin{align*}
+f:]0,+\infty[\times[a,b]&\rightarrow\mathbb{R}\\(x,t)&\mapsto f(x,t)=\dfrac{e^{-x^2t}}{1+t^2}
+\end{align*} v\'erifie les hypoth\`eses du \textbf{Th\'eor\`eme \ref{teo6.3.1}} et \textbf{Th\'eor\`eme \ref{teo6.3.2}}.\\
+On a un th\'eor\`eme plus g\'en\'eral :
+\begin{teo}\label{teo6.3.3} Soit $f:]\alpha,\beta[\times[a,b]\rightarrow\mathbb{R}$ continue telle que $\dfrac{\partial f}{\partial x}$ existe et soit continue sur $]\alpha,\beta[\times[a,b].$ \\ Soit $u$ et $v$ des fonctions continues et d\'erivables sur $]\alpha,\beta[$ \`a valeurs dans $[a,b]$. Alors la fonction \begin{align*}
+F:]\alpha,\beta[&\rightarrow\mathbb{R}\\x&\mapsto F(x)=\int_{u(x)}^{v(x)}f(x)\,\ud t 
+\end{align*} est d\'erivable et $\forall x\in]\alpha,\beta[,{\displaystyle F'(x)=\int_{u(x)}^{v(x)}\dfrac{\partial f}{\partial x}(x,t)\,\ud t+\left(v'(x)f(x,v(x))-u'(x)f(x,u(x))\right)}.$
+\end{teo}
+\begin{pr}\quad
+La fonction $F$ s'\'ecrit ${\displaystyle F=\int_a^{v(x)}f(x,t)\,\ud t-\int_a^{u(x)}f(x,t)\,\ud t}.$ Il suffit de prouver le th\'eor\`eme dans le cas particulier o\`u $u(x)=0$. La fonction $F$ est alors la	compos\'ee des applications \begin{align*}
+]\alpha,\beta[&\rightarrow]\alpha,\beta[\times[a,b]\\x&\mapsto (x,v(x))
+\end{align*}
+\begin{align*}
+]\alpha,\beta[\times[a,b]&\rightarrow\mathbb{R}\\(x,y)&\mapsto \int_a^y f(x,t)\,\ud t 
+\end{align*}
+Ces deux fonctions sont d\'erivables, et les d\'eriv\'ees sont : $$\,\ud x\mapsto (1,v'(x))\,\ud x~\text{et}~(\,\ud x,\,\ud y)\mapsto \,\ud x\cdot\int_a^y\dfrac{\partial f}{\partial x}(x,t)\,\ud t +f(x,y) \,\ud y.$$ Donc la d\'eriv\'ee de $F$ au point $x$ est la compos\'ee de ces deux applications.\\ D'o\`u ${\displaystyle F'(x)=\int_a^{v(x)} \dfrac{\partial f}{\partial x}(x,t)\,\ud t +f(x,v(x))v'(x).}$\\
+\textbf{Exemple } \begin{align*}
+u:]\alpha,\beta[&\rightarrow[a,b]\\x&\mapsto u(x)=x^2
+\end{align*}
+\begin{align*}
+v:]\alpha,\beta[&\rightarrow[a,b]\\x&\mapsto v(x)=2x
+\end{align*}
+\begin{align*}
+f:]\alpha,\beta[\times[a,b]&\rightarrow\mathbb{R}\\(x,t)&\mapsto\sin(x-t)
+\end{align*}
+\end{pr}
+
+\section{Cas d'une int\'egrale g\'en\'eralis\'ee}
+Dans ce paragraphe, $a\in \mathbb{R},~b\in \mathbb{R}$ ou $b=+\infty,~I$ est un intervalle de $\mathbb{R}.$ On consid\`ere la fonction \begin{align*}
+f:I\times[a,b[&\rightarrow\mathbb{R}\\(x,t)&\mapsto f(x,t)
+\end{align*} continue.\\ $\forall x$ fix\'e, la fonction $[a,b[\rightarrow\mathbb{R}~~(t\mapsto f(t,x))$ est continue et l'int\'egrale ${\displaystyle \int_a^b f(x,t)\,\ud t}$ est une int\'grale g\'en\'eralis\'ee.
+\begin{teo}[de continuit\'e par convergence domin\'ee] \label{teo6.4.1} Soit $f:I\times[a,b[\rightarrow\mathbb{R}$ une fonction continue. Supposons qu'il existe une fonction $g:[a,b[\rightarrow\mathbb{R}$ positive et continue ayant les deux propri\'et\'es suivantes : 
+\begin{enumerate}
+\item $|f(x,t)|\leq g(t)~~\forall x\in I$ et $\forall t\in [a,b[.$ 
+\item L'int\'grale g\'en\'eralis\'ee ${\displaystyle \int_a^bg(t)\,\ud t}$ est convergente.
+\end{enumerate}
+Alors $\forall x\in I,$ l'int\'egrale g\'en\'ralis\'ee ${\displaystyle \int_a^bf(x,t)\,\ud t}$ est absolument convergente et la fonction \begin{align*}
+F:I&\rightarrow \mathbb{R}\\x&\mapsto F(x)=\int_a^bf(x,t)\,\ud t
+\end{align*} est continue dans $I$.
+\end{teo}
+\begin{pr}\quad
+Supposons $b\in \mathbb{R}~~(b\neq+\infty)$\\ L'int\'grale ${\displaystyle \int_a^bf(x,t)\,\ud t}$ est absolument convergente gr\^ace \`a l'hypoth\`ese $|f(x,t)|\leq g(t)~\forall x\in I$ et $\forall t\in [a,b[$ (\textbf{Th\'eor\`eme de comparaison \ref{teo3.3.2}}) \\
+Posons $\forall n\in \mathbb{N}^*,$ \begin{align*}
+F_n:I&\rightarrow\mathbb{R}\\x&\mapsto F_n(x)=\int_a^{b-\frac{1}{n}}f(x,t)\,\ud t
+\end{align*}
+\begin{enumerate}
+\item $F_n$ est continue dans $I,~\forall n\in \mathbb{N}^*$ (\textbf{Th\'eor\`eme \ref{teo6.3.1}})
+\item $(F_n)$ converge simplement vers $F$ sur $I$ (\textbf{Lemme \ref{lem3.3.1}})
+\end{enumerate}
+Montrons que $(F_n)$ converge uniform\'ement vers $F$ sur $I$.\\
+$\forall n\in\mathbb{N}*,$ posons ${\displaystyle G_n=\int_a^{b-\frac{1}{n}}g(t)\,\ud t}.$ La suite $(G_n)$ est convergente car l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^b g(t)\,\ud t}$ est convergente (\textbf{Lemme \ref{lem3.3.1}}). Donc $(G_n)$ est une suite de Cauchy. $\forall \varepsilon >0,\exists N,\forall p,q~(q>p)$ $$|G_q-G_p|=\int_{b-\frac{1}{p}}^{a-\frac{1}{q}}g(t)\,\ud t <\varepsilon.$$ Comme $|f(x,t)|\leq g(t)~~\forall x\in I$ et $\forall t\in [a,b[,$ on a $\forall p,q\geq N;~\forall x\in I$ et $t\in [a,b[$ 
+$$ |F_q(x)-F_p(x)|=\Big|\int_{b-\frac{1}{p}}^{a-\frac{1}{q}}f(x,t)\,\ud t\Big|\leq \int_{b-\frac{1}{p}}^{a-\frac{1}{q}}|f(x,t)|\,\ud t\leq |G_q-G_p|<\varepsilon.$$ 
+On vient de montrer que la suite de fonctions $(F_n)$ v\'erifie le crit\`ere de Cauchy pour la convergence uniforme. Donc elle converge uniform\'ement sur $I$ vers $F$, alors $F$ est continue sur $I$ (\textbf{Th\'eor\`eme \ref{teo3.3.2}}).\\
+Si $b=+\infty,$ on posera \begin{align*}
+F_n:I&\rightarrow\mathbb{R}\\ x&\mapsto F_n(x)=\int_a^nf(x,t)\,\ud t 
+\end{align*}
+et ${\displaystyle G_n=\int_a^ng(t)\,\ud t}.$
+\end{pr}
+\begin{teo}[de d\'erivation par convergence domin\'ee] \label{teo6.4.2}
+Supposons l'intervalle $I$ ouvert.\\
+Soit $f:I\times[a,b[\rightarrow\mathbb{R}$ une fonction continue telle que $\forall x\in I,$ l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^bf(x,t)\,\ud t}$ soit convergente.\\ Supposons que $\forall (x,t)\in I\times[a,b[,$ la d\'eriv\'ee $\dfrac{\partial f}{\partial x}(x,t)$ existe et soit continue sur $I\times[a,b[.$ Supposons de plus qu'il existe une fonction $g:[a,b[\rightarrow\mathbb{R}$ continue ayant les deux propri\'et\'es suivantes :
+\begin{enumerate}
+\item $\Big|\dfrac{\partial f}{\partial x}(x,t)\Big|\leq g(t)~\forall x\in I,~\forall t\in[a,b[$
+\item L'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^bg(t)\,\ud t}$ est convergente.
+\end{enumerate}
+Alors $\forall x\in I,$ l'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^b\dfrac{\partial f}{\partial x}(x,t)\,\ud t}$ est absolument convergente. La fonction \begin{align*}
+\varphi:I&\rightarrow\mathbb{R}\\x&\mapsto \varphi(x)=\int_a^bf(x,t)\,\ud t
+\end{align*} est de classe $\mathcal{C}^1$ et $\forall x\in I,{\displaystyle \varphi'(x)=\int_a^b\dfrac{\partial f}{\partial x}(x,t)\,\ud t.}$
+\end{teo}
+\begin{pr}\quad On suppose $b\in \mathbb{R}.$ On va montrer que $\varphi$ est de classe $\mathcal{C}^1$ sur tout segment $[c,d]\subset I.$ \\
+$\forall n\in \mathbb{N}^*,$ posons \begin{align*}
+f_n:[c,d]&\rightarrow\mathbb{R}\\ x&\mapsto f_n(x)=\int_a^{b-\frac{1}{n}}f(x,t)\,\ud t
+\end{align*}
+$(f_n)$ converge simplement vers $\varphi$ dans $[c,d]$ (par hypoth\`ese) i.e. $\forall x\in [c,d],~{\displaystyle \lim_{n\rightarrow+\infty}f_n(x)=\varphi(x)=\int_a^bf(x,t)\,\ud t.}$\\
+$\forall n,f_n$ est d\'erivable sur $[c,d]$ et $\forall n~~{\displaystyle f'_n(x)= \int_a^{b-\frac{1}{n}}\dfrac{\partial f}{\partial x}(x,t)\,\ud t }$ (\textbf{Th\'eor\`eme \ref{teo6.3.2}}).\\
+L'int\'egrale g\'en\'eralis\'ee ${\displaystyle \int_a^b\dfrac{\partial f}{\partial x}(x,t)\,\ud t}$ est absolument  convergente (hypoth\`ese 1) donc $(f'_n)$ converge simplement dans $[c,d]$ vers la fonction\begin{align*}
+h:[c,d]&\rightarrow\mathbb{R}\\x&\mapsto h(x)=\int_a^b\dfrac{\partial f}{\partial x}(x,t)\,\ud t~(\textbf{Lemme \ref{lem3.3.1}})
+\end{align*} $\forall n\in \mathbb{N}^*,$ posons ${\displaystyle G_n=\int_a^{b-\frac{1}{n}}g(t)\,\ud t}.$\\
+La suite $(G_n)$ est convergente (hypoth\`ese 2). Sa limite est ${\displaystyle \int_a^bg(t)\,\ud t}.$ C'est donc une suite de Cauchy. $\forall \varepsilon>0,~\exists N~\forall p,q~(p>q)~~|G_q-G_p|<\varepsilon;$ on a $\forall x\in [c,d], ~~|f'_q(x)-f'_p(x)|\leq |G_q-G_p|$ (hypoth\`ese 1). \\
+On en d\'eduit que $(f'_n)$ v\'erifie le crit\`ere de Cauchy pour la convergence uniforme. Donc $(f'_n)$ converge uniform\'ement sur $[c,d]$ vers $h.$ D'autre part, pour $x_0\in [c,d],$ la suite $(f_n(x_0))$ converge vers ${\displaystyle \int_a^bf(x_0,t)\,\ud t.}$\\
+D'apr\`es le \textbf{Th\'or\`eme \ref{teo4.3.2}}, la suite de fonctions $(f_n)$ converge uniform\'ement vers $\varphi$ sur $[c,d],~\varphi$ est d\'erivable sur $[c,d]$ et on a ${\displaystyle \varphi'(x)=\lim_{n\rightarrow+\infty}f'_n(x)}~\forall x\in[c,d]$. Comme $\forall n\in \mathbb{N}^*,~f'_n$ est continue (\textbf{Th\'eor\`eme \ref{teo6.3.1}}), alors sa limite est uniforme $\varphi'$ est continue sur $[c,d]$. On vient de prouver que $\varphi$ est de classe $\mathcal{C}^1$ sur tout segment inclus dans $I$, donc $\varphi$ est d\'erivable et $\varphi'$ est continue en tout point de $I$.\\
+Maintenant si $b=+\infty$, on consid\'erera les suites \\${\displaystyle f_n(x)=\int_a^nf(x,t)\,\ud t},\quad {\displaystyle f'_n(x)=\int_a^n\dfrac{\partial f}{\partial x}(x,t)\,\ud t}$  et ${\displaystyle G_n=\int_a^ng(t)\,\ud t}$ \\et on reprendra mot \`a mot la d\'emonstration ci-dessus.
+\end{pr}
+\textbf{Exemple :}\quad Soit \begin{align*}
+F:]0,+\infty[&\rightarrow\mathbb{R}\\ x&\mapsto F(x)=\int_0^{+\infty}e^{-t}t^{x-1}\,\ud t.
+\end{align*} 
+\begin{enumerate}
+\item Montrer que $F(x)$ existe $\forall x\in ]0,+\infty[.$ 
+\item Montrer que $F$ est continue dans  $]0,+\infty[.$
+\item Montrer que $F$ est d\'erivable dans $]0,+\infty[$ et calculer $F'.$
+\end{enumerate}
+\textbf{Solution :}\quad
+\begin{enumerate}
+\item C'est au voisinage de $t=0$ et $t=+\infty$ que se pose le probl\`eme d'existence de l'int\'egrale.\\
+Lorsque $t\rightarrow0,~~e^{-t}\rightarrow1$ donc $f(x,t)=e^{-t}t^{x-1}\sim t^{x-1}.$\\
+${\displaystyle \int_0^1t^{x-1}\,\ud t}$ est convergente si $1-x<1$ i.e. $0<x$. C'est bien le cas ici. Donc ${\displaystyle \int_0^1f(x,t)\,\ud t}$ est convergente. \\
+Lorsque $t\rightarrow+\infty\quad 0<e^{-t}t^{x-1}=e^{-\frac{t}{2}}\cdot e^{-\frac{t}{2}}\cdot t^{x-1} \leq e^{-\frac{t}{2}}\quad\forall x\in ]0,+\infty[$ fix\'e.
+ Comme ${\displaystyle \int_1^{+\infty}e^{-\frac{t}{2}}\,\ud t}$ est convergente,
+  l'int\'grale ${\displaystyle \int_1^{+\infty}f(x,t)\,\ud t}$ est convergente.\\
+Nous venons de montrer que $\forall x>0$ l'int\'egrale ${\displaystyle \int_0^{+\infty}f(x,t)\,\ud t}$ existe, i.e. $F$ existe.
+\item Montrons que $F$ est continue dans $x\in ]0,+\infty[.$\\
+Il suffit de montrer que $F$ est continue sur tout segment $[a,b]\subset ]0,+\infty[.$ \\
+Posons $F(x)=F_1(x)+F_2(x)$ o\`u $\forall x\in ]0,+\infty[,~{\displaystyle F_(x)=\int_0^1e^{-t}t^{x-1}\,\ud t}$ et ${\displaystyle F_2(x)=\int_1^{+\infty}e^{-t}t^{x-1}\,\ud t}$. Nous allons montrer que $F_1$ et $F_2$ sont continues sur $[a,b]$, et $\forall x\geq a,~t^{x-1}\leq t^{a-1}~\forall t\in ]0,1]$ et $\forall x\in [a,b]$. Donc $e^{-t}\cdot t^{x-1}\leq t^{a-1}\quad \forall t\in ]0,1]$ et $\forall x\in [a,b]$. \\
+Soit $g:]0,1]\rightarrow\mathbb{R}\quad(t\mapsto g(t)=t^{a-1})$ l'int\'egrale ${\displaystyle \int_a^1g(t)\,\ud t}$ est convergente, donc $F_1$ est continue (\textbf{Th\'eor\`eme \ref{teo6.3.3}}).\\
+$F_2$ est aussi continue par convergence domin\'ee sur $[a,b]$ car $e^{-t}\cdot t^{x-1}\leq e^{-t}\cdot t^{b-1}=g(t)\quad\forall x\in [a,b]$ et $t\in [1,+\infty[$ et ${\displaystyle \int_1^{+\infty}e^{-t}t^{b-1}\,\ud t}$ est convergente car si $t\rightarrow +\infty \quad e^{-t}\cdot t^{b-1}\leq e^{-\frac{t}{2}}$. \\
+$F_1$ et $F_2$ sont continues sur tout segment $[a,b]\subset ]0,+\infty[.$ En particulier en tout point de $]0,+\infty[.$
+\item D\'erivabilit\'e de $F_1$ et $F_2$.\\
+D\'emontrons que $F_1$ et $F_2$ sont d\'erivables sur tout segment $[a,b]\subset]0,+\infty[$ et que $${\displaystyle F'(x)=\int_0^{+\infty}e^{-t}t^{x-1}\lo t\,\ud t}.$$ \\
+$F_2$ est d\'erivable par convergence domin\'ee car $ \forall x\in [a,b]$ et $\forall t\in ]0,+\infty[ $ 
+$$ \Big|\dfrac{\partial f}{\partial x}(x,t)\Big|\leq g(t)=e^{-t}t^{b-1}\lo t~\text{o\`u}~ \dfrac{\partial f}{\partial x}(x,t)=e^{-t}t^{x-1}\lo t$$ et ${\displaystyle \int_1^{+\infty}g(t)\,\ud t}$ est convergente car si $t\rightarrow+\infty~~g(t)\leq e^{-\frac{t}{2}}.$\\
+D'autre part $F_1$ est d\'erivable par convergence domin\'ee sur $[a,b]$ car $\forall t\in ]0,1]$ et $\forall x\in [a,b]~~(x\geq a>0),$  $$\Big|\dfrac{\partial f}{\partial x}(x,t)\Big|\leq g(t)=t^{a-1}|\lo t|=t^{a-1}\lo t.$$
+L'int\'egrale ${\displaystyle \int_0^1g(t)\,\ud t}$ est convergente car $a>0$ $({\displaystyle \int_0^1g(t)\,\ud t=\int_1^{+\infty}\dfrac{\lo u}{u^{a+1}}\,\ud u}$, faire le changement de variable $u=\dfrac{1}{t})$.
+\end{enumerate}
+
+
+\chapter{S\'eries de Fourier}
+Ce chapitre est succinctement r\'edig\'e. Ceci est \`a la base des ses lacunes: il est incomplet et mal pr\'esent\'e. L'\'etudiant d\'esireux d'en savoir plus peut consulter : \cite{kre} et \cite{lelong} dans la bibliographie.
+\section{S\'eries trigonom\'etriques}
+On appelle \textbf{s\'erie trigonom\'etrique} une s\'erie de fonctions dont le terme g\'en\'eral $u_n(x)$ est de la forme $a_n\cos (nx)+b_n\sin (nx),~~a_n,b_n\in \mathbb{C},~x\in \mathbb{R}.$ \\
+Par convention on pose $b_0=0.$\\
+\begin{rem} \begin{enumerate}
+\item $u_n(x)$ peut s'\'ecrire aussi $$u_n(x)=\alpha_n e^{inx}+\beta_n e^{inx}$$ o\`u $\alpha_n=\frac{1}{2}(a_n-b_n);~~\beta_n=\frac{1}{2}(a_n+b_n)$ ou encore $$u_n(x)=c_ne^{inx},$$ ici $n\in \mathbb{Z},~~c_0=a_0;~c_n=\alpha_n$ si $n>0$ et $c_n=\beta_n$ si $n<0$.
+\item Une s\'erie trigonom\'etrique \'etant une s\'erie de fonctions, les th\'eor\`emes de convergence des s\'eries de fonctions restent valables pour les s\'eries trigonom\'etriques.
+\item La somme d'une s\'erie trigonom\'etrique (si elle existe) est une fonction p\'eriodique de p\'eriode $2\pi.$
+\end{enumerate}
+\end{rem}
+\section{S\'erie de Fourier d'une fonction }
+\subsection{Probl\`eme trait\'e}
+La somme d'une s\'erie trigonom\'etrique est une fonction p\'eriodique. Est-ce que toute fonction p\'eriodique de p\'eriode $T$ est-elle la somme d'une s\'erie trigonom\'etrique?\\
+Le th\'eor\`eme de Dirichlet ci-dessous donne une classe de fonctions pour laquelle on a une r\'eponse positive.
+\subsection{D\'efinitions}
+Soit $f:\mathbb{R}\rightarrow \mathbb{R}$ une fonction int\'egrable sur tout intervalle ferm\'e born\'e de $\mathbb{R}$ et p\'eriodique de p\'eriode $T=\dfrac{2\pi}{\omega},~\omega\in \mathbb{R}^*_+.$\\ On appelle \textbf{coefficients de Fourier} de $f$ les nombres $a_n$ et $b_n$ ou $c_n$ d\'efinis par $$\forall n\geq 0,~~a_n=\dfrac{\omega}{\pi}\int_\Delta f(x)\cos(n\omega x)\,\ud x,~~n\geq1,$$  $$b_n=\dfrac{\omega}{\pi}\int_\Delta f(x)\sin(n\omega x)\,\ud x$$ ou $$\forall n\in \mathbb{Z},~~c_n=\dfrac{\omega}{2\pi}\int_\Delta f(x)e^{-in\omega x}\,\ud x$$ o\`u $\Delta$ est un segment de longueur $\dfrac{2\pi}{\omega}.$\\
+On appelle \textbf{s\'erie de Fourier} de $f$, la s\'erie trigonom\'etrique $$\dfrac{a_0}{2}+\sum_{n\geq 1}\left(a_n\cos (n\omega x)+b_n\sin(n\omega x)\right)$$ ou la s\'erie $$\sum_{n\in \mathbb{Z}}c_ne^{in\omega x}.$$
+\subsection{Notations}
+On \'ecrira $f(x)\approx \dfrac{a_0}{2}+\sum\left(a_n\cos n\omega x+b_n\sin n\omega x\right)$ pour dire que $\dfrac{a_0}{2}+\sum\left(a_n\cos n\omega x+b_n\sin n\omega x\right)$ est la s\'erie de Fourier de $f$. Soit $x\in \mathbb{R},$ on \'ecrira ${\displaystyle f(x)=\dfrac{a_0}{2}+\sum_{n=1}^{+\infty}\left(a_n\cos n\omega x+b_n\sin n\omega x\right)}$ si $f(x)$ est la somme de la s\'erie ${\displaystyle \dfrac{a_0}{2}+\sum_{n\geq 1}\left(a_n\cos n\omega x+b_n\sin n\omega x\right)}.$
+\begin{rem} Si $\omega=1$ alors $f$ est p\'eriodique de p\'eriode $2\pi$.
+\end{rem}
+\textbf{Exemple :}\quad D\'eterminer la s\'erie de Fourier de la fonction $f:\mathbb{R}\rightarrow\mathbb{R}$ p\'eriodique de p\'eriode $2\pi$ d\'efinie par $f(x)=\dfrac{x}{2}$\quad si $|x|<\pi$.\\
+\textbf{Solution :} $$a_0=\dfrac{1}{\pi}\int_{-\pi}^{\pi}\dfrac{x}{2}\,\ud x=\dfrac{1}{2\pi}\left[\dfrac{x^2}{2}\right]_{-\pi}^{\pi}=0$$
+\begin{align*}
+\pi a_n&=\int_{-\pi}^\pi \dfrac{x}{2}\cos nx\,\ud x\\&=\int_{-\pi}^\pi\dfrac{x}{2} \,\ud\left(\dfrac{\sin nx}{x}\right)\\&=\dfrac{1}{2n}\left[x\sin nx\right]_{-\pi}^\pi-\dfrac{1}{2n}\int_{-\pi}^{\pi}\sin nx\,\ud x\\&=0,
+\end{align*} soit $a_n=0,~\forall n\geq 0$. 
+\begin{align*}
+\pi b_n&=\int_{-\pi}^\pi \dfrac{x}{2}\sin nx\,\ud x\\&=\int_{-pi}^\pi \dfrac{x}{2}\,\ud\left(-\dfrac{\cos nx}{n}\right)\\&=\left[-\dfrac{x}{2}\dfrac{\cos nx}{n}\right]_{-\pi}^\pi+\dfrac{1}{2n}\int_{-\pi}^\pi \cos nx\,\ud x\\&=-\dfrac{\pi}{2n}(-1)^n-\dfrac{\pi}{2n}(-1)^n\\&=\dfrac{(-1)^{n+1}\pi}{n},
+\end{align*}
+donc $b_n=\dfrac{(-1)^{n+1}}{n}$  
+$$f(x)\approx \sum_{n\geq 1}\dfrac{(-1)^{n+1}}{n}\sin nx.$$
+\begin{rem} Nous n'\'etudierons que des fonctions p\'eriodiques de p\'eriode $2\pi$. Les th\'eor\`emes qui seront d\'emontr\'es dans ce cadre restent valables pour des fonctions p\'eriodiques de p\'eriode quelconque.
+\end{rem}
+\subsection{Calcul pratique des coefficients de Fourier}
+\begin{pro} \label{pro7.2.1} Soit $f:\mathbb{R}\rightarrow\mathbb{R}$ une fonction int\'egrable sur tout intervalle ferm\'e born\'e de $\mathbb{R}$ et p\'eriodique de p\'eriode $2\pi.$ Alors $$\forall \alpha\in \mathbb{R}, \quad a_n=\int_\alpha^{\alpha+2\pi}f(x)\cos nx\,\ud x,\quad b_n=\int_\alpha^{\alpha+2\pi}f(x)\sin nx\,\ud x.$$
+\end{pro}
+\begin{pr}\quad
+On a : $$\int_\alpha^{\alpha+2\pi}f(x)\cos nx\,\ud x=\int_\alpha^0f(x)\cos nx\,\ud x+\int_0^{2\pi}f(x)\cos nx\,\ud x+\int_{2\pi}^{\alpha+2\pi}f(x)\cos nx\,\ud x.$$
+En posant $x=2\pi+t$, on a :
+\begin{align*}
+\int_{2\pi}^{2\pi+\alpha}f(x)\cos nx\,\ud x&=\int_0^\alpha f(2\pi+t)\cos n(2\pi+t)\,\ud t\\&=\int_0^\alpha f(t)\cos nt\,\ud t\\&=-\int_\alpha^0f(x)\cos nx\,\ud x.
+\end{align*} Alors 
+\begin{align*}
+\int_\alpha^{\alpha+2\pi}f(x)\cos nx\,\ud x&=\int_0^{2\pi}f(x)\cos nx\,\ud x\\&=\pi a_n.
+\end{align*} D\'emonstration analogue pour $b_n$.
+\end{pr}
+\textbf{Cas particulier :} $\alpha=-\pi$ \\
+Alors ${\displaystyle a_n=\dfrac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos nx\,\ud x}$ et ${\displaystyle b_n=\dfrac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin nx\,\ud x.}$
+\begin{pro}\label{pro7.2.2} Soit $f:\mathbb{R}\rightarrow\mathbb{R}$ une fonction int\'egrable sur tout intervalle ferm\'e born\'e de $\mathbb{R}$ et p\'eriodique de p\'eriode $2\pi$. 
+\begin{enumerate}
+\item Si $f$ est une fonction paire (i.e. $f(-x)=f(x)~\forall x\in \mathbb{R}$) alors $\forall n\geq 1\quad b_n=0$ et $$a_n=\dfrac{2}{\pi}\int_0^{2\pi}f(x)\cos nx\,\ud x\quad\forall n\geq1.$$
+\item Si $f$ est une fonction impaire (i.e. $f(-x)=-f(x)~\forall x\in \mathbb{R}$) alors $\forall n\geq0\quad a_n=0$ et $$b_n=\dfrac{2}{\pi}\int_0^{2\pi}f(x)\cos nx\,\ud x \quad \forall n\geq1.$$
+\end{enumerate}
+\end{pro}
+\begin{pr}\quad
+\begin{enumerate}
+\item 
+\begin{align*}
+\pi a_n&=\int_{-\pi}^\pi f(x)\cos nx\,\ud x\\&=\int_{-\pi}^0f(x)\cos nx\,\ud x+\int_0^\pi f(x)\cos nx\,\ud x
+\end{align*}
+En posant $t=-x$ on a : 
+\begin{align*}
+\int_{-\pi}^0 f(x)\cos nx\,\ud x&=-\int_{-\pi}^0 f(-t)\cos (-nt)\,\ud t\\&=\int_0^\pi f(x)\cos nx\,\ud x
+\end{align*}
+\begin{align*}
+\pi a_n&=\int_0^\pi f(x)\cos nx\,\ud x+\int_0^\pi f(x)\cos nx\,\ud x\\ &=2\int_0^\pi f(x)\cos nx\,\ud x.
+\end{align*}
+\begin{align*}
+\pi b_n&=\int_{-\pi}^\pi f(x)\sin nx\,\ud x\\&=\int_{-\pi}^0 f(x)\sin nx\,\ud x+\int_0^\pi f(x)\sin nx\,\ud x.
+\end{align*}
+En posant $t=-x$ on a : \begin{align*}
+\int_{-\pi}^0 f(x)\sin nx\,\ud x&=-\int_{\pi}^0 f(-t)\sin (-nt)\,\ud t\\&=\int_\pi^0 f(t)\sin nt \,\ud t\\&=-\int_0^\pi f(x)\sin nx\,\ud x.
+\end{align*} D'o\`u $$\pi b_n=0\quad \forall n\geq 1.$$ 
+\item La d\'emonstration se fait d'une mani\`ere analogue.
+\end{enumerate}
+\end{pr}
+\textbf{Exemple :}\quad Soit $f:\mathbb{R}\rightarrow\mathbb{R}$ une fonction p\'eriodique de p\'eriode $2\pi$ d\'efinie par $$f(x)=\begin{cases}  1&\quad\text{si}~x\in ]0,\pi[\\ -1&\quad\text{si}~x\in ]-\pi,0[ \end{cases}$$ 
+D\'eterminer la s\'erie de Fourier de $f$.\\
+\textbf{Solution}  $f$ est une fonction impaire donc ${\displaystyle b_n=\dfrac{2}{\pi}\int_0^\pi \sin nx\,\ud x\quad\forall n\geq 1}$ et $a_n=0\quad\forall n\geq 0$ 
+\begin{align*} b_n&=\dfrac{2}{\pi}\left[-\dfrac{\cos nx}{n}\right]_0^\pi\\&=\dfrac{2}{n\pi}\left[(-1)^{n+1}+1\right]\\&= \begin{cases} 0 &\quad \text{si}~n=2p\\ \dfrac{4}{(2p+1)\pi}&\quad \text{si}~n=2p+1.\end{cases}
+\end{align*}
+Donc $$f(x)\approx \dfrac{4}{\pi}\sum_{p\geq0}\dfrac{1}{2p+1}\sin (2p+1)x.$$
+\begin{lem}\label{lem7.2.1} Soit $f$ une fonction num\'erique int\'egrable sur l'intervalle $[a,b]$ de $\mathbb{R}.$ \\
+Alors ${\displaystyle \lim_{|n|\rightarrow+\infty}\int_a^b f(x)e^{inx}\,\ud x=0}\quad(n\in \mathbb{Z}).$
+\end{lem}
+\begin{pr}\quad
+\begin{enumerate}
+\item[a-] Supposons que $f$ soit une fonction en escalier :  $f:{\displaystyle \sum_{k=1}^{n}a_k1_{]x_{k-1},x_k[}}$ avec $x_0=a$ et $x_n=b,$ o\`u $1_{]x_{k-1},x_k[}$ est la fonction indicatrice (fonction caract\'eristique) de $]x_{k-1},x_k[$.  On a alors :  $$\int_a^b f(x)e^{inx}\,\ud x=\dfrac{1}{ni}\sum_{k=1}^n\left(e^{inx_k}-e^{inx_{k-1}}\right)a_k,$$ d'o\`u la majoration $$\Big|\int_a^bf(x)e^{inx}\,\ud x\Big|\leq \dfrac{2}{|n|}\sum_{k=1}^n|a_k|.$$
+On en d\'eduit, dans ce cas, le r\'esultat du lemme.
+\item[b-] Supposons $f$ int\'egrable au sens de Riemann sur $[a,b].$ Alors $\forall \varepsilon>0,$ il existe une fonction $\varphi$ en escalier sur $[a,b]$ telle que ${\displaystyle \int_a^b|f(x)-\varphi(x)|\,\ud x<\dfrac{\varepsilon}{2}}$ Alors $$\Big|\int_a^bf(x)e^{inx}\,\ud x-\int_a^b\varphi(x)e^{inx}\,\ud x\Big|=\Big|\int_a^b\left(f(x)-\varphi(x)\right)e^{inx}\,\ud x\Big|<\dfrac{\varepsilon}{2}.$$
+D'o\`u \begin{align*}\Big|\int_a^bf(x)e^{inx}\,\ud x\Big|&=\leq \Big|\int_a^bf(x)e^{inx}\,\ud x-\int_a^b\varphi (x)e^{inx}\,\ud x\Big|+\Big|\int_a^b\varphi(x)e^{inx}\,\ud x\Big|\\&\leq \dfrac{\varepsilon}{2}+\Big|\int_a^b\varphi(x)e^{inx}\,\ud x\Big|\end{align*}
+La partie a- de la d\'emonstration permet de conclure que $$\lim_{|n|\rightarrow+\infty}\int_a^bf(x)e^{inx}\,\ud x=0.$$
+\end{enumerate}
+\end{pr}
+\textbf{Cons\'equences :} Les coefficients $a_n$ et $b_n$ de $f$ tendent vers $0$ quand $n\rightarrow+\infty.$
+\begin{lem}\label{lem7.2.2} Soit $f$ une fonction born\'ee sur $[a,b];~~a,b\in \mathbb{R}$ et int\'egrable sur tout $[\alpha,\beta]\subset ]a,b[.$ Alors $f$ est int\'egrable sur $[a,b].$
+\end{lem}
+\begin{lem} \label{lem7.2.3} $\forall u\in \mathbb{R}\setminus2\pi\mathbb{Z},$ on a:$$\dfrac{1}{2}+\cos u+\cos 2u+\cdots+\cos nu=\dfrac{\sin(n+\frac{1}{2})u}{2\sin \frac{u}{2}}.$$
+\end{lem}
+\begin{pr}\quad
+Si $u\notin 2\pi\mathbb{R}$, on a $e^{inu}\neq1,$ et 
+\begin{align*}
+\dfrac{1}{2}+\sum_{k=1}^ne^{iku}&=\dfrac{1}{2}+\dfrac{e^{i(n+1)u}-e^{iu}}{e^{iu}-1}\\&=\dfrac{2e^{i(n+1)u-e^{iu}-1}}{2(e^{iu}-1)}\\&=\dfrac{2e^{i(n+\frac{1}{2})u-2\cos \frac{u}{2}}}{4i\sin\frac{u}{2}}.
+\end{align*}
+On obtient le lemme en prenant les parties r\'eelles des deux membres.
+\end{pr}
+\textbf{Notations}\quad Soit $I\subset\mathbb{R},~f:I\rightarrow\mathbb{R};$ soit $x_0\in I$. Posons \\
+${\displaystyle f(x_0^+)=\lim_{\substack{t\rightarrow x_0\\t>x_0}}f(x)}$ (c'est la limite \`a droite de $f$ au point $x_0.$)\\
+${\displaystyle f(x_0^+)=\lim_{\substack{t\rightarrow x_0\\t<x_0}}f(x)}$ (c'est la limite \`a gauche de $f$ au point $x_0.$)
+\begin{rem} Si $f$ est continue au point $x_0$ alors $f(x_0^+)=f(x_0^-)=f(x_0)$.\\
+${\displaystyle f'_d(x_0)=\lim_{\substack{u\to0\\u>0}}\dfrac{f(x_0+u)-f(x_0^+)}{u}}$ (on suppose que $f(x_0^+)$ existe).\\
+${\displaystyle f'_g(x_0)=\lim_{\substack{u\to0\\u<0}}\dfrac{f(x_0+u)-f(x_0^-)}{u}}$ (on suppose que $f(x_0^-)$ existe).
+\end{rem}
+\begin{rem} Si $f$ est d\'erivable au point $x_0$ alors $f'_g(x_0)=f'_d(x_0)=f'(x_0)$. Par abus de langage, $f'_d(x_0)$ (respectivement $f'_g(x_0)$) est appel\'ee d\'eriv\'ee \`a droite (respectivement d\'eriv\'ee \`a gauche) de $f$ au point $x_0.$
+\end{rem}
+\begin{teo}[de Dirichlet]\label{teo7.2.1} Soit $f:\mathbb{R}\to\mathbb{R}$ une fonction p\'eriodique de p\'eriode $2\pi$ et int\'egrable sur tout intervalle ferm\'e et born\'e de $\mathbb{R}.$ Soit $x_0\in \mathbb{R}$ tel que $f(x_0^+)$ et $f(x_0^-)$ existent. Si le rapport $$\dfrac{1}{u}\left[f(x_0+u)+f(x_0-u)-f(x_0^+)-f(x_0^-)\right]$$ est born\'e au voisinage de $0$, alors la s\'erie de Fourier de $f$ converge au point $x_0$ vers $\dfrac{1}{2}\left[f(x_0^+)+f(x_0^-)\right]$.
+\end{teo}
+\begin{pr}\quad
+Soit ${\displaystyle \dfrac{a_0}{2}+\sum_{n\geq1}\left(a_n\cos nx+b_n\sin nx\right)}$ la s\'erie de Fourier de $f$. Soit $(s_n)$ la suite des sommes partielles de cette s\'erie. Il faut prouver que $(s_n(x_0))$ converge vers $\dfrac{1}{2}\left[f(x_0^+)+f(x_0^-)\right]$.
+\begin{align*}
+s_n(x_0)&=\dfrac{a_0}{2}+\sum_{k=0}^n\left(a_k\cos kx_0+b_k\sin kx_0\right)\\
+&=\dfrac{1}{\pi}\int_{-\pi}^{\pi}\left[\dfrac{1}{2}+\sum_{k=1}^n\left(\cos kt\cos kx_0+\sin kt\sin kx_0\right)\right]f(t)\,\ud t\\
+&=\dfrac{1}{\pi}\int_{-\pi}^\pi \left[\dfrac{1}{2}+\sum_{k=1}^n\cos k(x_0-t)\right]f(t)\,\ud t\\
+&=\dfrac{1}{\pi}\int_{-\pi}^\pi \dfrac{\sin (n+\frac{1}{2})(x_0-t)}{2\sin\left(\dfrac{x_0-t}{2}\right)}f(t)\,\ud t\\
+&=\dfrac{1}{2\pi} \int_{-\pi-x_0}^{\pi-x_0}\dfrac{\sin(n+\frac{1}{2})u}{\sin\frac{u}{2}}f(u+x_0)\,\ud u \quad \text{en posant $u=t-x_0$}\\
+&=\dfrac{1}{2\pi}\int_{-\pi}^{\pi}\dfrac{\sin (n+\frac{1}{2})u}{\sin \frac{u}{2}}f(u+x_0)\,\ud u \quad (\text{\textbf{Proposition \ref{pro7.2.1}}})
+\end{align*}
+Si $f(x)=1~\forall x\in \mathbb{R},$ alors $a_0=2$ et $a_n=b_n=0.$ \\
+Par cons\'equent ${\displaystyle 1=\dfrac{1}{\pi}\int_0^\pi\dfrac{\sin(n+\frac{1}{2})u}{\sin \frac{u}{2}}\,\ud u}$.
+\begin{align*}
+s_n(x_0)-y&=s_n(x_0)-\dfrac{1}{\pi}\int_0^\pi \dfrac{y\sin(n+\frac{1}{2})u}{\sin \frac{u}{2}}\,\ud u\\
+&=\dfrac{1}{2\pi}\int_0^\pi\left[f(x_0+u)+f(x_0-u)-2y\right]\dfrac{\sin(n+\frac{1}{2})u}{\sin\frac{u}{2}}\,\ud u
+\end{align*}
+Posons $y=\dfrac{1}{2}[f(x_0^+)+f(x_0^-)].$ Alors $$s_n(x_0)-y=\dfrac{1}{2\pi}\int_0^\pi \dfrac{f(x_0+u)+f(x_0-u)-f(x_0^+)-f(x_0^-)}{\sin \frac{u}{2}}\sin(n+ \frac{1}{2})u\,\ud u.$$ On a $\sin \frac{u}{2}\sim\dfrac{u}{2}$ donc la fonction $u\to \varphi(u)=\dfrac{f(x_0+u)+f(x_0-u)-2y}{\sin\frac{u}{2}}$ est born\'ee au voisinage de $0$ (par hypoth\`ese) et elle est int\'egrable sur $[\varepsilon,\pi]~\forall\varepsilon>0.$\\
+Donc elle est int\'egrable sur $[0,\pi]$ (\textbf{Lemme \ref{lem7.2.2}}).\\
+D'apr\`es le \textbf{Lemme \ref{lem7.2.1}}, ${\displaystyle \lim_{n\to+\infty}\int_0^\pi \varphi(u)\sin(n+\frac{1}{2})u\,\ud u=0}.$\\
+D'o\`u ${\displaystyle \lim_{n\to+\infty}(s_n(x_0)-y)=0}$ o\`u $y=\dfrac{1}{2}\left[f(x_0^+)+f(x_0^-)\right]$ 
+\end{pr}
+\begin{rem}
+1. Le rapport $\dfrac{1}{u}\left[f(x_0+u)+f(x_0-u)-f(x_0^+)-f(x_0^-)\right]~(u\in \mathbb{R}^*)$ reste born\'e au voisinage de $0$ signifie : $$\exists m\in \mathbb{R}_+~\exists I\subset \mathbb{R}~\text{ ouvert contenant $0$ tels que}\\~\forall u\in I\setminus\{0\},~~ \Big|\dfrac{1}{u}\left[f(x_0+u)+f(x_0-u)-f(x_0^+)-f(x_0^-)\right]\Big|\leq m$$
+L'expression $f(x_0^+)+f(x_0^-)$ \'etant sym\'etrique en $u$, la condition $$\forall u\in I\setminus\{0\}~~~\Big|\dfrac{1}{u}\left[f(x_0+u)+f(x_0-u)-f(x_0^+)-f(x_0^-)\right]\Big|\leq m$$ peut \^etre remplac\'ee par : $\forall u\in I\setminus \{0\}$ et $u>0~~~\Big|\dfrac{1}{u}\left[f(x_0+u)+f(x_0-u)-f(x_0^+)-f(x_0^-)\right]\Big|\leq m.$\\
+ 2. Cette condition est v\'erifi\'ee si ${\displaystyle \lim_{\substack{u\to 0\\u>0}}\dfrac{1}{u}\left[f(x_0+u)-f(x_0^+)\right]}$ et ${\displaystyle \lim_{\substack{u\to0\\u>0}}\dfrac{1}{u}\left[f(x_0-u)-f(x_0^+)\right]}$ existent et sont finies.
+\end{rem}
+\begin{defi}
+Soit $I$ un intervalle ouvert de $\mathbb{R}$ contenant l'intervalle $[t_0,t_1]~~(t_1>t_0)$ [respectivement $[t_1,t_0],~~t_1<t_0$] et $f$ une application de $I$ dans $\mathbb{R}.$\\
+La d\'eriv\'ee \`a droite [respectivement \`a gauche] de $f$ en $t_0$, not\'ee $f'_d$ [respectivement $f'_g$] est la limite (si elle existe) du rapport $\dfrac{f(t)-f(t_0)}{t-t_0}$ lorsque $t\to t_0$ par valeurs sup\'erieures [respectivement inf\'erieures]. 
+\end{defi}
+Rappelons les r\'esultats suivants:\\
+L'existence de $f'_d(t_0)$ entraine la relation $f(t_0^+)=f(t_0)$ et celle de $f'_g(t_0)$ entraine : $f(t_0^-)=f(t_0)$.\\
+Mais l'existence d'une seule des limites $f'_d(t_0),~f'_g(t_0)$ n'entraine pas la continuit\'e de $f$ au point $t_0.$\\
+\textbf{R\`egle de l'Hospital}\\
+Soient $a,b\in \mathbb{R}$ avec $a<b$ et soit $f:[a,b[\to\mathbb{R}$ une application continue. Supposons que $f$ soit d\'erivable sur $]a,b[$ et que l'on ait ${\displaystyle \lim_{x\to a}f'(x)=\ell}$ o\`u $\ell\in \mathbb{R}.$ Alors $f$ est d\'erivable  \`a droite en $a$ et $f'_d(a)=\ell$.\\
+On a une version analogue de la d\'eriv\'ee \`a gauche en $b$.
+Nous terminons le chapitre par ce corollaire du \textbf{Th\'eor\`eme de Dirichlet}.
+\begin{cor}\label{cor7.2.1} Soit $f$ une fonction \`a valeurs r\'eelles p\'eriodiques de p\'eriode $2\pi$ et int\'egrable sur tout intervalle ferm\'e born\'e de $\mathbb{R}.$ Soit $x_0\in \mathbb{R}.$ Si $f'_d(x_0)$ et $f'_g(x_0)$ existent et sont finis, alors la s\'erie de Fourier de $f$ converge au point $x_0$ vers $f(x_0)$ i.e. ${\displaystyle \lim_{n\to+\infty}s_n(x_0)=f(x_0)}.$
+\end{cor}
+\begin{pr}\quad On a : $f(x_0^+)=f(x_0^-)=f(x_0).$ D'apr\`es la remarque 2. ci-dessus, les hypoth\`eses du th\'eor\`eme de Dirichlet sont v\'erifi\'ees.
+\end{pr}
+
+\section{In\'egalit\'e de Bessel - Th\'eor\`eme de Parseval}
+Deux fonctions \'equivalentes ont aussi m\^eme s\'erie de Fourier. On peut donc parler de s\'erie de Fourier des \'el\'ements de $H$.
+\begin{defi} On appelle espace pr\'ehilbertien r\'eel (respectivement complexe) un espace vectoriel $E$ sur $\mathbb{R}$ [respectivement sur $\mathbb{C}$] sur lequel on a d\'efini un produit scalaire i.e. une forme bilin\'eaire sym\'etrique [respectivement une forme hermitienne] $(x,y)\to\langle x,y\rangle$ satisfaisant \`a :
+\begin{enumerate}
+\item $\forall x\in E,~\langle x,x\rangle\geq 0$ 
+\item $(\langle x,x\rangle=0)\Rightarrow(x=0)$
+\end{enumerate}
+\end{defi}
+\begin{lem} \label{lem7.3.1} Soit $\forall n\in \mathbb{Z},~~e_n:[-\pi,\pi]\to\mathbb{C}~~(x\mapsto e_n(x)=e^{inx}).$ La famille $(e_n)_{n\in \mathbb{Z}},$ forme un syst\`eme orthogonal total dans $H$, i.e. : \\ $\langle e_n,e_p\rangle=1$ ou $0$ suivant que $n=p$ ou $n\neq p$ et le sous-espace qu'elle engendre est dense dans $H$ (pour la norme sur $H$).
+\end{lem}
+Pour simplifier l'\'ecriture, nous noterons $f$ au lieu de $\acute{f}$ les \'el\'ements de $H$. Les coefficients de Fourier de type complexe $(c_n)$ de $f\in H$ sont donn\'es par le produit scalaire $$\langle f,e_n\rangle=c_n~\left(=\dfrac{1}{2\pi}\int_{-\pi}^\pi f(x)e^{-inx}\,\ud x\right)$$
+
+\begin{lem}\label{lem7.3.2} Soit $f$ une fonction p\'eriodique de p\'eriode $2\pi$ d\'efinie sur $[-\pi,\pi]$ \`a valeurs r\'eelles et int\'egrable sur $[-\pi,\pi].$ Alors ses coefficients de Fourier de type complexe (respectivement ordinaires) $c_n$ (respectivement $a_n$ et $b_n$) v\'erifient la relation : $$\sum_{n=-\infty}^{+\infty}|c_n|^2\leq \dfrac{1}{2\pi}\int_{-\pi}^\pi |f(x)|^2\,\ud x ~~\text{i.e.}~~\dfrac{|a_0|}{2}+\sum_{n=1}^{+\infty}\left(|a_n|^2+|b_n|^2\right)\leq \dfrac{1}{2\pi}\int_{-\pi}^\pi |f(x)|^2\,\ud x$$ dite \textbf{in\'egalit\'e de Bessel.}
+\end{lem}
+\begin{pr} \quad
+$\forall n,~e_n=\langle f,e_n\rangle$ avec $f\in H$ et $e_n=e^{inx}$. Il suffit de prouver que $$\forall n\in \mathbb{N},~{\displaystyle \sum_{k=-n}^n|c_k|^2\leq\dfrac{1}{2\pi}\int_{-\pi}^\pi |f(x)|^2\,\ud x}.$$ 
+On a $\langle c_ke_k,f-c_ke_k\rangle=0$ donc $\langle c_ke_k,f\rangle=\langle f,c_ke_k\rangle=|c_k|^2.$ \\
+D'o\`u $${\displaystyle 0\leq~\langle f-\sum_{k=-n}^nc_ke_k,f-\sum_{k=-n}^nc_ke_k\rangle~=~\langle f,f\rangle-\sum_{k=-n}^n|c_k|^2.}$$
+Pour obtenir l'in\'egalit\'e voulue, on fait $|c_n|^2+|c_{-n}|^2=\dfrac{1}{4}(|a_n-ib_n|^2+|a_n+ib_n|^2)=\dfrac{1}{2}(|a_n|^2+|b_n|^2).$
+\end{pr}
+\begin{rem} L'in\'egalit\'e de Bessel montre que la famille $(|c_n|^2)_{n\in\mathbb{Z}}$ est sommable.
+\end{rem}
+\begin{lem}[Th\'eor\`eme de Parseval]
+Soit $f$ une fonction num\'erique ou complexe p\'eriodique de p\'eriode $2\pi$ et int\'egrable sur $[-\pi,\pi].$ Alors ses coefficients de Fourier ordinaires ($a_n$ et $b_n$) et ses coefficients de Fourier de type complexe $(c_n)$ v\'erifient les relations : $$\int_{-\pi}^\pi |f(x)|^2\,\ud x=2\pi\sum_{-\infty}^{+\infty}|c_n|^2=\pi\left[\dfrac{|a_0|}{2}+\sum_{n=1}^{+\infty}\left(|a_n|^2+|b_n|^2\right)\right]$$
+\end{lem}
+\begin{pr}\quad
+Soit $f\in H$ et $\varepsilon >0;$ comme $(e_n)_{n\in\mathbb{Z}}$ est total dans $H$ (\textbf{Lemme \ref{lem7.2.1}}), 
+il existe une combinaison lin\'eaire finie $g={\displaystyle \sum_{i\in J}\alpha_i e_i}$ telle que
+ $\|f-g\|\leq\varepsilon;$ donc \`a fortiori la projection $f_1$ de $f$ sur l'espace complet engendr\'e par la famille finie $(e_i)_{i\in J},$ 
+v\'erifie $\|f-f_1\|\leq \varepsilon.$ Or le vecteur $f-{\displaystyle \sum_{i\in J}c_ie_i}$ est orthogonal \`a chacun des $e_i~(i\in J)$.
+ Donc $f_1={\displaystyle \sum_{i\in J}c_ie_i}$. On a donc $$0\leq ~\langle f-\sum_{i\in J}c_ie_i,f-\sum_{i\in J}c_ie_i\rangle~=~\langle f,f\rangle-\sum_{i\in J}|c_i|^2\leq \varepsilon^2.$$ 
+ Comme $\varepsilon$ est arbitraire on en d\'eduit que $$\dfrac{1}{2\pi}\int_{-\pi}^\pi \big|f(x)\big|^2\,\ud x=\|f\|^2=~\langle f,f\rangle~\leq \sum_{n=-\infty}^{+\infty}|c_n|^2.$$ Compte tenu du \textbf{Lemme \ref{lem7.3.2}}, l'\'egalit\'e est justifi\'ee.
+ \end{pr}
+
+
+\begin{thebibliography}{99} 
+\bibitem{kre} P.~Kr\'ee,~J.Vauthier: \emph{Cours deuxi\`eme ann\'ee du DEUG. Analyse-Alg\`ebre-G\'eom\'etrie,}  
+\'Editions ESKA 
+\bibitem{lelong} J.~Lelong-Ferrand,~J.M. ~Arnaudies: \emph{Cours de Math\'ematiques Tome 2 Analyse},  
+\'Editions Dunod Universit\'e.
+\end{thebibliography}
+\end{document}
